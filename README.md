@@ -15,7 +15,7 @@
 
 <p align="center">
   <img alt="React Native Library Boilerplate"
-        src="https://github.com/WrathChaos/react-native-library-boilerplate/blob/master/assets/Screenshots/library.jpg" />
+        src="https://github.com/WrathChaos/react-native-library-boilerplate/blob/master/assets/Screenshots/JSLibraryBoilerplate.png" />
 </p>
 
 ## Installation
