@@ -14,7 +14,8 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
 <p align="center">
-  <img alt="React Native Library Boilerplate" src="example-image-path-here" />
+  <img alt="React Native Library Boilerplate"
+        src="https://github.com/WrathChaos/react-native-gradient-header/blob/master/assets/Screenshots/example.svg" />
 </p>
 
 ## Installation
