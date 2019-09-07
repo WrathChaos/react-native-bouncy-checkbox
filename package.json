@@ -1,0 +1,26 @@
+{
+  "name": "react-native-library-boilerplate",
+  "version": "0.0.1",
+  "description": "Description for library",
+  "keywords": [
+    "FreakyCoder",
+    "freakycoder",
+    "kuray",
+    "Kuray",
+    "react",
+    "react-native",
+    "javascript",
+    "ui-lib",
+    "rn"
+  ],
+  "homepage": "https://www.freakycoder.com",
+  "bugs": "https://github.com/WrathChaos/react-native-library-boilerplate/issues",
+  "main": "./lib/src/index.js",
+  "repository": "git@github.com:WrathChaos/react-native-library-boilerplate.git",
+  "author": "Kuray (FreakyCoder) <kurayogun@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">= 16.x.x",
+    "react-native": ">= 0.55.x"
+  }
+}
