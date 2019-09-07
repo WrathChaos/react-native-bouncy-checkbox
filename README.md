@@ -15,7 +15,7 @@
 
 <p align="center">
   <img alt="React Native Library Boilerplate"
-        src="https://github.com/WrathChaos/react-native-gradient-header/blob/master/assets/Screenshots/example.svg" />
+        src="https://github.com/WrathChaos/react-native-library-boilerplate/blob/master/assets/Screenshots/example.svg" />
 </p>
 
 ## Installation
