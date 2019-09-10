@@ -37,8 +37,6 @@ npm i react-native-library-boilerplate
 "react-native": ">= 0.55.x",
 ```
 
-# These are just example mock data
-
 # Your Component Options
 
 - Option 1 Component
@@ -66,7 +64,6 @@ import { Component1, Component2 } from "react-native-library-boilerplate";
 
 ### Configuration - Props
 
-#### Note: These values are just example 
 
 | Property |  Type   | Default | Description                                             |
 | -------- | :-----: | :-----: | ------------------------------------------------------- |
