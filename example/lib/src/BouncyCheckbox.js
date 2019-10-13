@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Animated, Easing, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-dynamic-vector-icons";
+import { iconContainer } from "./BouncyCheckbox.style";
 
 class BouncyCheckbox extends Component {
   constructor(props) {
@@ -12,6 +13,10 @@ class BouncyCheckbox extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ checked: this.props.isChecked });
+  }
+
   setChecked = () => {
     const { checked } = this.state;
     this.setState({ checked: !checked });
@@ -20,38 +25,53 @@ class BouncyCheckbox extends Component {
   spring = () => {
     this.setChecked();
     const { springValue } = this.state;
+    const { onPress } = this.props;
     springValue.setValue(0.7);
     Animated.spring(springValue, {
       toValue: 1,
       friction: 3
     }).start();
+    // Outside of the onPress function
+    if (onPress) onPress();
   };
 
   renderCheckIcon = () => {
     const { checked, springValue } = this.state;
+    const { checkboxSize, borderColor, fillColor, unfillColor } = this.props;
     return (
       <Animated.View
         style={[
-          {
-            width: 35,
-            height: 35,
-            borderWidth: 1,
-            borderRadius: 35,
-            borderColor: "orange",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: checked ? "orange" : "transparent"
-          },
+          iconContainer(
+            checkboxSize,
+            checked,
+            borderColor,
+            fillColor,
+            unfillColor
+          ),
           { transform: [{ scale: springValue }] }
         ]}
       >
-        <Icon name="check" type="Entypo" size={20} color="white" />
+        <Icon
+          {...this.props}
+          name="check"
+          type="Entypo"
+          size={15}
+          color="white"
+        />
       </Animated.View>
     );
   };
 
   render() {
-    const { text, onPress } = this.props;
+    const {
+      text,
+      size,
+      isChecked,
+      borderColor,
+      fillColor,
+      unfillColor,
+      onPress
+    } = this.props;
 
     return (
       <TouchableOpacity
@@ -66,12 +86,13 @@ class BouncyCheckbox extends Component {
         <View style={{ marginLeft: 16 }}>
           <Text
             style={{
+              fontSize: 16,
               color: "#757575",
-              fontSize: 18,
-              fontFamily: "JosefinSans-Regular"
+              fontFamily: "JosefinSans-Regular",
+              textDecorationLine: this.state.checked ? "line-through" : "none"
             }}
           >
-            Call my mom
+            {text}
           </Text>
         </View>
       </TouchableOpacity>
@@ -80,11 +101,21 @@ class BouncyCheckbox extends Component {
 }
 
 BouncyCheckbox.propTypes = {
-  example: PropTypes.number
+  text: PropTypes.string,
+  isChecked: PropTypes.bool,
+  checkboxSize: PropTypes.number,
+  borderColor: PropTypes.string,
+  fillColor: PropTypes.string,
+  unfillColor: PropTypes.string
 };
 
 BouncyCheckbox.defaultProps = {
-  example: 5
+  checkboxSize: 25,
+  isChecked: false,
+  text: "Call my mom",
+  fillColor: "#f09f48",
+  borderColor: "#f09f48",
+  unfillColor: "transparent"
 };
 
 export default BouncyCheckbox;

@@ -7,10 +7,14 @@ const App = () => {
     <View style={{ flex: 1 }}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={{ flex: 1 }}>
-        <BouncyCheckbox text="Call my mom" />
-        <BouncyCheckbox text="Call my mom" />
-        <BouncyCheckbox text="Call my mom" />
-        <BouncyCheckbox text="Call my mom" />
+        <View style={{ margin: 16 }}>
+          <BouncyCheckbox />
+          <BouncyCheckbox text="Get groceries" />
+          <BouncyCheckbox text="Buy tickets for concert" />
+          <BouncyCheckbox text="Work on inbox zero" />
+          <BouncyCheckbox text="Do a load of laundry" isChecked />
+          <BouncyCheckbox text="Try new gym routine" isChecked />
+        </View>
       </SafeAreaView>
     </View>
   );
