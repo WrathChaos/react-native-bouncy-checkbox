@@ -15,7 +15,7 @@
 
 <p align="center">
   <img alt="React Native Bouncy Checkbox"
-        src="assets/Screenshots/example.gif" width="49%" height="685"/>
+        src="assets/Screenshots/example.gif" width="49%" height="680"/>
   <img alt="React Native Bouncy Checkbox"
         src="assets/Screenshots/example.png" width="49%" />
 </p>
