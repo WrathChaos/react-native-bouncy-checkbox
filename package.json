@@ -1,8 +1,14 @@
 {
-  "name": "react-native-library-boilerplate",
-  "version": "0.0.11",
-  "description": "Description for library",
+  "name": "react-native-bouncy-checkbox",
+  "version": "0.0.1",
+  "description": "Fully customizable animated bouncy checkbox for React Native",
   "keywords": [
+    "bouncy",
+    "checkbox",
+    "animated",
+    "check",
+    "customizable",
+    "box",
     "FreakyCoder",
     "freakycoder",
     "kuray",
@@ -14,13 +20,20 @@
     "rn"
   ],
   "homepage": "https://www.freakycoder.com",
-  "bugs": "https://github.com/WrathChaos/react-native-library-boilerplate/issues",
-  "main": "./lib/src/index.js",
-  "repository": "git@github.com:WrathChaos/react-native-library-boilerplate.git",
+  "bugs": "https://github.com/WrathChaos/react-native-bouncy-checkbox/issues",
+  "main": "./lib/src/BouncyCheckbox.js",
+  "repository": "git@github.com:WrathChaos/react-native-bouncy-checkbox.git",
   "author": "Kuray (FreakyCoder) <kurayogun@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
     "react": ">= 16.x.x",
-    "react-native": ">= 0.55.x"
+    "react-native": ">= 0.55.x",
+    "react-native-vector-icons": ">= 6.6.0",
+    "react-native-dynamic-vector-icons": ">= 0.2.1"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
   }
 }

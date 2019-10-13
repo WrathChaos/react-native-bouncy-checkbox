@@ -10,10 +10,11 @@ const App = () => {
         <View style={{ margin: 16 }}>
           <BouncyCheckbox />
           <BouncyCheckbox text="Get groceries" />
-          <BouncyCheckbox text="Buy tickets for concert" />
-          <BouncyCheckbox text="Work on inbox zero" />
-          <BouncyCheckbox text="Do a load of laundry" isChecked />
+          <BouncyCheckbox text="Pay the bills" isChecked />
+          <BouncyCheckbox text="Take out of the trash 💩" />
+          <BouncyCheckbox text="Buy tickets for concert 🎉 🎊" />
           <BouncyCheckbox text="Try new gym routine" isChecked />
+          <BouncyCheckbox text="Do a load of laundry" isChecked />
         </View>
       </SafeAreaView>
     </View>
