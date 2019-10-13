@@ -88,7 +88,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 ### Future Plans
 
-- [x] LICENSE
+- [x] ~~LICENSE~~
 - [ ] Remove item feature
 - [ ] Re-sort the list availability feature
 - [ ] Write an article about the lib on Medium
