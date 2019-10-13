@@ -129,8 +129,8 @@ BouncyCheckbox.defaultProps = {
   isChecked: false,
   text: "Call my mom 😇",
   textColor: "#757575",
-  fillColor: "#f09f48",
-  borderColor: "#f09f48",
+  fillColor: "#ffc484",
+  borderColor: "#ffc484",
   unfillColor: "transparent",
   fontFamily: "JosefinSans-Regular"
 };

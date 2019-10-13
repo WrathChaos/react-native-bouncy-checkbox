@@ -10,9 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@freakycoder/react-native-header-view": "^0.4.8",
     "react": "16.9.0",
     "react-native": "0.61.2",
+    "react-native-bottom-search-bar": "0.0.24",
     "react-native-dynamic-vector-icons": "^0.2.1",
+    "react-native-iphone-x-helper": "^1.2.1",
     "react-native-vector-icons": "^6.6.0"
   },
   "devDependencies": {

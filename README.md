@@ -15,7 +15,9 @@
 
 <p align="center">
   <img alt="React Native Bouncy Checkbox"
-        src="https://github.com/WrathChaos/react-native-bouncy-checkbox/blob/master/assets/Screenshots/JSLibraryBoilerplate.png" />
+        src="assets/Screenshots/example.gif" width="49%" />
+  <img alt="React Native Bouncy Checkbox"
+        src="assets/Screenshots/example.png" width="49%" />
 </p>
 
 ## Installation
