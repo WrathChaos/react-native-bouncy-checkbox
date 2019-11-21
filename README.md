@@ -55,35 +55,53 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 ```
 
 
-## Customizable Usage
+## Basic Usage
 
-```js
+```jsx
 <BouncyCheckbox
   isChecked
   textColor="#000"
   fillColor="red"
-  iconComponent={your-own-component}
-  fontFamily="JosefinSans-Regular"
   text="Buy tickets for concert 🎉 🎊"
+/>
+```
+
+
+## Advanced Custom Usage
+
+```jsx
+<BouncyCheckbox
+  isChecked={false}
+  textColor="#000"
+  unfillColor="white"
+  fontFamily="JosefinSans-Regular"
+  iconComponent={
+    <Image
+      style={{ height: 10, width: 10 }}
+      source={require("./assets/checkmark.png")}
+    />
+  }
+  text="Custom Icon Example"
 />
 ```
 
 
 ### Configuration - Props
 
-| Property      |   Type    |       Default       | Description                                                           |
-| ------------- | :-------: | :-----------------: | --------------------------------------------------------------------- |
-| text          |  string   |   Call my mom 😇    | set the checkbox's text                                               |
-| textColor     |   color   |       #757575       | change the text's color                                               |
-| fontFamily    |  string   | JosefinSans-Regular | set your own font family                                              |
-| fontSize      |  number   |         16          | change the text's font size                                           |
-| isChecked     |  boolean  |        false        | set the default checkbox value                                        |
-| checkboxSize  |  number   |         25          | change the checkbox's size                                            |
-| borderRadius  |  number   |       size/2        | change the checkbox's border radius if you do not want the circle one |
-| borderColor   |   color   |       #f09f48       | change the checkbox's border color                                    |
-| fillColor     |   color   |       #f09f48       | change the checkbox's filled color                                    |
-| unfillColor   |   color   |     transparent     | change the checkbox's un-filled color when it's not checked           |
-| iconComponent | component |        Icon         | set your own icon component                                           |
+| Property      |   Type    |    Default     | Description                                                           |
+| ------------- | :-------: | :------------: | --------------------------------------------------------------------- |
+| text          |  string   | Call my mom 😇 | set the checkbox's text                                               |
+| textColor     |   color   |    #757575     | change the text's color                                               |
+| fontFamily    |  string   |    default     | set your own font family                                              |
+| fontSize      |  number   |       16       | change the text's font size                                           |
+| isChecked     |  boolean  |     false      | set the default checkbox value                                        |
+| checkboxSize  |  number   |       25       | change the checkbox's size                                            |
+| borderRadius  |  number   |     size/2     | change the checkbox's border radius if you do not want the circle one |
+| borderColor   |   color   |    #f09f48     | change the checkbox's border color                                    |
+| fillColor     |   color   |    #f09f48     | change the checkbox's filled color                                    |
+| unfillColor   |   color   |  transparent   | change the checkbox's un-filled color when it's not checked           |
+| iconComponent | component |      Icon      | set your own icon component                                           |
+| onPress       | function  |      null      | set your own onPress functionality after the bounce effect            |
 
 
 ### Future Plans

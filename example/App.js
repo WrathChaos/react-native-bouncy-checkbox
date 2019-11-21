@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StatusBar, SafeAreaView } from "react-native";
+import { View, Image, StatusBar, SafeAreaView } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { AppleHeader } from "@freakycoder/react-native-header-view";
 import BottomSearchBar from "react-native-bottom-search-bar";
@@ -11,13 +11,47 @@ const App = () => {
       <SafeAreaView style={{ flex: 1 }}>
         <AppleHeader />
         <View style={{ margin: 16 }}>
-          <BouncyCheckbox />
-          <BouncyCheckbox text="Get groceries" />
-          <BouncyCheckbox text="Pay the bills" isChecked />
-          <BouncyCheckbox text="Take out of the trash 💩" />
-          <BouncyCheckbox text="Buy tickets for concert 🎉 🎊" />
-          <BouncyCheckbox text="Try new gym routine" isChecked />
-          <BouncyCheckbox text="Do a load of laundry" isChecked />
+          <BouncyCheckbox
+            isChecked={false}
+            textColor="#000"
+            unfillColor="white"
+            fontFamily="JosefinSans-Regular"
+            iconComponent={
+              <Image
+                style={{ height: 10, width: 10 }}
+                source={require("./assets/checkmark.png")}
+              />
+            }
+            text="Custom Icon Example"
+          />
+          <BouncyCheckbox fontFamily="JosefinSans-Regular" />
+          <BouncyCheckbox
+            text="Get groceries"
+            fontFamily="JosefinSans-Regular"
+          />
+          <BouncyCheckbox
+            isChecked
+            text="Pay the bills"
+            fontFamily="JosefinSans-Regular"
+          />
+          <BouncyCheckbox
+            fontFamily="JosefinSans-Regular"
+            text="Take out of the trash 💩"
+          />
+          <BouncyCheckbox
+            fontFamily="JosefinSans-Regular"
+            text="Buy tickets for concert 🎉 🎊"
+          />
+          <BouncyCheckbox
+            isChecked
+            text="Try new gym routine"
+            fontFamily="JosefinSans-Regular"
+          />
+          <BouncyCheckbox
+            isChecked
+            text="Do a load of laundry"
+            fontFamily="JosefinSans-Regular"
+          />
         </View>
         <BottomSearchBar />
       </SafeAreaView>
