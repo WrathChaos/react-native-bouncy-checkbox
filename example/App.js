@@ -24,7 +24,12 @@ const App = () => {
             }
             text="Custom Icon Example"
           />
-          <BouncyCheckbox fontFamily="JosefinSans-Regular" />
+          <BouncyCheckbox
+            fontFamily="JosefinSans-Regular"
+            onPress={checked => {
+              alert(checked);
+            }}
+          />
           <BouncyCheckbox
             text="Get groceries"
             fontFamily="JosefinSans-Regular"
