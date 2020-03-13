@@ -74,14 +74,15 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
   isChecked={false}
   textColor="#000"
   unfillColor="white"
+  text="Custom Icon Example"
   fontFamily="JosefinSans-Regular"
+  onPress={checked => console.log("Checked: ", checked)}
   iconComponent={
     <Image
       style={{ height: 10, width: 10 }}
       source={require("./assets/checkmark.png")}
     />
   }
-  text="Custom Icon Example"
 />
 ```
 
