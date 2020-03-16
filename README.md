@@ -1,11 +1,8 @@
 <img alt="React Native Bouncy Checkbox" src="assets/logo.png" width="1050"/>
 
-
 [![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/WrathChaos/react-native-bouncy-checkbox)
 
-
 [![Fully customizable animated bouncy checkbox for React Native](https://img.shields.io/badge/-Fully%20customizable%20animated%20bouncy%20checkbox%20for%20React%20Native-lightgrey?style=for-the-badge)](https://github.com/WrathChaos/react-native-bouncy-checkbox)
-
 
 [![npm version](https://img.shields.io/npm/v/react-native-bouncy-checkbox.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-bouncy-checkbox)
 [![npm](https://img.shields.io/npm/dt/react-native-bouncy-checkbox.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-bouncy-checkbox)
@@ -47,13 +44,13 @@ npm i react-native-bouncy-checkbox
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 ```
 
-# Usage 
+# Usage
 
 ## Basic (Default) Usage
+
 ```js
 <BouncyCheckbox />
 ```
-
 
 ## Basic Usage
 
@@ -65,7 +62,6 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
   text="Buy tickets for concert 🎉 🎊"
 />
 ```
-
 
 ## Advanced Custom Usage
 
@@ -86,7 +82,6 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 />
 ```
 
-
 ### Configuration - Props
 
 | Property      |   Type    |    Default     | Description                                                           |
@@ -103,7 +98,10 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | unfillColor   |   color   |  transparent   | change the checkbox's un-filled color when it's not checked           |
 | iconComponent | component |      Icon      | set your own icon component                                           |
 | onPress       | function  |      null      | set your own onPress functionality after the bounce effect            |
-
+| iconSize      |  number   |       15       | change the react-native-vector-icons' size                            |
+| iconName      |  string   |     check      | change the react-native-vector-icons' name                            |
+| iconType      |  string   |     Entypo     | change the react-native-vector-icons' type                            |
+| iconColor     |  string   |    #fdfdfd     | change the react-native-vector-icons' color                           |
 
 ### Future Plans
 
