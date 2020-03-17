@@ -84,24 +84,25 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 ### Configuration - Props
 
-| Property      |   Type    |    Default     | Description                                                           |
-| ------------- | :-------: | :------------: | --------------------------------------------------------------------- |
-| text          |  string   | Call my mom 😇 | set the checkbox's text                                               |
-| textColor     |   color   |    #757575     | change the text's color                                               |
-| fontFamily    |  string   |    default     | set your own font family                                              |
-| fontSize      |  number   |       16       | change the text's font size                                           |
-| isChecked     |  boolean  |     false      | set the default checkbox value                                        |
-| checkboxSize  |  number   |       25       | change the checkbox's size                                            |
-| borderRadius  |  number   |     size/2     | change the checkbox's border radius if you do not want the circle one |
-| borderColor   |   color   |    #f09f48     | change the checkbox's border color                                    |
-| fillColor     |   color   |    #f09f48     | change the checkbox's filled color                                    |
-| unfillColor   |   color   |  transparent   | change the checkbox's un-filled color when it's not checked           |
-| iconComponent | component |      Icon      | set your own icon component                                           |
-| onPress       | function  |      null      | set your own onPress functionality after the bounce effect            |
-| iconSize      |  number   |       15       | change the react-native-vector-icons' size                            |
-| iconName      |  string   |     check      | change the react-native-vector-icons' name                            |
-| iconType      |  string   |     Entypo     | change the react-native-vector-icons' type                            |
-| iconColor     |  string   |    #fdfdfd     | change the react-native-vector-icons' color                           |
+| Property              |   Type    |    Default     | Description                                                           |
+| --------------------- | :-------: | :------------: | --------------------------------------------------------------------- |
+| text                  |  string   | Call my mom 😇 | set the checkbox's text                                               |
+| textColor             |   color   |    #757575     | change the text's color                                               |
+| fontFamily            |  string   |    default     | set your own font family                                              |
+| fontSize              |  number   |       16       | change the text's font size                                           |
+| isChecked             |  boolean  |     false      | set the default checkbox value                                        |
+| checkboxSize          |  number   |       25       | change the checkbox's size                                            |
+| borderRadius          |  number   |     size/2     | change the checkbox's border radius if you do not want the circle one |
+| borderColor           |   color   |    #f09f48     | change the checkbox's border color                                    |
+| fillColor             |   color   |    #f09f48     | change the checkbox's filled color                                    |
+| unfillColor           |   color   |  transparent   | change the checkbox's un-filled color when it's not checked           |
+| iconComponent         | component |      Icon      | set your own icon component                                           |
+| onPress               | function  |      null      | set your own onPress functionality after the bounce effect            |
+| iconSize              |  number   |       15       | change the react-native-vector-icons' size                            |
+| iconName              |  string   |     check      | change the react-native-vector-icons' name                            |
+| iconType              |  string   |     Entypo     | change the react-native-vector-icons' type                            |
+| iconColor             |  string   |    #fdfdfd     | change the react-native-vector-icons' color                           |
+| disableTextDecoration |  boolean  |     false      | enable/disable text decoration for Text                               |
 
 ### Future Plans
 

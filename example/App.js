@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Image, StatusBar, SafeAreaView } from "react-native";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { AppleHeader } from "@freakycoder/react-native-header-view";
 import BottomSearchBar from "react-native-bottom-search-bar";
+import { AppleHeader } from "@freakycoder/react-native-header-view";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const App = () => {
   return (
@@ -49,6 +49,7 @@ const App = () => {
           />
           <BouncyCheckbox
             isChecked
+            disableTextDecoration
             text="Try new gym routine"
             fontFamily="JosefinSans-Regular"
           />
