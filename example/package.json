@@ -15,7 +15,7 @@
     "react": "16.12.0",
     "react-native": "0.61.5",
     "react-native-bottom-search-bar": "0.1.1",
-    "react-native-bouncy-checkbox": "0.1.1",
+    "react-native-bouncy-checkbox": "0.1.2",
     "react-native-dynamic-vector-icons": "^0.2.1",
     "react-native-iphone-x-helper": "^1.2.1",
     "react-native-vector-icons": "^6.6.0"

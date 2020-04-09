@@ -103,6 +103,8 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | iconType              |  string   |     Entypo     | change the react-native-vector-icons' type                            |
 | iconColor             |  string   |    #fdfdfd     | change the react-native-vector-icons' color                           |
 | disableTextDecoration |  boolean  |     false      | enable/disable text decoration for Text                               |
+| useNativeDriver       |  boolean  |      true      | enable/disable the useNativeDriver for animation                      |
+| textStyle             |   style   |    default     | set your own text style                                               |
 
 ### Future Plans
 

@@ -26,7 +26,7 @@ const App = () => {
           />
           <BouncyCheckbox
             fontFamily="JosefinSans-Regular"
-            onPress={checked => {
+            onPress={(checked) => {
               alert(checked);
             }}
           />
