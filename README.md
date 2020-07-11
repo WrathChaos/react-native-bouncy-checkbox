@@ -86,24 +86,28 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 | Property              |   Type    |    Default     | Description                                                 |
 | --------------------- | :-------: | :------------: | ----------------------------------------------------------- |
+| borderWidth           |  number   |       1        | border width  of the checkbox                               |
+| borderRadius          |  number   |      20        | border radius of the checkbox                               |
+| borderColor           |  string   |    #ffc484     | border color  of the checkbox                               |
+| color                 |  string   |    #757575     | color of the text                                           |
+| size                  |  number   |      25        | size of `width` and `height` of the  checkbox               |
+| isChecked             |  boolean  |     false      | set the default checkbox value                              |
+| unfillColor           |   color   |  transparent   | change the checkbox's un-filled color when it's not checked |
+| useNativeDriver       |  boolean  |      true      | enable/disable the useNativeDriver for animation            |
 | text                  |  string   | Call my mom 😇 | set the checkbox's text                                     |
 | textColor             |   color   |    #757575     | change the text's color                                     |
 | fontFamily            |  string   |    default     | set your own font family                                    |
 | fontSize              |  number   |       16       | change the text's font size                                 |
-| isChecked             |  boolean  |     false      | set the default checkbox value                              |
-| checkboxSize          |  number   |       25       | change the checkbox's size                                  |
 | fillColor             |   color   |    #f09f48     | change the checkbox's filled color                          |
-| unfillColor           |   color   |  transparent   | change the checkbox's un-filled color when it's not checked |
-| iconComponent         | component |      Icon      | set your own icon component                                 |
+| textStyle             |   object  |    default     | set your own text style                                     |
+| textDecoration        |  boolean  |     false      | enable/disable text decoration for Text                     |
 | onPress               | function  |      null      | set your own onPress functionality after the bounce effect  |
 | iconSize              |  number   |       15       | change the react-native-vector-icons' size                  |
 | iconName              |  string   |     check      | change the react-native-vector-icons' name                  |
 | iconType              |  string   |     Entypo     | change the react-native-vector-icons' type                  |
 | iconColor             |  string   |    #fdfdfd     | change the react-native-vector-icons' color                 |
-| disableTextDecoration |  boolean  |     false      | enable/disable text decoration for Text                     |
-| useNativeDriver       |  boolean  |      true      | enable/disable the useNativeDriver for animation            |
-| textStyle             |   style   |    default     | set your own text style                                     |
-| iconStyle             |   style   |    default     | set your own icon style                                     |
+| iconComponent         | component |      Icon      | set your own icon component                                 |
+| iconStyle             |   object  |    default     | set your own icon style                                     |
 
 ### Future Plans
 
