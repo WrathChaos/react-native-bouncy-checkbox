@@ -12,6 +12,19 @@ const App = () => {
         <AppleHeader />
         <View style={{ margin: 16 }}>
           <BouncyCheckbox
+            borderColor="red"
+            borderWidth={2}
+            borderRadius={5}
+            fillColor="red"
+            unfillColor="#FFFFFF"
+            // iconComponent={<IconDog color={"red"} width={12} strokeWidth={3} />}
+            textColor="#333"
+            size={10}
+            disableTextDecoration={true}
+            fontSize={16}
+            text="asdasd"
+          />
+          <BouncyCheckbox
             isChecked={false}
             textColor="#000"
             unfillColor="white"
