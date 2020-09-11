@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Image, StatusBar, SafeAreaView } from "react-native";
+import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
-import { AppleHeader } from "@freakycoder/react-native-header-view";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+// import BouncyCheckbox from "react-native-bouncy-checkbox";
+import BouncyCheckbox from "./lib/BouncyCheckbox"
 
 const App = () => {
   return (
@@ -29,12 +30,12 @@ const App = () => {
             textColor="#000"
             unfillColor="white"
             fontFamily="JosefinSans-Regular"
-            iconComponent={
-              <Image
-                style={{ height: 10, width: 10 }}
-                source={require("./assets/checkmark.png")}
-              />
-            }
+            // iconComponent={
+            //   <Image
+            //     style={{ height: 10, width: 10 }}
+            //     source={require("./assets/checkmark.png")}
+            //   />
+            // }
             text="Custom Icon Example"
           />
           <BouncyCheckbox

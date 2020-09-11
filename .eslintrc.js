@@ -1,6 +1,13 @@
 module.exports = {
+  root: true,
+  extends: [
+    "@react-native-community",
+    "airbnb-typescript",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
   parser: "babel-eslint",
-  extends: "airbnb",
   plugins: ["react", "react-native"],
   env: {
     jest: true,
@@ -11,7 +18,7 @@ module.exports = {
     "react/jsx-filename-extension": [
       "error",
       {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".jsx", ".tsx", ".ts"]
       }
     ],
     // for post defining style object in react-native
