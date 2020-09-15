@@ -31,6 +31,7 @@ export interface IBouncyCheckboxProps {
   unfillColor: string;
   borderColor: string;
   borderWidth: number;
+  disableText: boolean;
   borderRadius: number;
   ImageComponent: any;
   checkImageSource: any;
@@ -127,6 +128,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
       fontFamily,
       fontSize = 16,
       textDecoration,
+      disableText = false,
       color = "#757575",
       text = "Call my mom 😇",
     } = this.props;
@@ -136,22 +138,24 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
         onPress={this.spring.bind(this, Easing.bounce)}
       >
         {this.renderCheckIcon()}
-        <View style={styles.textContainer}>
-          <Text
-            style={[
-              _textStyle(
-                this.state.checked,
-                color,
-                fontFamily,
-                fontSize,
-                textDecoration,
-              ),
-              textStyle,
-            ]}
-          >
-            {text}
-          </Text>
-        </View>
+        {!disableText && (
+          <View style={styles.textContainer}>
+            <Text
+              style={[
+                _textStyle(
+                  this.state.checked,
+                  color,
+                  fontFamily,
+                  fontSize,
+                  textDecoration,
+                ),
+                textStyle,
+              ]}
+            >
+              {text}
+            </Text>
+          </View>
+        )}
       </TouchableOpacity>
     );
   }
