@@ -29,9 +29,9 @@ export const _iconContainer = (
 export const _textStyle = (
   checked: boolean,
   color: string,
-  fontFamily: string,
-  fontSize: number,
-  textDecoration: string,
+  fontFamily?: string,
+  fontSize?: number,
+  textDecoration?: string,
 ): TextStyle => {
   return {
     fontSize,

@@ -14,32 +14,28 @@ import styles, {
 } from "./BouncyCheckbox.style";
 
 export interface IBouncyCheckboxProps {
-  size: number;
-  text: string;
-  color: string;
-  iconStyle: any;
-  textStyle: any;
-  iconName: string;
-  iconSize: number;
-  iconType: string;
-  fillColor: string;
-  fontSize: number;
-  iconColor: string;
-  fontFamily: string;
-  iconComponent: any;
-  isChecked: boolean;
-  unfillColor: string;
-  borderColor: string;
-  borderWidth: number;
-  disableText: boolean;
-  borderRadius: number;
-  ImageComponent: any;
-  checkImageSource: any;
-  textDecoration: string;
-  checkImageWidth: number;
-  checkImageHeight: number;
-  useNativeDriver: boolean;
-  onPress: (isChecked: boolean) => void;
+  size?: number;
+  text?: string;
+  color?: string;
+  iconStyle?: any;
+  textStyle?: any;
+  fillColor?: string;
+  fontSize?: number;
+  fontFamily?: string;
+  iconComponent?: any;
+  isChecked?: boolean;
+  unfillColor?: string;
+  borderColor?: string;
+  borderWidth?: number;
+  disableText?: boolean;
+  borderRadius?: number;
+  ImageComponent?: any;
+  checkImageSource?: any;
+  textDecoration?: string;
+  checkImageWidth?: number;
+  checkImageHeight?: number;
+  useNativeDriver?: boolean;
+  onPress?: (isChecked: boolean) => void;
 }
 
 interface IState {
@@ -59,7 +55,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
   }
 
   componentDidMount() {
-    this.setState({ checked: this.props.isChecked });
+    this.setState({ checked: this.props.isChecked || false });
   }
 
   spring = () => {
