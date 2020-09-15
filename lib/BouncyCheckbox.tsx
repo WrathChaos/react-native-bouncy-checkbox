@@ -1,15 +1,52 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import { Animated, Easing, Text, TouchableOpacity, View } from "react-native";
-import Icon from "react-native-dynamic-vector-icons";
-import styles, { _iconContainer, _textStyle } from "./BouncyCheckbox.style";
+import {
+  Animated,
+  Easing,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
+import styles, {
+  _textStyle,
+  _iconContainer,
+  _iconImageStyle,
+} from "./BouncyCheckbox.style";
 
-export interface IBouncyCheckboxProps {}
+export interface IBouncyCheckboxProps {
+  size: number;
+  text: string;
+  color: string;
+  iconStyle: any;
+  textStyle: any;
+  iconName: string;
+  iconSize: number;
+  iconType: string;
+  fillColor: string;
+  fontSize: number;
+  iconColor: string;
+  fontFamily: string;
+  iconComponent: any;
+  isChecked: boolean;
+  unfillColor: string;
+  borderColor: string;
+  borderWidth: number;
+  borderRadius: number;
+  ImageComponent: any;
+  checkImageSource: any;
+  textDecoration: string;
+  checkImageWidth: number;
+  checkImageHeight: number;
+  useNativeDriver: boolean;
+  onPress: (isChecked: boolean) => void;
+}
 
 interface IState {
   checked: boolean;
   springValue: Animated.Value;
 }
+
+const defaultCheckImage = require("./check.png");
 
 class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
   constructor(props: IBouncyCheckboxProps) {
@@ -25,7 +62,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
   }
 
   spring = () => {
-    const { useNativeDriver } = this.props;
+    const { useNativeDriver = true } = this.props;
     const { checked, springValue } = this.state;
     this.setState({ checked: !checked }, () => {
       springValue.setValue(0.7);
@@ -34,7 +71,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
         friction: 3,
         useNativeDriver,
       }).start();
-      // Outside of the onPress function
+      // ? Outside of the onPress function
       const { onPress } = this.props;
       if (onPress) {
         onPress(this.state.checked);
@@ -45,18 +82,18 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
   renderCheckIcon = () => {
     const { checked, springValue } = this.state;
     const {
-      size,
-      fillColor,
-      unfillColor,
-      borderWidth,
-      borderRadius,
-      borderColor,
-      iconName,
-      iconSize,
-      iconType,
-      iconColor,
+      size = 25,
       iconStyle,
       iconComponent,
+      borderWidth = 1,
+      borderRadius = 20,
+      checkImageWidth = 10,
+      checkImageHeight = 10,
+      fillColor = "#ffc484",
+      ImageComponent = Image,
+      borderColor = "#ffc484",
+      unfillColor = "transparent",
+      checkImageSource = defaultCheckImage,
     } = this.props;
     return (
       <Animated.View
@@ -75,11 +112,9 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
         ]}
       >
         {iconComponent || (
-          <Icon
-            size={iconSize}
-            name={iconName}
-            type={iconType}
-            color={iconColor}
+          <ImageComponent
+            source={checkImageSource}
+            style={_iconImageStyle(checkImageWidth, checkImageHeight)}
           />
         )}
       </Animated.View>
@@ -88,12 +123,12 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
 
   render() {
     const {
-      text,
-      fontSize,
-      color,
       textStyle,
       fontFamily,
+      fontSize = 16,
       textDecoration,
+      color = "#757575",
+      text = "Call my mom 😇",
     } = this.props;
     return (
       <TouchableOpacity
@@ -121,48 +156,5 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     );
   }
 }
-
-BouncyCheckbox.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.number,
-  text: PropTypes.string,
-  onPress: PropTypes.func,
-  isChecked: PropTypes.bool,
-  fontSize: PropTypes.number,
-  iconName: PropTypes.string,
-  iconType: PropTypes.string,
-  iconSize: PropTypes.number,
-  fillColor: PropTypes.string,
-  textStyle: PropTypes.object,
-  iconColor: PropTypes.string,
-  iconStyle: PropTypes.object,
-  fontFamily: PropTypes.string,
-  borderColor: PropTypes.string,
-  unfillColor: PropTypes.string,
-  borderWidth: PropTypes.number,
-  borderRadius: PropTypes.number,
-  textDecoration: PropTypes.bool,
-  useNativeDriver: PropTypes.bool,
-  iconComponent: PropTypes.element,
-};
-
-BouncyCheckbox.defaultProps = {
-  size: 25,
-  fontSize: 16,
-  iconSize: 15,
-  borderWidth: 1,
-  color: "#757575",
-  borderRadius: 20,
-  isChecked: false,
-  iconName: "check",
-  iconType: "Entypo",
-  fillColor: "#ffc484",
-  iconColor: "#fdfdfd",
-  useNativeDriver: true,
-  textDecoration: false,
-  borderColor: "#ffc484",
-  text: "Call my mom 😇",
-  unfillColor: "transparent",
-};
 
 export default BouncyCheckbox;

@@ -1,4 +1,4 @@
-import { ViewStyle, TextStyle, StyleSheet } from "react-native";
+import { ViewStyle, TextStyle, ImageStyle, StyleSheet } from "react-native";
 
 interface Style {
   container: ViewStyle;
@@ -12,7 +12,7 @@ export const _iconContainer = (
   borderColor: string,
   checked: boolean,
   fillColor: string,
-  unfillColor: string
+  unfillColor: string,
 ): ViewStyle => {
   return {
     width: size,
@@ -31,7 +31,7 @@ export const _textStyle = (
   color: string,
   fontFamily: string,
   fontSize: number,
-  textDecoration: string
+  textDecoration: string,
 ): TextStyle => {
   return {
     fontSize,
@@ -40,6 +40,14 @@ export const _textStyle = (
     textDecorationLine: !textDecoration && checked ? "line-through" : "none",
   };
 };
+
+export const _iconImageStyle = (
+  checkImageWidth: number,
+  checkImageHeight: number,
+): ImageStyle => ({
+  width: checkImageWidth,
+  height: checkImageHeight,
+});
 
 export default StyleSheet.create<Style>({
   container: {
