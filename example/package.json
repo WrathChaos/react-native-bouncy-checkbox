@@ -14,7 +14,9 @@
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-apple-header": "^0.1.1",
-    "react-native-bottom-search-bar": "^0.1.3"
+    "react-native-bottom-search-bar": "^0.1.3",
+    "react-native-dynamic-vector-icons": "^1.1.3",
+    "react-native-vector-icons": "^7.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

@@ -2,8 +2,7 @@ import React from "react";
 import { View, Image, StatusBar, SafeAreaView } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
-// import BouncyCheckbox from "react-native-bouncy-checkbox";
-import BouncyCheckbox from "./lib/BouncyCheckbox"
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const App = () => {
   return (
@@ -29,7 +28,7 @@ const App = () => {
             isChecked={false}
             textColor="#000"
             unfillColor="white"
-            fontFamily="JosefinSans-Regular"
+            borderRadius={10}
             // iconComponent={
             //   <Image
             //     style={{ height: 10, width: 10 }}
@@ -39,39 +38,20 @@ const App = () => {
             text="Custom Icon Example"
           />
           <BouncyCheckbox
-            fontFamily="JosefinSans-Regular"
             onPress={(checked) => {
               alert(checked);
             }}
           />
-          <BouncyCheckbox
-            text="Get groceries"
-            fontFamily="JosefinSans-Regular"
-          />
-          <BouncyCheckbox
-            isChecked
-            text="Pay the bills"
-            fontFamily="JosefinSans-Regular"
-          />
-          <BouncyCheckbox
-            fontFamily="JosefinSans-Regular"
-            text="Take out of the trash 💩"
-          />
-          <BouncyCheckbox
-            fontFamily="JosefinSans-Regular"
-            text="Buy tickets for concert 🎉 🎊"
-          />
+          <BouncyCheckbox text="Get groceries" />
+          <BouncyCheckbox isChecked text="Pay the bills" />
+          <BouncyCheckbox text="Take out of the trash 💩" />
+          <BouncyCheckbox text="Buy tickets for concert 🎉 🎊" />
           <BouncyCheckbox
             isChecked
             disableTextDecoration
             text="Try new gym routine"
-            fontFamily="JosefinSans-Regular"
           />
-          <BouncyCheckbox
-            isChecked
-            text="Do a load of laundry"
-            fontFamily="JosefinSans-Regular"
-          />
+          <BouncyCheckbox isChecked text="Do a load of laundry" />
         </View>
         <BottomSearchBar />
       </SafeAreaView>
