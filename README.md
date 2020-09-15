@@ -27,7 +27,11 @@ Add the dependency:
 npm i react-native-bouncy-checkbox
 ```
 
-## Zero Dependency!
+## Version 1.0.0 is Here 🥳
+
+- Typescript
+- **Zero Dependency**
+- More Customization Options
 
 ## Import
 
