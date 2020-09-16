@@ -14,7 +14,7 @@ import styles, {
 } from "./BouncyCheckbox.style";
 
 export interface IBouncyCheckboxProps {
-  style: any;
+  style?: any;
   size?: number;
   text?: string;
   color?: string;
