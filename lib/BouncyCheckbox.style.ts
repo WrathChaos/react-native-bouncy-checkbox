@@ -22,7 +22,6 @@ export const _iconContainer = (
     borderRadius,
     alignItems: "center",
     justifyContent: "center",
-    display: checked ? "flex" : "none",
     backgroundColor: checked ? fillColor : unfillColor,
   };
 };
