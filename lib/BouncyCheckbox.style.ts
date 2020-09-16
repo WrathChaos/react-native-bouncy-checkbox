@@ -22,6 +22,7 @@ export const _iconContainer = (
     borderRadius,
     alignItems: "center",
     justifyContent: "center",
+    display: checked ? "flex" : "none",
     backgroundColor: checked ? fillColor : unfillColor,
   };
 };
@@ -44,9 +45,11 @@ export const _textStyle = (
 export const _iconImageStyle = (
   checkImageWidth: number,
   checkImageHeight: number,
+  checked: boolean,
 ): ImageStyle => ({
   width: checkImageWidth,
   height: checkImageHeight,
+  display: checked ? "flex" : "none",
 });
 
 export default StyleSheet.create<Style>({
