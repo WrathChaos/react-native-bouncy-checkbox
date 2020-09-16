@@ -14,6 +14,7 @@ import styles, {
 } from "./BouncyCheckbox.style";
 
 export interface IBouncyCheckboxProps {
+  style: any;
   size?: number;
   text?: string;
   color?: string;
@@ -120,6 +121,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
 
   render() {
     const {
+      style,
       textStyle,
       fontFamily,
       fontSize = 16,
@@ -130,7 +132,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     } = this.props;
     return (
       <TouchableOpacity
-        style={styles.container}
+        style={[styles.container, style]}
         onPress={this.spring.bind(this, Easing.bounce)}
       >
         {this.renderCheckIcon()}
