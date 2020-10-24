@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, StatusBar, SafeAreaView } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import BouncyCheckbox from "./build/dist/BouncyCheckbox";
 
 const App = () => {
   return (
@@ -19,13 +19,14 @@ const App = () => {
             unfillColor="#FFFFFF"
             // iconComponent={<IconDog color={"red"} width={12} strokeWidth={3} />}
             textColor="#333"
-            size={10}
+            size={25}
             disableTextDecoration={true}
             fontSize={16}
             text="asdasd"
           />
           <BouncyCheckbox
             isChecked={false}
+            disabled
             textColor="#000"
             unfillColor="white"
             borderRadius={10}

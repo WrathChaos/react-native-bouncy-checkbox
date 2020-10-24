@@ -1,11 +1,12 @@
 import * as React from "react";
 import {
-  Animated,
-  Easing,
   Text,
-  TouchableOpacity,
   View,
   Image,
+  Easing,
+  Animated,
+  TouchableOpacity,
+  TouchableOpacityProps,
 } from "react-native";
 import styles, {
   _textStyle,
@@ -13,7 +14,11 @@ import styles, {
   _iconImageStyle,
 } from "./BouncyCheckbox.style";
 
-export interface IBouncyCheckboxProps {
+export interface ISource {
+  source: string | { uri: string };
+}
+
+export interface IBouncyCheckboxProps extends TouchableOpacityProps {
   style?: any;
   size?: number;
   text?: string;
@@ -31,11 +36,11 @@ export interface IBouncyCheckboxProps {
   disableText?: boolean;
   borderRadius?: number;
   ImageComponent?: any;
-  checkImageSource?: any;
   textDecoration?: string;
   checkImageWidth?: number;
   checkImageHeight?: number;
   useNativeDriver?: boolean;
+  checkImageSource?: ISource;
   onPress?: (isChecked: boolean) => void;
 }
 
@@ -132,6 +137,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     } = this.props;
     return (
       <TouchableOpacity
+        {...this.props}
         style={[styles.container, style]}
         onPress={this.spring.bind(this, Easing.bounce)}
       >
