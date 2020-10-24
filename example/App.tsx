@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, StatusBar, SafeAreaView } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
-import BouncyCheckbox from "./build/dist/BouncyCheckbox";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const App = () => {
   return (

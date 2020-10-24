@@ -15,7 +15,7 @@
     "react-native": "0.63.2",
     "react-native-apple-header": "^0.1.1",
     "react-native-bottom-search-bar": "^0.1.3",
-    "react-native-bouncy-checkbox": "^1.0.0",
+    "react-native-bouncy-checkbox": "^1.0.8",
     "react-native-dynamic-vector-icons": "^1.1.3",
     "react-native-vector-icons": "^7.1.0"
   },
