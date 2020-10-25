@@ -104,7 +104,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | checkImageWidth  |  number   |       10       | change the check icon's width                               |
 | checkImageHeight |  number   |       10       | change the check icon's height                              |
 | ImageComponent   | component |     Image      | set your own Image component instead of RN's default Image  |
-| disableText      |  boolean  |     false      | if you want to use checkbox without text, you can enable it |
+| disabled         |  boolean  |     false      | disable/enable checkbox                                     |
 
 ### Future Plans
 
