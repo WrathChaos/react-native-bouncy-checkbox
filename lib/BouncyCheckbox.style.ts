@@ -37,7 +37,7 @@ export const _textStyle = (
     fontSize,
     fontFamily,
     color,
-    textDecorationLine: !textDecoration && checked ? "line-through" : "none",
+    textDecorationLine: textDecoration && checked ? "line-through" : "none",
   };
 };
 
