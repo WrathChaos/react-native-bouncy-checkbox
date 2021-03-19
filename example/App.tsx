@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StatusBar, SafeAreaView } from "react-native";
+import { View, Text, StatusBar, SafeAreaView } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
 import BouncyCheckbox from "./lib/BouncyCheckbox";
@@ -81,6 +81,65 @@ const App = () => {
               isChecked
               text="Do a load of laundry"
               onPress={(isChecked: boolean) => {}}
+            />
+          </View>
+        </View>
+        <View
+          style={{
+            marginTop: 16,
+          }}
+        >
+          <Text style={{ marginLeft: 24, fontSize: 24, fontWeight: "700" }}>
+            Checkbox Only
+          </Text>
+          <View
+            style={{
+              marginTop: 16,
+              width: "100%",
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <BouncyCheckbox
+              size={50}
+              isChecked
+              iconImageStyle={{ width: 18, height: 18 }}
+              disableText
+              onPress={() => {}}
+            />
+            <BouncyCheckbox
+              disableText
+              fillColor="#f54b42"
+              size={50}
+              iconImageStyle={{ width: 18, height: 18 }}
+              iconStyle={{ borderColor: "#f54b42" }}
+              onPress={() => {}}
+            />
+            <BouncyCheckbox
+              isChecked
+              disableText
+              fillColor="#4287f5"
+              size={50}
+              iconImageStyle={{ width: 18, height: 18 }}
+              iconStyle={{ borderColor: "#4287f5" }}
+              onPress={() => {}}
+            />
+            <BouncyCheckbox
+              disableText
+              fillColor="#9342f5"
+              size={50}
+              iconImageStyle={{ width: 18, height: 18 }}
+              iconStyle={{ borderColor: "#9342f5" }}
+              onPress={() => {}}
+            />
+            <BouncyCheckbox
+              isChecked
+              disableText
+              fillColor="green"
+              size={50}
+              iconImageStyle={{ width: 18, height: 18 }}
+              iconStyle={{ borderColor: "green" }}
+              onPress={() => {}}
             />
           </View>
         </View>

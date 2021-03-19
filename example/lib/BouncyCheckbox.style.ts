@@ -3,6 +3,7 @@ import { ViewStyle, TextStyle, ImageStyle, StyleSheet } from "react-native";
 interface Style {
   container: ViewStyle;
   textContainer: ViewStyle;
+  iconImageStyle: ImageStyle;
 }
 
 export const _iconContainer = (
@@ -31,17 +32,14 @@ export const _textStyle = (checked: boolean): TextStyle => {
   };
 };
 
-export const _iconImageStyle = (checked: boolean): ImageStyle => ({
-  width: 10,
-  height: 10,
-  display: checked ? "flex" : "none",
-});
-
 export default StyleSheet.create<Style>({
   container: {
-    alignSelf: "baseline",
     alignItems: "center",
     flexDirection: "row",
+  },
+  iconImageStyle: {
+    width: 10,
+    height: 10,
   },
   textContainer: {
     marginLeft: 16,
