@@ -21,7 +21,7 @@
 
 Add the dependency:
 
-### React Native:
+### React Native
 
 ```ruby
 npm i react-native-bouncy-checkbox
@@ -80,31 +80,29 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 ### Configuration - Props
 
-| Property         |   Type    |    Default     | Description                                                 |
-| ---------------- | :-------: | :------------: | ----------------------------------------------------------- |
-| borderWidth      |  number   |       1        | border width of the checkbox                                |
-| borderRadius     |  number   |       20       | border radius of the checkbox                               |
-| borderColor      |  string   |    #ffc484     | border color of the checkbox                                |
-| color            |  string   |    #757575     | color of the text                                           |
-| size             |  number   |       25       | size of `width` and `height` of the checkbox                |
-| isChecked        |  boolean  |     false      | set the default checkbox value                              |
-| unfillColor      |   color   |  transparent   | change the checkbox's un-filled color when it's not checked |
-| useNativeDriver  |  boolean  |      true      | enable/disable the useNativeDriver for animation            |
-| text             |  string   | Call my mom 😇 | set the checkbox's text                                     |
-| textColor        |   color   |    #757575     | change the text's color                                     |
-| fontFamily       |  string   |    default     | set your own font family                                    |
-| fontSize         |  number   |       16       | change the text's font size                                 |
-| fillColor        |   color   |    #f09f48     | change the checkbox's filled color                          |
-| textStyle        |  object   |    default     | set your own text style                                     |
-| textDecoration   |  boolean  |     false      | enable/disable text decoration for Text                     |
-| onPress          | function  |      null      | set your own onPress functionality after the bounce effect  |
-| iconComponent    | component |      Icon      | set your own icon component                                 |
-| iconStyle        |  object   |    default     | set your own icon style                                     |
-| checkImageSource |   image   |    default     | set your own check icon image                               |
-| checkImageWidth  |  number   |       10       | change the check icon's width                               |
-| checkImageHeight |  number   |       10       | change the check icon's height                              |
-| ImageComponent   | component |     Image      | set your own Image component instead of RN's default Image  |
-| disableText      |  boolean  |     false      | if you want to use checkbox without text, you can enable it |
+| Property             |   Type    |    Default     | Description                                                 |
+| -------------------- | :-------: | :------------: | ----------------------------------------------------------- |
+| borderWidth          |  number   |       1        | border width of the checkbox                                |
+| borderRadius         |  number   |       20       | border radius of the checkbox                               |
+| borderColor          |  string   |    #ffc484     | border color of the checkbox                                |
+| size                 |  number   |       25       | size of `width` and `height` of the checkbox                |
+| isChecked            |  boolean  |     false      | set the default checkbox value                              |
+| unfillColor          |   color   |  transparent   | change the checkbox's un-filled color when it's not checked |
+| useNativeDriver      |  boolean  |      true      | enable/disable the useNativeDriver for animation            |
+| text                 |  string   | Call my mom 😇 | set the checkbox's text                                     |
+| textColor            |   color   |    #757575     | change the text's color                                     |
+| fontSize             |  number   |       16       | change the text's font size                                 |
+| fillColor            |   color   |    #f09f48     | change the checkbox's filled color                          |
+| textStyle            |  object   |    default     | set your own text style                                     |
+| textDecoration       |  boolean  |     false      | enable/disable text decoration for Text                     |
+| onPress              | function  |      null      | set your own onPress functionality after the bounce effect  |
+| iconComponent        | component |      Icon      | set your own icon component                                 |
+| iconStyle            |  object   |    default     | set your own icon style                                     |
+| checkIconImageSource |   image   |    default     | set your own check icon image                               |
+| checkImageWidth      |  number   |       10       | change the check icon's width                               |
+| checkImageHeight     |  number   |       10       | change the check icon's height                              |
+| ImageComponent       | component |     Image      | set your own Image component instead of RN's default Image  |
+| disableText          |  boolean  |     false      | if you want to use checkbox without text, you can enable it |
 
 ### Future Plans
 
