@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Image, StatusBar, SafeAreaView } from "react-native";
+import { View, StatusBar, SafeAreaView } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import BouncyCheckbox from "./lib/BouncyCheckbox";
 
 const App = () => {
   return (
@@ -11,48 +11,78 @@ const App = () => {
       <SafeAreaView style={{ flex: 1 }}>
         <AppleHeader />
         <View style={{ margin: 16 }}>
-          <BouncyCheckbox
-            borderColor="red"
-            borderWidth={2}
-            borderRadius={5}
-            fillColor="red"
-            unfillColor="#FFFFFF"
-            // iconComponent={<IconDog color={"red"} width={12} strokeWidth={3} />}
-            textColor="#333"
-            size={25}
-            disableTextDecoration={true}
-            fontSize={16}
-            text="asdasd"
-          />
-          <BouncyCheckbox
-            isChecked={false}
-            disabled
-            textColor="#000"
-            unfillColor="white"
-            borderRadius={10}
-            // iconComponent={
-            //   <Image
-            //     style={{ height: 10, width: 10 }}
-            //     source={require("./assets/checkmark.png")}
-            //   />
-            // }
-            text="Custom Icon Example"
-          />
-          <BouncyCheckbox
-            onPress={(checked) => {
-              alert(checked);
-            }}
-          />
-          <BouncyCheckbox text="Get groceries" />
-          <BouncyCheckbox isChecked text="Pay the bills" />
-          <BouncyCheckbox text="Take out of the trash 💩" />
-          <BouncyCheckbox text="Buy tickets for concert 🎉 🎊" />
-          <BouncyCheckbox
-            isChecked
-            disableTextDecoration
-            text="Try new gym routine"
-          />
-          <BouncyCheckbox isChecked text="Do a load of laundry" />
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox isChecked disableText onPress={() => {}} />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              size={25}
+              fillColor="red"
+              iconStyle={{ borderColor: "red" }}
+              unfillColor="#FFFFFF"
+              text="Custom Checkbox"
+              onPress={(isChecked: boolean) => {}}
+            />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              disabled
+              isChecked={false}
+              iconStyle={{ borderColor: "blue", borderRadius: 10 }}
+              unfillColor="white"
+              borderRadius={10}
+              text="Custom Disabled Checkbox Example"
+              onPress={(isChecked: boolean) => {}}
+            />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              text="Call my mom 😇"
+              onPress={(checked: boolean) => {
+                alert(checked);
+              }}
+            />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              text="Get groceries"
+              onPress={(isChecked: boolean) => {}}
+            />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              isChecked
+              text="Pay the bills"
+              onPress={(isChecked: boolean) => {}}
+            />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              text="Take out of the trash 💩"
+              onPress={(isChecked: boolean) => {}}
+            />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              text="Buy tickets for concert 🎉 🎊"
+              onPress={(isChecked: boolean) => {}}
+            />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              isChecked
+              text="Try new gym routine"
+              textStyle={{ color: "red", textDecorationLine: "none" }}
+              onPress={(isChecked: boolean) => {}}
+            />
+          </View>
+          <View style={{ margin: 8 }}>
+            <BouncyCheckbox
+              isChecked
+              text="Do a load of laundry"
+              onPress={(isChecked: boolean) => {}}
+            />
+          </View>
         </View>
         <BottomSearchBar />
       </SafeAreaView>
