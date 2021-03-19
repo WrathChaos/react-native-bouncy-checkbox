@@ -3,13 +3,11 @@ import { ViewStyle, TextStyle, ImageStyle, StyleSheet } from "react-native";
 interface Style {
   container: ViewStyle;
   textContainer: ViewStyle;
+  iconImageStyle: ImageStyle;
 }
 
 export const _iconContainer = (
   size: number,
-  borderWidth: number,
-  borderRadius: number,
-  borderColor: string,
   checked: boolean,
   fillColor: string,
   unfillColor: string,
@@ -17,45 +15,31 @@ export const _iconContainer = (
   return {
     width: size,
     height: size,
-    borderWidth,
-    borderColor,
-    borderRadius,
+    borderWidth: 1,
+    borderColor: "#ffc484",
+    borderRadius: size / 2,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: checked ? fillColor : unfillColor,
   };
 };
 
-export const _textStyle = (
-  checked: boolean,
-  color: string,
-  fontFamily?: string,
-  fontSize?: number,
-  textDecoration?: string,
-): TextStyle => {
+export const _textStyle = (checked: boolean): TextStyle => {
   return {
-    fontSize,
-    fontFamily,
-    color,
-    textDecorationLine: !textDecoration && checked ? "line-through" : "none",
+    fontSize: 16,
+    color: "#757575",
+    textDecorationLine: checked ? "line-through" : "none",
   };
 };
 
-export const _iconImageStyle = (
-  checkImageWidth: number,
-  checkImageHeight: number,
-  checked: boolean,
-): ImageStyle => ({
-  width: checkImageWidth,
-  height: checkImageHeight,
-  display: checked ? "flex" : "none",
-});
-
 export default StyleSheet.create<Style>({
   container: {
-    margin: 8,
     alignItems: "center",
     flexDirection: "row",
+  },
+  iconImageStyle: {
+    width: 10,
+    height: 10,
   },
   textContainer: {
     marginLeft: 16,

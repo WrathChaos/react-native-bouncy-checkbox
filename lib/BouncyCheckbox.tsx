@@ -26,8 +26,6 @@ export interface IBouncyCheckboxProps extends TouchableOpacityProps {
   iconStyle?: any;
   textStyle?: any;
   fillColor?: string;
-  fontSize?: number;
-  fontFamily?: string;
   iconComponent?: any;
   isChecked?: boolean;
   unfillColor?: string;
@@ -36,12 +34,12 @@ export interface IBouncyCheckboxProps extends TouchableOpacityProps {
   disableText?: boolean;
   borderRadius?: number;
   ImageComponent?: any;
-  textDecoration?: string;
-  checkImageWidth?: number;
-  checkImageHeight?: number;
+  iconImageStyle?: any;
+  bounceEffect?: number;
+  bounceFriction?: number;
   useNativeDriver?: boolean;
-  checkImageSource?: ISource;
-  onPress?: (isChecked: boolean) => void;
+  checkIconImageSource?: ISource;
+  onPress: (isChecked: boolean) => void;
 }
 
 interface IState {
@@ -64,21 +62,21 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     this.setState({ checked: this.props.isChecked || false });
   }
 
-  spring = () => {
-    const { useNativeDriver = true } = this.props;
+  springBounceAnimation = () => {
+    const {
+      useNativeDriver = true,
+      bounceEffect = 1,
+      bounceFriction = 3,
+    } = this.props;
     const { checked, springValue } = this.state;
     this.setState({ checked: !checked }, () => {
       springValue.setValue(0.7);
       Animated.spring(springValue, {
-        toValue: 1,
-        friction: 3,
+        toValue: bounceEffect,
+        friction: bounceFriction,
         useNativeDriver,
       }).start();
-      // ? Outside of the onPress function
-      const { onPress } = this.props;
-      if (onPress) {
-        onPress(this.state.checked);
-      }
+      this.props.onPress && this.props.onPress(this.state.checked);
     });
   };
 
@@ -88,78 +86,54 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
       size = 25,
       iconStyle,
       iconComponent,
-      borderWidth = 1,
-      borderRadius = 20,
-      checkImageWidth = 10,
-      checkImageHeight = 10,
+      iconImageStyle,
       fillColor = "#ffc484",
       ImageComponent = Image,
-      borderColor = "#ffc484",
       unfillColor = "transparent",
-      checkImageSource = defaultCheckImage,
+      checkIconImageSource = defaultCheckImage,
     } = this.props;
     return (
       <Animated.View
         style={[
           { transform: [{ scale: springValue }] },
-          _iconContainer(
-            size,
-            borderWidth,
-            borderRadius,
-            borderColor,
-            checked,
-            fillColor,
-            unfillColor,
-          ),
+          _iconContainer(size, checked, fillColor, unfillColor),
           iconStyle,
         ]}
       >
-        {iconComponent || (
-          <ImageComponent
-            source={checkImageSource}
-            style={_iconImageStyle(checkImageWidth, checkImageHeight, checked)}
-          />
-        )}
+        {iconComponent ||
+          (checked && (
+            <ImageComponent
+              source={checkIconImageSource}
+              style={[styles.iconImageStyle, iconImageStyle]}
+            />
+          ))}
       </Animated.View>
     );
   };
 
+  renderCheckboxText = () => {
+    const { textStyle, text, disableText = false } = this.props;
+    return (
+      !disableText && (
+        <View style={styles.textContainer}>
+          <Text style={[_textStyle(this.state.checked), textStyle]}>
+            {text}
+          </Text>
+        </View>
+      )
+    );
+  };
+
   render() {
-    const {
-      style,
-      textStyle,
-      fontFamily,
-      fontSize = 16,
-      textDecoration,
-      disableText = false,
-      color = "#757575",
-      text = "Call my mom 😇",
-    } = this.props;
+    const { style } = this.props;
     return (
       <TouchableOpacity
         {...this.props}
         style={[styles.container, style]}
-        onPress={this.spring.bind(this, Easing.bounce)}
+        onPress={this.springBounceAnimation.bind(this, Easing.bounce)}
       >
         {this.renderCheckIcon()}
-        {!disableText && (
-          <View style={styles.textContainer}>
-            <Text
-              style={[
-                _textStyle(
-                  this.state.checked,
-                  color,
-                  fontFamily,
-                  fontSize,
-                  textDecoration,
-                ),
-                textStyle,
-              ]}
-            >
-              {text}
-            </Text>
-          </View>
-        )}
+        {this.renderCheckboxText()}
       </TouchableOpacity>
     );
   }
