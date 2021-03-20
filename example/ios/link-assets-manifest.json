@@ -1,0 +1,45 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-Bold.ttf",
+      "sha1": "18ece3d6de9abcc1be5a67fb9208fc1cdc99f3f2"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-BoldItalic.ttf",
+      "sha1": "13c848c41231205b09a98d591b37bf567e370660"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-Italic.ttf",
+      "sha1": "232a68137471b9d8f311a0006ba0a18ecec49f7a"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-Light.ttf",
+      "sha1": "4870fb4ca978cf224ce37b8aa7b30bda5192a293"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-LightItalic.ttf",
+      "sha1": "467e285e68b727434f771eac6ce11ce964b4ac18"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-Regular.ttf",
+      "sha1": "7bc8324d2ff6a6fc28794c8ba607e30f47a2161a"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-SemiBold.ttf",
+      "sha1": "9b4f93be1fc336e5e740b96d1363c08f22d280a5"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-SemiBoldItalic.ttf",
+      "sha1": "d2666e9a299e4f1572be2a571a9891662be27763"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-Thin.ttf",
+      "sha1": "87f2532f18bea622529c9f4154e2c70db563da1b"
+    },
+    {
+      "path": "assets/fonts/JosefinSans/JosefinSans-ThinItalic.ttf",
+      "sha1": "a46b811a15ed186be714d19ec9110b22e9bc3791"
+    }
+  ]
+}

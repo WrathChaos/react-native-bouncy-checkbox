@@ -8,11 +8,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from "react-native";
-import styles, {
-  _textStyle,
-  _iconContainer,
-  _iconImageStyle,
-} from "./BouncyCheckbox.style";
+import styles, { _textStyle, _iconContainer } from "./BouncyCheckbox.style";
 
 export interface ISource {
   source: string | { uri: string };
@@ -22,17 +18,13 @@ export interface IBouncyCheckboxProps extends TouchableOpacityProps {
   style?: any;
   size?: number;
   text?: string;
-  color?: string;
   iconStyle?: any;
   textStyle?: any;
   fillColor?: string;
   iconComponent?: any;
   isChecked?: boolean;
   unfillColor?: string;
-  borderColor?: string;
-  borderWidth?: number;
   disableText?: boolean;
-  borderRadius?: number;
   ImageComponent?: any;
   iconImageStyle?: any;
   bounceEffect?: number;

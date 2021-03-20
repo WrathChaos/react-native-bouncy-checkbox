@@ -10,12 +10,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
-<p align="center">
-  <img alt="React Native Bouncy Checkbox"
-        src="assets/Screenshots/example.gif" width="49%" height="715"/>
-  <img alt="React Native Bouncy Checkbox"
-        src="assets/Screenshots/example.png" width="49%" />
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img alt="React Native Bouncy Checkbox"
+        src="assets/Screenshots/react-native-bouncy-checkbox.gif" />
+    </td>
+    <td align="center">
+      <img alt="React Native Bouncy Checkbox"
+        src="assets/Screenshots/react-native-bouncy-checkbox.png" />
+    </td>
+   </tr>
+</table>
 
 ## Installation
 
@@ -27,7 +33,7 @@ Add the dependency:
 npm i react-native-bouncy-checkbox
 ```
 
-## Version 1.0.0 is Here 🥳
+## Version 2.0.0 is Here 🥳
 
 - Typescript
 - **Zero Dependency**
@@ -44,37 +50,20 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 ## Basic Usage
 
 ```js
-<BouncyCheckbox />
-```
-
-## Basic Usage
-
-```jsx
-<BouncyCheckbox
-  isChecked
-  textColor="#000"
-  fillColor="red"
-  text="Buy tickets for concert 🎉 🎊"
-  onPress={(checked) => console.log("Checked: ", checked)}
-/>
+<BouncyCheckbox onPress={(isChecked: boolean) => {}} />
 ```
 
 ## Advanced Custom Usage
 
 ```jsx
 <BouncyCheckbox
-  isChecked={false}
-  textColor="#000"
-  unfillColor="white"
-  text="Custom Icon Example"
-  fontFamily="JosefinSans-Regular"
-  onPress={(checked) => console.log("Checked: ", checked)}
-  iconComponent={
-    <FastImage
-      style={{ height: 10, width: 10 }}
-      source={require("./assets/checkmark.png")}
-    />
-  }
+  size={25}
+  fillColor="red"
+  unfillColor="#FFFFFF"
+  text="Custom Checkbox"
+  iconStyle={{ borderColor: "red" }}
+  textStyle={{ fontFamily: "JosefinSans-Regular" }}
+  onPress={(isChecked: boolean) => {}}
 />
 ```
 
@@ -82,32 +71,28 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 | Property             |   Type    |    Default     | Description                                                 |
 | -------------------- | :-------: | :------------: | ----------------------------------------------------------- |
-| borderWidth          |  number   |       1        | border width of the checkbox                                |
-| borderRadius         |  number   |       20       | border radius of the checkbox                               |
-| borderColor          |  string   |    #ffc484     | border color of the checkbox                                |
+| text                 |  string   | Call my mom 😇 | set the checkbox's text                                     |
+| onPress              | function  |      null      | set your own onPress functionality after the bounce effect  |
+| disableText          |  boolean  |     false      | if you want to use checkbox without text, you can enable it |
 | size                 |  number   |       25       | size of `width` and `height` of the checkbox                |
+| style                |   style   |    default     | set/override the container style                            |
+| textStyle            |   style   |    default     | set/override the text style                                 |
+| iconStyle            |   style   |    default     | set/override the icon style                                 |
 | isChecked            |  boolean  |     false      | set the default checkbox value                              |
+| fillColor            |   color   |    #f09f48     | change the checkbox's filled color                          |
 | unfillColor          |   color   |  transparent   | change the checkbox's un-filled color when it's not checked |
 | useNativeDriver      |  boolean  |      true      | enable/disable the useNativeDriver for animation            |
-| text                 |  string   | Call my mom 😇 | set the checkbox's text                                     |
-| textColor            |   color   |    #757575     | change the text's color                                     |
-| fontSize             |  number   |       16       | change the text's font size                                 |
-| fillColor            |   color   |    #f09f48     | change the checkbox's filled color                          |
-| textStyle            |  object   |    default     | set your own text style                                     |
-| textDecoration       |  boolean  |     false      | enable/disable text decoration for Text                     |
-| onPress              | function  |      null      | set your own onPress functionality after the bounce effect  |
 | iconComponent        | component |      Icon      | set your own icon component                                 |
-| iconStyle            |  object   |    default     | set your own icon style                                     |
 | checkIconImageSource |   image   |    default     | set your own check icon image                               |
-| checkImageWidth      |  number   |       10       | change the check icon's width                               |
-| checkImageHeight     |  number   |       10       | change the check icon's height                              |
 | ImageComponent       | component |     Image      | set your own Image component instead of RN's default Image  |
-| disableText          |  boolean  |     false      | if you want to use checkbox without text, you can enable it |
+| bounceEffect         |  number   |       1        | change the bounce effect                                    |
+| bounceFriction       |  number   |       3        | change the bounce friction                                  |
 
 ### Future Plans
 
 - [x] ~~LICENSE~~
 - [x] ~~Typescript Challange!~~
+- [x] ~~Version 2.0.0 is alive 🥳~~
 - [ ] Write an article about the lib on Medium
 
 ## Author
