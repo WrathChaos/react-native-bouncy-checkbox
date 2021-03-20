@@ -38,6 +38,10 @@ npm i react-native-bouncy-checkbox
 - Typescript
 - **Zero Dependency**
 - More Customization Options
+- New customization props are available: 
+     - `iconStyle`
+     - `bounceEffect`
+     - `bounceFriction`
 
 ## Import
 
