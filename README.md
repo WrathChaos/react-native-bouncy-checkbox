@@ -75,7 +75,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 | Property             |   Type    |    Default     | Description                                                 |
 | -------------------- | :-------: | :------------: | ----------------------------------------------------------- |
-| text                 |  string   | Call my mom 😇 | set the checkbox's text                                     |
+| text                 |  string   | undefined | set the checkbox's text                                     |
 | onPress              | function  |      null      | set your own onPress functionality after the bounce effect  |
 | disableText          |  boolean  |     false      | if you want to use checkbox without text, you can enable it |
 | size                 |  number   |       25       | size of `width` and `height` of the checkbox                |
