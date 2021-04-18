@@ -30,8 +30,9 @@ export interface IBouncyCheckboxProps extends TouchableOpacityProps {
   bounceEffect?: number;
   bounceFriction?: number;
   useNativeDriver?: boolean;
+  disableBuiltInState?: boolean;
   checkIconImageSource?: ISource;
-  onPress: (isChecked: boolean) => void;
+  onPress: (isChecked?: boolean) => void;
 }
 
 interface IState {
@@ -54,22 +55,33 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     this.setState({ checked: this.props.isChecked || false });
   }
 
-  springBounceAnimation = () => {
+  onPress = () => {
     const {
+      disableBuiltInState = false,
       useNativeDriver = true,
       bounceEffect = 1,
       bounceFriction = 3,
     } = this.props;
     const { checked, springValue } = this.state;
-    this.setState({ checked: !checked }, () => {
+    if (!disableBuiltInState) {
+      this.setState({ checked: !checked }, () => {
+        springValue.setValue(0.7);
+        Animated.spring(springValue, {
+          toValue: bounceEffect,
+          friction: bounceFriction,
+          useNativeDriver,
+        }).start();
+        this.props.onPress && this.props.onPress(this.state.checked);
+      });
+    } else {
       springValue.setValue(0.7);
       Animated.spring(springValue, {
         toValue: bounceEffect,
         friction: bounceFriction,
         useNativeDriver,
       }).start();
-      this.props.onPress && this.props.onPress(this.state.checked);
-    });
+      this.props.onPress && this.props.onPress();
+    }
   };
 
   renderCheckIcon = () => {
@@ -82,18 +94,22 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
       fillColor = "#ffc484",
       ImageComponent = Image,
       unfillColor = "transparent",
+      disableBuiltInState,
+      isChecked,
       checkIconImageSource = defaultCheckImage,
     } = this.props;
+
+    const checkStatus = disableBuiltInState ? isChecked! : checked;
     return (
       <Animated.View
         style={[
           { transform: [{ scale: springValue }] },
-          _iconContainer(size, checked, fillColor, unfillColor),
+          _iconContainer(size, checkStatus, fillColor, unfillColor),
           iconStyle,
         ]}
       >
         {iconComponent ||
-          (checked && (
+          (checkStatus && (
             <ImageComponent
               source={checkIconImageSource}
               style={[styles.iconImageStyle, iconImageStyle]}
@@ -104,11 +120,23 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
   };
 
   renderCheckboxText = () => {
-    const { textStyle, text, disableText = false } = this.props;
+    const {
+      textStyle,
+      text,
+      disableBuiltInState,
+      isChecked,
+      disableText = false,
+    } = this.props;
+    const { checked } = this.state;
     return (
       !disableText && (
         <View style={styles.textContainer}>
-          <Text style={[_textStyle(this.state.checked), textStyle]}>
+          <Text
+            style={[
+              _textStyle(disableBuiltInState ? isChecked! : checked),
+              textStyle,
+            ]}
+          >
             {text}
           </Text>
         </View>
@@ -122,7 +150,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
       <TouchableOpacity
         {...this.props}
         style={[styles.container, style]}
-        onPress={this.springBounceAnimation.bind(this, Easing.bounce)}
+        onPress={this.onPress.bind(this, Easing.bounce)}
       >
         {this.renderCheckIcon()}
         {this.renderCheckboxText()}

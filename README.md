@@ -38,10 +38,10 @@ npm i react-native-bouncy-checkbox
 - Typescript
 - **Zero Dependency**
 - More Customization Options
-- New customization props are available: 
-     - `iconStyle`
-     - `bounceEffect`
-     - `bounceFriction`
+- New customization props are available:
+  - `iconStyle`
+  - `bounceEffect`
+  - `bounceFriction`
 
 ## Import
 
@@ -92,11 +92,97 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | bounceEffect         |  number   |       1        | change the bounce effect                                    |
 | bounceFriction       |  number   |       3        | change the bounce friction                                  |
 
+## Synthetic Press Functionality with Manual Check State
+
+<div>
+    <img alt="React Native Bouncy Checkbox"
+      src="assets/Screenshots/react-native-bouncy-checkbox-syntetic-onpress.gif" />
+</div>
+
+Please check the `example-manual-state` runable project to how to make it work on a real project.
+
+<b><i>Becareful while using `disableBuiltInState` you MUST set the `isChecked` prop to use your own check state manually.</b></i>
+
+Here is the basic implementation:
+
+```jsx
+import React from "react";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import BouncyCheckbox from "./lib/BouncyCheckbox";
+import RNBounceable from "@freakycoder/react-native-bounceable";
+
+const App = () => {
+  let bouncyCheckboxRef: BouncyCheckbox | null = null;
+  const [checkboxState, setCheckboxState] = React.useState(false);
+
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <View
+        style={{
+          height: 30,
+          width: 150,
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 12,
+          backgroundColor: checkboxState ? "#34eb83" : "#eb4034",
+        }}
+      >
+        <Text
+          style={{ color: "#fff" }}
+        >{`Check Status: ${checkboxState.toString()}`}</Text>
+      </View>
+      <BouncyCheckbox
+        style={{ marginTop: 16 }}
+        ref={(ref: any) => (bouncyCheckboxRef = ref)}
+        isChecked={checkboxState}
+        text="Synthetic Checkbox"
+        disableBuiltInState
+        onPress={(isChecked: boolean = false) =>
+          setCheckboxState(!checkboxState)
+        }
+      />
+      <RNBounceable
+        style={{
+          marginTop: 16,
+          height: 50,
+          width: "90%",
+          backgroundColor: "#ffc484",
+          borderRadius: 12,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        onPress={() => bouncyCheckboxRef?.onPress()}
+      >
+        <Text style={{ color: "#fff" }}>Synthetic Checkbox Press</Text>
+      </RNBounceable>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({});
+
+export default App;
+```
+
 ### Future Plans
 
 - [x] ~~LICENSE~~
 - [x] ~~Typescript Challange!~~
 - [x] ~~Version 2.0.0 is alive 🥳~~
+- [x] ~~Synthetic Press Functionality~~
+- [x] ~~Disable built-in check state~~
 - [ ] Write an article about the lib on Medium
 
 ## Author
