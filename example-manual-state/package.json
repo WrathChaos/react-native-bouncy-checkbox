@@ -13,7 +13,7 @@
     "@freakycoder/react-native-bounceable": "^0.2.4",
     "react": "17.0.1",
     "react-native": "0.64.0",
-    "react-native-bouncy-checkbox": "^2.0.0"
+    "react-native-bouncy-checkbox": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
