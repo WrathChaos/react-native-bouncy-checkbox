@@ -149,7 +149,7 @@ const App = () => {
         isChecked={checkboxState}
         text="Synthetic Checkbox"
         disableBuiltInState
-        onPress={(isChecked: boolean = false) =>
+        onPress={() =>
           setCheckboxState(!checkboxState)
         }
       />
