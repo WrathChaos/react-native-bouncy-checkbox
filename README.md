@@ -27,6 +27,8 @@
 
 Add the dependency:
 
+<b>Zero Dependency</b>
+
 ### React Native
 
 ```ruby
@@ -73,25 +75,26 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 ### Configuration - Props
 
-| Property             |   Type    |    Default     | Description                                                                       |
-| -------------------- | :-------: | :------------: | ----------------------------------------------------------------------------------|
-| text                 |  string   | undefined | set the checkbox's text                                                                |
-| onPress              | function  |      null      | set your own onPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false |
-| disableText          |  boolean  |     false      | if you want to use checkbox without text, you can enable it                       |
-| size                 |  number   |       25       | size of `width` and `height` of the checkbox                                      |
-| style                |   style   |    default     | set/override the container style                                                  |
-| textStyle            |   style   |    default     | set/override the text style                                                       |
-| iconStyle            |   style   |    default     | set/override the icon style                                                       |
-| isChecked            |  boolean  |     false      | set the default checkbox value                                                    |
-| fillColor            |   color   |    #f09f48     | change the checkbox's filled color                                                |
-| unfillColor          |   color   |  transparent   | change the checkbox's un-filled color when it's not checked                       |
-| useNativeDriver      |  boolean  |      true      | enable/disable the useNativeDriver for animation                                  |
-| iconComponent        | component |      Icon      | set your own icon component                                                       |
-| checkIconImageSource |   image   |    default     | set your own check icon image                                                     |
-| ImageComponent       | component |     Image      | set your own Image component instead of RN's default Image                        |
-| bounceEffect         |  number   |       1        | change the bounce effect                                                          |
-| bounceFriction       |  number   |       3        | change the bounce friction                                                        |
-| disableBuiltInState  |  boolean  |     false      | if you want to manually handle the `isChecked` prop and disable built in handling |
+| Property             |   Type    |   Default   | Description                                                                                                                                |
+| -------------------- | :-------: | :---------: | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| text                 |  string   |  undefined  | set the checkbox's text                                                                                                                    |
+| onPress              | function  |    null     | set your own onPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false |
+| disableText          |  boolean  |    false    | if you want to use checkbox without text, you can enable it                                                                                |
+| size                 |  number   |     25      | size of `width` and `height` of the checkbox                                                                                               |
+| style                |   style   |   default   | set/override the container style                                                                                                           |
+| textStyle            |   style   |   default   | set/override the text style                                                                                                                |
+| iconStyle            |   style   |   default   | set/override the icon style                                                                                                                |
+| isChecked            |  boolean  |    false    | set the default checkbox value                                                                                                             |
+| fillColor            |   color   |   #f09f48   | change the checkbox's filled color                                                                                                         |
+| unfillColor          |   color   | transparent | change the checkbox's un-filled color when it's not checked                                                                                |
+| useNativeDriver      |  boolean  |    true     | enable/disable the useNativeDriver for animation                                                                                           |
+| iconComponent        | component |    Icon     | set your own icon component                                                                                                                |
+| checkIconImageSource |   image   |   default   | set your own check icon image                                                                                                              |
+| ImageComponent       | component |    Image    | set your own Image component instead of RN's default Image                                                                                 |
+| bounceEffect         |  number   |      1      | change the bounce effect                                                                                                                   |
+| bounceFriction       |  number   |      3      | change the bounce friction                                                                                                                 |
+| disableBuiltInState  |  boolean  |    false    | if you want to manually handle the `isChecked` prop and disable built in handling                                                          |
+| textContainerStyle   | ViewStyle |   default   | set/override the text container style                                                                                                      |
 
 ## Synthetic Press Functionality with Manual Check State
 
@@ -150,9 +153,7 @@ const App = () => {
         isChecked={checkboxState}
         text="Synthetic Checkbox"
         disableBuiltInState
-        onPress={() =>
-          setCheckboxState(!checkboxState)
-        }
+        onPress={() => setCheckboxState(!checkboxState)}
       />
       <RNBounceable
         style={{
