@@ -2,13 +2,9 @@ import React from "react";
 import { View, Text, StatusBar, SafeAreaView, Alert } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
-// import BouncyCheckbox from "react-native-bouncy-checkbox";
-import BouncyCheckbox, { } from "./lib/BouncyCheckbox";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 export default class App extends React.Component {
-
-
-  
   render() {
     return (
       <View style={{ flex: 1 }}>
