@@ -9,24 +9,25 @@ import {
   ViewStyle,
   TouchableOpacity,
   TouchableOpacityProps,
+  TextStyle,
 } from "react-native";
 import styles, { _textStyle, _iconContainer } from "./BouncyCheckbox.style";
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 
 export interface IBouncyCheckboxProps extends TouchableOpacityProps {
-  style?: any;
+  style?: StyleProp<ViewStyle>;
   size?: number;
   text?: string;
   iconStyle?: any;
-  textStyle?: any;
+  textStyle?: StyleProp<TextStyle>;
   fillColor?: string;
-  iconComponent?: any;
+  iconComponent?: React.ReactNode;
   isChecked?: boolean;
   unfillColor?: string;
   disableText?: boolean;
   ImageComponent?: any;
-  iconImageStyle?: any;
+  iconImageStyle?: StyleProp<ViewStyle>;
   bounceEffect?: number;
   bounceFriction?: number;
   useNativeDriver?: boolean;
