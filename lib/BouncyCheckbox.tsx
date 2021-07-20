@@ -34,6 +34,7 @@ export interface IBouncyCheckboxProps extends TouchableOpacityProps {
   disableBuiltInState?: boolean;
   checkIconImageSource?: Image;
   textContainerStyle?: CustomStyleProp;
+  TouchableComponent?: any;
   onPress: (isChecked?: boolean) => void;
 }
 
@@ -148,16 +149,16 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
   };
 
   render() {
-    const { style } = this.props;
+    const { style, TouchableComponent = TouchableOpacity } = this.props;
     return (
-      <TouchableOpacity
+      <TouchableComponent
         {...this.props}
         style={[styles.container, style]}
         onPress={this.onPress.bind(this, Easing.bounce)}
       >
         {this.renderCheckIcon()}
         {this.renderCheckboxText()}
-      </TouchableOpacity>
+      </TouchableComponent>
     );
   }
 }

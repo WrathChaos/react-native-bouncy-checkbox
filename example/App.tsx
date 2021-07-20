@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StatusBar, SafeAreaView, Alert } from "react-native";
+import { View, Text, StatusBar, SafeAreaView, Pressable } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -16,10 +16,11 @@ export default class App extends React.Component {
               <BouncyCheckbox
                 size={25}
                 fillColor="red"
+                TouchableComponent={Pressable}
                 textStyle={{ fontFamily: "JosefinSans-Regular" }}
                 iconStyle={{ borderColor: "red" }}
                 unfillColor="#FFFFFF"
-                text="Custom Checkbox"
+                text="Custom Checkbox with Pressable Component"
                 onPress={(isChecked: boolean) => {}}
               />
             </View>
