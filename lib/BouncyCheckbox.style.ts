@@ -16,7 +16,7 @@ export const _iconContainer = (
     width: size,
     height: size,
     borderWidth: 1,
-    borderColor: "#ffc484",
+    borderColor: fillColor,
     borderRadius: size / 2,
     alignItems: "center",
     justifyContent: "center",
