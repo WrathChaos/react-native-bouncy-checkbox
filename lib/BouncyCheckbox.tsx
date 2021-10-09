@@ -7,15 +7,14 @@ import {
   Animated,
   StyleProp,
   ViewStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
   TextStyle,
+  TouchableOpacity,
 } from "react-native";
 import styles, { _textStyle, _iconContainer } from "./BouncyCheckbox.style";
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 
-export interface IBouncyCheckboxProps extends TouchableOpacityProps {
+export interface IBouncyCheckboxProps {
   style?: StyleProp<ViewStyle>;
   size?: number;
   text?: string;
@@ -35,7 +34,7 @@ export interface IBouncyCheckboxProps extends TouchableOpacityProps {
   checkIconImageSource?: Image;
   textContainerStyle?: CustomStyleProp;
   TouchableComponent?: any;
-  onPress?: (isChecked?: boolean) => void;
+  onPress?: (checked: boolean) => void;
 }
 
 interface IState {
@@ -83,7 +82,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
         friction: bounceFriction,
         useNativeDriver,
       }).start();
-      this.props.onPress && this.props.onPress();
+      this.props.onPress && this.props.onPress(this.state.checked);
     }
   };
 
