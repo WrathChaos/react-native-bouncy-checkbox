@@ -35,7 +35,7 @@ export interface IBouncyCheckboxProps extends TouchableOpacityProps {
   checkIconImageSource?: Image;
   textContainerStyle?: CustomStyleProp;
   TouchableComponent?: any;
-  onPress: (isChecked?: boolean) => void;
+  onPress?: (isChecked?: boolean) => void;
 }
 
 interface IState {
