@@ -179,6 +179,15 @@ const styles = StyleSheet.create({});
 export default App;
 ```
 
+## [React Native Bouncy Checkbox Group](https://github.com/WrathChaos/react-native-bouncy-checkbox-group)
+
+<img alt="React Native Bouncy Checkbox"
+        src="https://github.com/WrathChaos/react-native-bouncy-checkbox-group/blob/master/assets/Screenshots/react-native-bouncy-checkbox-group.png.gif" height="550" />
+
+We have also this library's checkbox group library as well :) Please take a look
+
+
+
 ### Future Plans
 
 - [x] ~~LICENSE~~
@@ -186,6 +195,7 @@ export default App;
 - [x] ~~Version 2.0.0 is alive 🥳~~
 - [x] ~~Synthetic Press Functionality~~
 - [x] ~~Disable built-in check state~~
+- [x] ~~React Native Bouncy Checkbox Group Library Extension~~
 - [ ] Write an article about the lib on Medium
 
 ## Author
