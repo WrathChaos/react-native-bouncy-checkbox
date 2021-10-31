@@ -187,7 +187,17 @@ export default App;
 We have also this library's checkbox group library as well :) Please take a look
 
 
+## FAQ
 
+<b>How to disable strikethrough?</b>
+
+- Simply use the `textStyle` prop and set the `textDecorationLine` to `none`
+
+```jsx
+textStyle={{
+  textDecorationLine: "none",
+}}
+```
 ### Future Plans
 
 - [x] ~~LICENSE~~
