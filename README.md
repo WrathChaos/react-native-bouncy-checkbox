@@ -44,6 +44,7 @@ npm i react-native-bouncy-checkbox
   - `iconStyle`
   - `bounceEffect`
   - `bounceFriction`
+  - `CustomTextComponent`
 
 ## Import
 
@@ -78,6 +79,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | Property             |   Type    |     Default      | Description                                                                                                                                |
 | -------------------- | :-------: | :--------------: | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | text                 |  string   |    undefined     | set the checkbox's text                                                                                                                    |
+| CustomTextComponent  | component |    undefined     | set the checkbox's text with custom component to make it look however you want                                                                                                                   |
 | onPress              | function  |       null       | set your own onPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false |
 | disableText          |  boolean  |      false       | if you want to use checkbox without text, you can enable it                                                                                |
 | size                 |  number   |        25        | size of `width` and `height` of the checkbox                                                                                               |
@@ -186,7 +188,6 @@ export default App;
 
 We have also this library's checkbox group library as well :) Please take a look
 
-
 ## FAQ
 
 <b>How to disable strikethrough?</b>
@@ -198,6 +199,7 @@ textStyle={{
   textDecorationLine: "none",
 }}
 ```
+
 <b>How to make square checkbox?</b>
 
 - Simply use the `iconStyle` prop and set the `borderRadius` to `0`
@@ -207,6 +209,7 @@ iconStyle={{
   borderRadius: 0, // to make it a little round increase the value
 }}
 ```
+
 ### Future Plans
 
 - [x] ~~LICENSE~~
