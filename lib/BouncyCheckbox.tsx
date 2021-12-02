@@ -18,6 +18,7 @@ export interface IBouncyCheckboxProps {
   style?: StyleProp<ViewStyle>;
   size?: number;
   text?: string;
+  CustomTextComponent?: React.ElementType;
   iconStyle?: any;
   textStyle?: StyleProp<TextStyle>;
   fillColor?: string;
@@ -147,6 +148,18 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     );
   };
 
+  renderCheckBoxCustomTextComponent = () => {
+    const {
+      text,
+      CustomTextComponent
+    } = this.props;
+    return (
+      !text && CustomTextComponent && (
+        <CustomTextComponent/>
+      )
+    );
+  };
+
   render() {
     const { style, TouchableComponent = TouchableOpacity } = this.props;
     return (
@@ -157,6 +170,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
       >
         {this.renderCheckIcon()}
         {this.renderCheckboxText()}
+        {this.renderCheckBoxCustomTextComponent()}
       </TouchableComponent>
     );
   }
