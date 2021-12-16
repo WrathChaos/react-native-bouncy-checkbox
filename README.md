@@ -198,6 +198,15 @@ textStyle={{
   textDecorationLine: "none",
 }}
 ```
+<b>How to make square checkbox?</b>
+
+- Simply use the `iconStyle` prop and set the `borderRadius` to `0`
+
+```jsx
+iconStyle={{
+  borderRadius: 0, // to make it a little round increase the value accordingly
+}}
+```
 ### Future Plans
 
 - [x] ~~LICENSE~~
