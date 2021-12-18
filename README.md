@@ -44,7 +44,7 @@ npm i react-native-bouncy-checkbox
   - `iconStyle`
   - `bounceEffect`
   - `bounceFriction`
-  - `TextComponent`
+  - `textComponent`
 
 ## Import
 
@@ -79,7 +79,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | Property             |   Type    |     Default      | Description                                                                                                                                |
 | -------------------- | :-------: | :--------------: | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | text                 |  string   |    undefined     | set the checkbox's text                                                                                                                    |
-| TextComponent                 |  component   |    undefined     | set the checkbox's text by a React Component                                                                                                                    |
+| textComponent                 |  component   |    undefined     | set the checkbox's text by a React Component                                                                                                                    |
 | onPress              | function  |       null       | set your own onPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false |
 | disableText          |  boolean  |      false       | if you want to use checkbox without text, you can enable it                                                                                |
 | size                 |  number   |        25        | size of `width` and `height` of the checkbox                                                                                               |
