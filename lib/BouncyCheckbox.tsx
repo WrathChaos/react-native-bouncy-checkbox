@@ -18,6 +18,7 @@ export interface IBouncyCheckboxProps {
   style?: StyleProp<ViewStyle>;
   size?: number;
   text?: string;
+  TextComponent?: React.ElementType;
   iconStyle?: any;
   textStyle?: StyleProp<TextStyle>;
   fillColor?: string;
@@ -124,6 +125,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
   renderCheckboxText = () => {
     const {
       text,
+      TextComponent,
       isChecked,
       textStyle,
       textContainerStyle,
@@ -132,7 +134,8 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     } = this.props;
     const { checked } = this.state;
     return (
-      !disableText && (
+      !disableText && 
+      (TextComponent ? <TextComponent/> : (
         <View style={[styles.textContainer, textContainerStyle]}>
           <Text
             style={[
@@ -143,7 +146,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
             {text}
           </Text>
         </View>
-      )
+      ))
     );
   };
 
