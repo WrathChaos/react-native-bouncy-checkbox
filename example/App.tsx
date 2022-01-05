@@ -31,7 +31,6 @@ export default class App extends React.Component {
                 iconStyle={{ borderColor: "blue", borderRadius: 10 }}
                 textStyle={{ fontFamily: "JosefinSans-Regular" }}
                 unfillColor="white"
-                borderRadius={10}
                 text="Custom Disabled Checkbox Example"
                 onPress={(isChecked: boolean) => {}}
               />
