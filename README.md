@@ -103,7 +103,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 <div>
     <img alt="React Native Bouncy Checkbox"
-      src="assets/Screenshots/react-native-bouncy-checkbox-syntetic-onpress.gif" />
+      src="assets/Screenshots/react-native-bouncy-checkbox-syntetic-onpress.gif" height="650" />
 </div>
 
 Please check the `example-manual-state` runable project to how to make it work on a real project.
