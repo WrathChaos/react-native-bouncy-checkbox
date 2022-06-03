@@ -3,6 +3,7 @@ import { View, Text, StatusBar, SafeAreaView, Pressable } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import MultipleCheckboxes from "./multipleCheckboxes/multiple-checkboxes.component";
 
 export default class App extends React.Component {
   render() {
@@ -12,6 +13,7 @@ export default class App extends React.Component {
         <SafeAreaView style={{ flex: 1 }}>
           <AppleHeader />
           <View style={{ margin: 16 }}>
+            <MultipleCheckboxes />
             <View style={{ margin: 8 }}>
               <BouncyCheckbox
                 size={25}
