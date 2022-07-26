@@ -2,10 +2,6 @@
 #
 .DS_Store
 
-package-lock.json
-
-node_modules
-
 # Xcode
 #
 build/
@@ -24,7 +20,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-project.xcworkspace
 
 # Android/IntelliJ
 #
@@ -33,6 +28,10 @@ build/
 .gradle
 local.properties
 *.iml
+
+# Visual Studio Code
+#
+.vscode/
 
 # node.js
 #
@@ -44,6 +43,7 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+!debug.keystore
 
 # fastlane
 #
@@ -58,3 +58,6 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+# CocoaPods
+/ios/Pods/
