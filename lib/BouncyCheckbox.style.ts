@@ -1,10 +1,4 @@
-import { ViewStyle, TextStyle, ImageStyle, StyleSheet } from "react-native";
-
-interface Style {
-  container: ViewStyle;
-  textContainer: ViewStyle;
-  iconImageStyle: ImageStyle;
-}
+import { ViewStyle, TextStyle, StyleSheet } from "react-native";
 
 export const _iconContainer = (
   size: number,
@@ -15,8 +9,6 @@ export const _iconContainer = (
   return {
     width: size,
     height: size,
-    borderWidth: 1,
-    borderColor: fillColor,
     borderRadius: size / 2,
     alignItems: "center",
     justifyContent: "center",
@@ -32,7 +24,7 @@ export const _textStyle = (checked: boolean): TextStyle => {
   };
 };
 
-export default StyleSheet.create<Style>({
+export default StyleSheet.create<any>({
   container: {
     alignItems: "center",
     flexDirection: "row",
@@ -44,4 +36,24 @@ export default StyleSheet.create<Style>({
   textContainer: {
     marginLeft: 16,
   },
+  iconContainer: (
+    size: number,
+    checked: boolean,
+    fillColor: string,
+    unfillColor: string,
+  ) => ({
+    width: size,
+    height: size,
+    borderRadius: size / 2,
+    backgroundColor: checked ? fillColor : unfillColor,
+  }),
+  innerIconContainer: (size: number, fillColor: string) => ({
+    width: size,
+    height: size,
+    borderWidth: 1,
+    borderColor: fillColor,
+    borderRadius: size / 2,
+    alignItems: "center",
+    justifyContent: "center",
+  }),
 });

@@ -35,16 +35,18 @@ Add the dependency:
 npm i react-native-bouncy-checkbox
 ```
 
-## Version 2.0.0 is Here 🥳
+## Version 3.0.0 is here 🚀
 
 - Typescript
 - **Zero Dependency**
-- More Customization Options
-- New customization props are available:
-  - `iconStyle`
-  - `bounceEffect`
-  - `bounceFriction`
-  - `textComponent`
+- **New** and More Customizable Animation
+  - `bounceEffectIn`
+  - `bounceEffectOut`
+  - `bounceVelocityIn`
+  - `bounceVelocityOut`
+  - `bouncinessIn`
+  - `bouncinessOut`
+- Community Supported Stable Version
 
 ## Import
 
@@ -69,6 +71,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
   unfillColor="#FFFFFF"
   text="Custom Checkbox"
   iconStyle={{ borderColor: "red" }}
+  iconInnerStyle={{ borderWidth: 2 }}
   textStyle={{ fontFamily: "JosefinSans-Regular" }}
   onPress={(isChecked: boolean) => {}}
 />
@@ -85,7 +88,8 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | size                 |  number   |        25        | size of `width` and `height` of the checkbox                                                                                               |
 | style                |   style   |     default      | set/override the container style                                                                                                           |
 | textStyle            |   style   |     default      | set/override the text style                                                                                                                |
-| iconStyle            |   style   |     default      | set/override the icon style                                                                                                                |
+| iconStyle            |   style   |     default      | set/override the outer icon container style                                                                                                |
+| innerIconStyle       |   style   |     default      | set/override the inner icon container style                                                                                                |
 | isChecked            |  boolean  |      false       | set the default checkbox value                                                                                                             |
 | fillColor            |   color   |     #f09f48      | change the checkbox's filled color                                                                                                         |
 | unfillColor          |   color   |   transparent    | change the checkbox's un-filled color when it's not checked                                                                                |
@@ -93,11 +97,20 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | iconComponent        | component |       Icon       | set your own icon component                                                                                                                |
 | checkIconImageSource |   image   |     default      | set your own check icon image                                                                                                              |
 | ImageComponent       | component |      Image       | set your own Image component instead of RN's default Image                                                                                 |
-| bounceEffect         |  number   |        1         | change the bounce effect                                                                                                                   |
-| bounceFriction       |  number   |        3         | change the bounce friction                                                                                                                 |
 | disableBuiltInState  |  boolean  |      false       | if you want to manually handle the `isChecked` prop and disable built in handling                                                          |
 | textContainerStyle   | ViewStyle |     default      | set/override the text container style                                                                                                      |
 | TouchableComponent   | Component | TouchableOpacity | set/override the main TouchableOpacity component with any Touchable Component like Pressable                                               |
+
+### Animation Configurations
+
+| Property          |  Type  | Default | Description                               |
+| ----------------- | :----: | :-----: | ----------------------------------------- |
+| bounceEffectIn    | number |   0.9   | change the bounce effect when press in    |
+| bounceEffectOut   | number |    1    | change the bounce effect when press out   |
+| bounceVelocityIn  | number |   0.1   | change the bounce velocity when press in  |
+| bounceVelocityOut | number |   0.4   | change the bounce velocity when press out |
+| bouncinessIn      | number |   20    | change the bounciness when press in       |
+| bouncinessOut     | number |   20    | change the bounciness when press out      |
 
 ## Synthetic Press Functionality with Manual Check State
 
@@ -218,6 +231,7 @@ iconStyle={{
 - [x] ~~Synthetic Press Functionality~~
 - [x] ~~Disable built-in check state~~
 - [x] ~~React Native Bouncy Checkbox Group Library Extension~~
+- [x] ~~New Animation and More Customizable Animation~~
 - [ ] Better Documentation | Separation of Documentation
 - [ ] Write an article about the lib on Medium
 
