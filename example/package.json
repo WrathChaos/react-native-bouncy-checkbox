@@ -15,7 +15,7 @@
     "@freakycoder/react-native-helpers": "^1.0.2",
     "react-native-apple-header": "^0.1.1",
     "react-native-bottom-search-bar": "^1.0.0",
-    "react-native-bouncy-checkbox": "3.0.0",
+    "react-native-bouncy-checkbox": "3.0.1",
     "react-native-dynamic-vector-icons": "^1.2.0",
     "react-native-vector-icons": "^9.0.0"
   },
