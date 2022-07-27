@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Alert,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -8,7 +9,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
+// import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import BouncyCheckbox from './lib/BouncyCheckbox';
 
 const App = () => {
   return (
@@ -18,15 +20,22 @@ const App = () => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <BouncyCheckbox size={50} onPress={() => {}} />
+      <BouncyCheckbox
+        size={50}
+        onPress={isChecked => {
+          console.log('OUTSIDE: ', isChecked);
+        }}
+      />
       <BouncyCheckbox
         onPress={() => {}}
         unfillColor={'#030'} //? Inner color of the checkbox
         fillColor="#faf" //? Outer color (radius) of the checkbox
         isChecked={true} //? Checks initial state, doesn't update state yet
         size={35} //? Size of the checkbox
-        innerIconStyle={{
-          borderWidth: 3, //? Make the TODO checkbox thicker than default
+        iconStyle={{
+          borderWidth: 3,
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       />
     </SafeAreaView>
