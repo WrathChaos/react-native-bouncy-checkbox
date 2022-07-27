@@ -36,7 +36,7 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/react": "^16.9.53",
     "@types/react-native": "^0.63.25",
-    "eslint": "^7.11.0",
+    "eslint": "^8.20.0",
     "eslint-config-airbnb": "^18.2.0",
     "husky": "^7.0.0",
     "lint-staged": "^10.4.2",
