@@ -232,6 +232,7 @@ iconStyle={{
 - [x] ~~Disable built-in check state~~
 - [x] ~~React Native Bouncy Checkbox Group Library Extension~~
 - [x] ~~New Animation and More Customizable Animation~~
+- [x] ~~Version 3.0.0 is alive 🚀~~
 - [ ] Better Documentation | Separation of Documentation
 - [ ] Write an article about the lib on Medium
 
