@@ -46,6 +46,8 @@ export default StyleSheet.create<any>({
     height: size,
     borderRadius: size / 2,
     backgroundColor: checked ? fillColor : unfillColor,
+    alignItems: "center",
+    justifyContent: "center",
   }),
   innerIconContainer: (size: number, fillColor: string) => ({
     width: size,
