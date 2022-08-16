@@ -71,7 +71,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
   unfillColor="#FFFFFF"
   text="Custom Checkbox"
   iconStyle={{ borderColor: "red" }}
-  iconInnerStyle={{ borderWidth: 2 }}
+  innerIconStyle={{ borderWidth: 2 }}
   textStyle={{ fontFamily: "JosefinSans-Regular" }}
   onPress={(isChecked: boolean) => {}}
 />
