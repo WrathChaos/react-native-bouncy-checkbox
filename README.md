@@ -218,7 +218,7 @@ textStyle={{
 - Simply use the `iconStyle` prop and set the `borderRadius` to `0`
 
 ```jsx
-iconStyle={{
+innerIconStyle={{
   borderRadius: 0, // to make it a little round increase the value accordingly
 }}
 ```
