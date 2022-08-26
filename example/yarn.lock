@@ -5755,10 +5755,10 @@
   "resolved" "https://registry.npmjs.org/react-native-bottom-search-bar/-/react-native-bottom-search-bar-1.0.0.tgz"
   "version" "1.0.0"
 
-"react-native-bouncy-checkbox@3.0.1":
-  "integrity" "sha512-n5FoYnkiGejK8+X4KHvrR8IzsQPbM8hD07VIHL2kmLzviBiyPgqjZgQVZtjP8QPUQp7YPUshdQUz/xwtGASJOw=="
-  "resolved" "https://registry.npmjs.org/react-native-bouncy-checkbox/-/react-native-bouncy-checkbox-3.0.1.tgz"
-  "version" "3.0.1"
+"react-native-bouncy-checkbox@3.0.2":
+  "integrity" "sha512-OaldnDzfnATaT7v08C+vAoywfTZmUaiX5qT/GlWGJiFNMVQOuFFGYlWDhgDg52BGSRbPGlSgwKW3BMB9ubapZA=="
+  "resolved" "https://registry.npmjs.org/react-native-bouncy-checkbox/-/react-native-bouncy-checkbox-3.0.2.tgz"
+  "version" "3.0.2"
 
 "react-native-codegen@^0.69.1":
   "integrity" "sha512-TOZEqBarczcyYN3iZE3VpKkooOevaAzBq9n7lU0h9mQUvtRhLVyolc+a5K6cWI0e4v4K69I0MqzjPcPeFKo32Q=="

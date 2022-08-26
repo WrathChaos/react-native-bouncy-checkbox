@@ -6,3 +6,7 @@ example
 # Assets
 Assets
 assets
+
+.husky
+.github
+*/example
