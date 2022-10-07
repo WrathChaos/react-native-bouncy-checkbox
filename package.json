@@ -31,11 +31,11 @@
     "react-native": ">= 0.55.x"
   },
   "devDependencies": {
-    "@commitlint/cli": "^15.0.0",
+    "@commitlint/cli": "^17.1.1",
     "@commitlint/config-conventional": "^17.0.3",
     "@react-native-community/eslint-config": "^3.1.0",
     "@types/react": "^18.0.15",
-    "@types/react-native": "^0.69.4",
+    "@types/react-native": "^0.70.1",
     "eslint": "^8.21.0",
     "eslint-config-airbnb": "^19.0.4",
     "husky": "^7.0.0",
