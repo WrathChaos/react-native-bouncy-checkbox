@@ -1,6 +1,6 @@
 {
   "name": "react-native-bouncy-checkbox",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Fully customizable animated bouncy checkbox for React Native",
   "keywords": [
     "bouncy",
@@ -44,19 +44,16 @@
     "prettier": "^2.1.2",
     "prettier-format": "^3.0.3",
     "react-native-typescript-transformer": "^1.2.13",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+    "cpx": "^1.5.0"
   },
   "scripts": {
-    "build": "cd lib && tsc && cp ../package.json ../build/dist/ && Echo Build completed!",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags",
-    "prettier": "cd lib && npx prettier --write . && git add .",
+    "build": "cd lib && tsc && npm run copy:assets && npm run copy:package",
     "prepare": "husky install",
-    "husky:setup": "npx husky-init && npm run husky:commitlint && npm run husky:prettier && npm run husky:lint",
+    "husky:setup": "npx husky-init && npm run husky:commitlint",
     "husky:commitlint": "npx husky add .husky/commit-msg 'npx --no-install commitlint --edit'",
-    "husky:prettier": "npx husky set .husky/pre-commit 'npm run prettier'",
-    "husky:lint": "npx husky add .husky/pre-commit 'npm run lint'"
+    "semantic-release": "semantic-release",
+    "copy:assets": "cpx 'lib/local-assets/**' './build/dist/local-assets'",
+    "copy:package": "cpx '../package.json' '../build/dist/'"
   }
 }

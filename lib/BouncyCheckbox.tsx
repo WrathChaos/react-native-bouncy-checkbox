@@ -152,7 +152,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     );
   };
 
-  handleCheck = () => {
+  onPress = () => {
     const { disableBuiltInState = false } = this.props;
     const { checked } = this.state;
     if (!disableBuiltInState) {
@@ -185,7 +185,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
         onPressOut={() => {
           this.bounceEffect(bounceEffectOut, bounceVelocityOut, bouncinessOut);
         }}
-        onPress={this.handleCheck}
+        onPress={this.onPress}
       >
         {this.renderCheckIcon()}
         {this.renderCheckboxText()}
