@@ -1,4 +1,10 @@
-import * as React from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import {
   Text,
   View,
@@ -51,40 +57,68 @@ export interface IBouncyCheckboxProps extends BaseTouchableProps {
   onPress?: (checked: boolean) => void;
 }
 
-interface IState {
-  checked: boolean;
-  springValue: Animated.Value;
-  bounceValue: Animated.Value;
+interface IBouncyCheckBoxMethods {
+  onPress: () => void;
 }
 
 const defaultCheckImage = require("./check.png");
 
-class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
-  constructor(props: IBouncyCheckboxProps) {
-    super(props);
-    this.state = {
-      checked: false,
-      springValue: new Animated.Value(1),
-      bounceValue: new Animated.Value(1),
-    };
-  }
+const BouncyCheckbox = React.forwardRef<
+  IBouncyCheckBoxMethods,
+  IBouncyCheckboxProps
+>((props, forwardedRef) => {
+  const [checked, setChecked] = useState(false);
+  const bounceValue = useRef(new Animated.Value(1)).current;
 
-  componentDidMount() {
-    this.setState({ checked: this.props.isChecked || false });
-  }
+  useEffect(() => {
+    setChecked(props.isChecked ?? false);
+  }, []);
 
-  bounceEffect = (value: number, velocity: number, bounciness: number) => {
-    const { useNativeDriver = true } = this.props;
-    Animated.spring(this.state.bounceValue, {
-      toValue: value,
-      velocity,
-      bounciness,
+  const {
+    bounceEffectIn = 0.9,
+    bounceEffectOut = 1,
+    bounceVelocityIn = 0.1,
+    bounceVelocityOut = 0.4,
+    bouncinessIn = 20,
+    bouncinessOut = 20,
+    useNativeDriver = true,
+  } = props;
+
+  const bounceInEffect = () => {
+    Animated.spring(bounceValue, {
+      toValue: bounceEffectIn,
+      velocity: bounceVelocityIn,
+      bounciness: bouncinessIn,
       useNativeDriver,
     }).start();
   };
 
-  renderCheckIcon = () => {
-    const { checked } = this.state;
+  const bounceOutEffect = () => {
+    Animated.spring(bounceValue, {
+      toValue: bounceEffectOut,
+      velocity: bounceVelocityOut,
+      bounciness: bouncinessOut,
+      useNativeDriver,
+    }).start();
+  };
+
+  const syntheticBounceEffect = () => {
+    Animated.sequence([
+      Animated.timing(bounceValue, {
+        toValue: bounceEffectIn,
+        duration: 50,
+        useNativeDriver,
+      }),
+      Animated.spring(bounceValue, {
+        toValue: bounceEffectOut,
+        velocity: bounceVelocityOut,
+        bounciness: bouncinessOut,
+        useNativeDriver,
+      }),
+    ]).start();
+  };
+
+  const renderCheckIcon = () => {
     const {
       size = 25,
       iconStyle,
@@ -97,13 +131,13 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
       isChecked,
       innerIconStyle,
       checkIconImageSource = defaultCheckImage,
-    } = this.props;
+    } = props;
 
     const checkStatus = disableBuiltInState ? isChecked! : checked;
     return (
       <Animated.View
         style={[
-          { transform: [{ scale: this.state.bounceValue }] },
+          { transform: [{ scale: bounceValue }] },
           styles.iconContainer(size, checkStatus, fillColor, unfillColor),
           iconStyle,
         ]}
@@ -123,7 +157,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     );
   };
 
-  renderCheckboxText = () => {
+  const renderCheckboxText = () => {
     const {
       text,
       textComponent,
@@ -132,8 +166,7 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
       textContainerStyle,
       disableBuiltInState,
       disableText = false,
-    } = this.props;
-    const { checked } = this.state;
+    } = props;
     const checkDisableTextType = typeof disableText === "undefined";
     return (
       (!disableText || checkDisableTextType) &&
@@ -152,46 +185,30 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     );
   };
 
-  handleCheck = () => {
-    const { disableBuiltInState = false } = this.props;
-    const { checked } = this.state;
+  const onPress = () => {
+    const { disableBuiltInState = false } = props;
     if (!disableBuiltInState) {
-      this.setState({ checked: !checked }, () => {
-        this.props.onPress && this.props.onPress(this.state.checked);
-      });
-    } else {
-      this.props.onPress && this.props.onPress(this.state.checked);
+      setChecked((prev) => !prev);
     }
+    syntheticBounceEffect();
+    props.onPress && props.onPress(!checked);
   };
 
-  render() {
-    const {
-      style,
-      bounceEffectIn = 0.9,
-      bounceEffectOut = 1,
-      bounceVelocityIn = 0.1,
-      bounceVelocityOut = 0.4,
-      bouncinessIn = 20,
-      bouncinessOut = 20,
-      TouchableComponent = Pressable,
-    } = this.props;
-    return (
-      <TouchableComponent
-        {...this.props}
-        style={[styles.container, style]}
-        onPressIn={() => {
-          this.bounceEffect(bounceEffectIn, bounceVelocityIn, bouncinessIn);
-        }}
-        onPressOut={() => {
-          this.bounceEffect(bounceEffectOut, bounceVelocityOut, bouncinessOut);
-        }}
-        onPress={this.handleCheck}
-      >
-        {this.renderCheckIcon()}
-        {this.renderCheckboxText()}
-      </TouchableComponent>
-    );
-  }
-}
+  useImperativeHandle(forwardedRef, () => ({ onPress }), [onPress]);
+
+  const { style, TouchableComponent = Pressable } = props;
+  return (
+    <TouchableComponent
+      {...props}
+      style={[styles.container, style]}
+      onPressIn={bounceInEffect}
+      onPressOut={bounceOutEffect}
+      onPress={onPress}
+    >
+      {renderCheckIcon()}
+      {renderCheckboxText()}
+    </TouchableComponent>
+  );
+});
 
 export default BouncyCheckbox;
