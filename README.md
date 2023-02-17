@@ -121,7 +121,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 Please check the `example-manual-state` runable project to how to make it work on a real project.
 
-<b><i>Becareful while using `disableBuiltInState` you MUST set the `isChecked` prop to use your own check state manually.</b></i> The `onPress` callback will **NOT** receive the next `isChecked` when `disableBuiltInState` is used.
+<b><i>Be careful while using `disableBuiltInState` you MUST set the `isChecked` prop to use your own check state manually.</b></i> The `onPress` callback will **NOT** receive the next `isChecked` when `disableBuiltInState` is used.
 
 Here is the basic implementation:
 
