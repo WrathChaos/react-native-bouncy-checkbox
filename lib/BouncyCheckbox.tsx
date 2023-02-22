@@ -10,12 +10,10 @@ import {
   Pressable,
   ImageSourcePropType,
   TouchableWithoutFeedbackProps,
+  ImageStyle,
 } from "react-native";
 import styles, { _textStyle } from "./BouncyCheckbox.style";
 
-type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
-type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
-type CustomImageStyleProp = StyleProp<ImageStyle> | Array<StyleProp<ImageStyle>>;
 type BaseTouchableProps = Pick<
   TouchableWithoutFeedbackProps,
   Exclude<keyof TouchableWithoutFeedbackProps, "onPress">
@@ -42,12 +40,12 @@ export interface IBouncyCheckboxProps extends BaseTouchableProps {
   bouncinessOut?: number;
   iconComponent?: React.ReactNode;
   textComponent?: React.ReactNode;
-  iconStyle?: CustomStyleProp;
-  innerIconStyle?: CustomStyleProp;
-  style?: CustomStyleProp;
-  textStyle?: CustomTextStyleProp;
-  iconImageStyle?: CustomImageStyleProp;
-  textContainerStyle?: CustomStyleProp;
+  iconStyle?: StyleProp<ViewStyle>;
+  innerIconStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  iconImageStyle?: StyleProp<ImageStyle>;
+  textContainerStyle?: StyleProp<ViewStyle>;
   checkIconImageSource?: ImageSourcePropType;
   onPress?: (checked: boolean) => void;
 }
