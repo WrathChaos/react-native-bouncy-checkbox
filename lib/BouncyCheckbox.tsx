@@ -15,6 +15,7 @@ import styles, { _textStyle } from "./BouncyCheckbox.style";
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
+type CustomImageStyleProp = StyleProp<ImageStyle> | Array<StyleProp<ImageStyle>>;
 type BaseTouchableProps = Pick<
   TouchableWithoutFeedbackProps,
   Exclude<keyof TouchableWithoutFeedbackProps, "onPress">
@@ -45,7 +46,7 @@ export interface IBouncyCheckboxProps extends BaseTouchableProps {
   innerIconStyle?: CustomStyleProp;
   style?: CustomStyleProp;
   textStyle?: CustomTextStyleProp;
-  iconImageStyle?: CustomStyleProp;
+  iconImageStyle?: CustomImageStyleProp;
   textContainerStyle?: CustomStyleProp;
   checkIconImageSource?: ImageSourcePropType;
   onPress?: (checked: boolean) => void;
