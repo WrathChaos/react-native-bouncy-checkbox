@@ -1,29 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import BouncyCheckbox from "./lib/BouncyCheckbox";
 import RNBounceable from "@freakycoder/react-native-bounceable";
 
 const App = () => {
-  let bouncyCheckboxRef: BouncyCheckbox | null = null;
+  let bouncyCheckboxRef = useRef(null);
   const [checkboxState, setCheckboxState] = React.useState(false);
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <SafeAreaView style={styles.container}>
       <View
-        style={{
-          height: 30,
-          width: 150,
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 12,
-          backgroundColor: checkboxState ? "#34eb83" : "#eb4034",
-        }}
+        style={[
+          styles.checkStatus,
+          {
+            backgroundColor: checkboxState ? "#34eb83" : "#eb4034",
+          },
+        ]}
       >
         <Text
           style={{ color: "#fff" }}
@@ -49,7 +41,7 @@ const App = () => {
           alignItems: "center",
           justifyContent: "center",
         }}
-        onPress={() => bouncyCheckboxRef?.onPress()}
+        onPress={() => bouncyCheckboxRef.current?.onPress()}
       >
         <Text style={{ color: "#fff" }}>Synthetic Checkbox Press</Text>
       </RNBounceable>
@@ -57,6 +49,19 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkStatus: {
+    height: 30,
+    width: 150,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
 export default App;

@@ -26,7 +26,7 @@ type BaseTouchableProps = Pick<
   Exclude<keyof TouchableWithoutFeedbackProps, "onPress">
 >;
 
-export interface BouncyCheckboxProps extends BaseTouchableProps {
+export interface IBouncyCheckboxProps extends BaseTouchableProps {
   size?: number;
   text?: string;
   fillColor?: string;
@@ -57,21 +57,21 @@ export interface BouncyCheckboxProps extends BaseTouchableProps {
   onPress?: (checked: boolean) => void;
 }
 
-interface BouncyCheckboxMethods {
+interface IBouncyCheckBoxMethods {
   onPress: () => void;
 }
 
 const defaultCheckImage = require("./check.png");
 
 const BouncyCheckbox = React.forwardRef<
-  BouncyCheckboxMethods,
-  BouncyCheckboxProps
+  IBouncyCheckBoxMethods,
+  IBouncyCheckboxProps
 >((props, forwardedRef) => {
   const [checked, setChecked] = useState(false);
   const bounceValue = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    setChecked(props.isChecked || false);
+    setChecked(props.isChecked ?? false);
   }, []);
 
   const {
@@ -133,7 +133,7 @@ const BouncyCheckbox = React.forwardRef<
       checkIconImageSource = defaultCheckImage,
     } = props;
 
-    const checkStatus = disableBuiltInState ? isChecked : checked;
+    const checkStatus = disableBuiltInState ? isChecked! : checked;
     return (
       <Animated.View
         style={[

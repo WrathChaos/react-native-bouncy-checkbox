@@ -72,6 +72,7 @@ const BouncyCheckbox = React.forwardRef<
 
   useEffect(() => {
     setChecked(props.isChecked || false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
@@ -185,18 +186,19 @@ const BouncyCheckbox = React.forwardRef<
     );
   };
 
-  const onPress = () => {
+  const onPress = useCallback(() => {
     const { disableBuiltInState = false } = props;
     if (!disableBuiltInState) {
       setChecked((prev) => !prev);
     }
     syntheticBounceEffect();
     props.onPress && props.onPress(!checked);
-  };
+  }, [props.disableBuiltInState]);
+
+  const { style, TouchableComponent = Pressable } = props;
 
   useImperativeHandle(forwardedRef, () => ({ onPress }), [onPress]);
 
-  const { style, TouchableComponent = Pressable } = props;
   return (
     <TouchableComponent
       {...props}
