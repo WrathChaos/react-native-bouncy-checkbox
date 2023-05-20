@@ -72,6 +72,12 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     this.setState({ checked: this.props.isChecked || false });
   }
 
+  componentDidUpdate(prevProps: { isChecked: boolean | undefined }) {
+    if (this.props.isChecked !== prevProps.isChecked) {
+      this.setState({ checked: this.props.isChecked || false });
+    }
+  }
+
   bounceEffect = (value: number, velocity: number, bounciness: number) => {
     const { useNativeDriver = true } = this.props;
     Animated.spring(this.state.bounceValue, {
