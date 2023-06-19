@@ -4,7 +4,7 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
-} from "react";
+} from 'react';
 import {
   Text,
   View,
@@ -16,14 +16,14 @@ import {
   Pressable,
   ImageSourcePropType,
   TouchableWithoutFeedbackProps,
-} from "react-native";
-import styles, { _textStyle } from "./BouncyCheckbox.style";
+} from 'react-native';
+import styles, {_textStyle} from './BouncyCheckbox.style';
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
 type BaseTouchableProps = Pick<
   TouchableWithoutFeedbackProps,
-  Exclude<keyof TouchableWithoutFeedbackProps, "onPress">
+  Exclude<keyof TouchableWithoutFeedbackProps, 'onPress'>
 >;
 
 export interface IBouncyCheckboxProps extends BaseTouchableProps {
@@ -61,7 +61,7 @@ interface IBouncyCheckBoxMethods {
   onPress: () => void;
 }
 
-const defaultCheckImage = require("./check.png");
+const defaultCheckImage = require('./check.png');
 
 const BouncyCheckbox = React.forwardRef<
   IBouncyCheckBoxMethods,
@@ -72,6 +72,7 @@ const BouncyCheckbox = React.forwardRef<
 
   useEffect(() => {
     setChecked(props.isChecked ?? false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
@@ -124,9 +125,9 @@ const BouncyCheckbox = React.forwardRef<
       iconStyle,
       iconComponent,
       iconImageStyle,
-      fillColor = "#ffc484",
+      fillColor = '#ffc484',
       ImageComponent = Image,
-      unfillColor = "transparent",
+      unfillColor = 'transparent',
       disableBuiltInState,
       isChecked,
       innerIconStyle,
@@ -137,14 +138,12 @@ const BouncyCheckbox = React.forwardRef<
     return (
       <Animated.View
         style={[
-          { transform: [{ scale: bounceValue }] },
+          {transform: [{scale: bounceValue}]},
           styles.iconContainer(size, checkStatus, fillColor, unfillColor),
           iconStyle,
-        ]}
-      >
+        ]}>
         <View
-          style={[styles.innerIconContainer(size, fillColor), innerIconStyle]}
-        >
+          style={[styles.innerIconContainer(size, fillColor), innerIconStyle]}>
           {iconComponent ||
             (checkStatus && (
               <ImageComponent
@@ -167,7 +166,7 @@ const BouncyCheckbox = React.forwardRef<
       disableBuiltInState,
       disableText = false,
     } = props;
-    const checkDisableTextType = typeof disableText === "undefined";
+    const checkDisableTextType = typeof disableText === 'undefined';
     return (
       (!disableText || checkDisableTextType) &&
       (textComponent || (
@@ -176,8 +175,7 @@ const BouncyCheckbox = React.forwardRef<
             style={[
               _textStyle(disableBuiltInState ? isChecked! : checked),
               textStyle,
-            ]}
-          >
+            ]}>
             {text}
           </Text>
         </View>
@@ -185,26 +183,25 @@ const BouncyCheckbox = React.forwardRef<
     );
   };
 
-  const onPress = () => {
-    const { disableBuiltInState = false } = props;
+  const onPress = useCallback(() => {
+    const {disableBuiltInState = false} = props;
     if (!disableBuiltInState) {
-      setChecked((prev) => !prev);
+      setChecked(prev => !prev);
     }
     syntheticBounceEffect();
     props.onPress && props.onPress(!checked);
-  };
+  }, [checked, props]);
 
-  useImperativeHandle(forwardedRef, () => ({ onPress }), [onPress]);
+  useImperativeHandle(forwardedRef, () => ({onPress}), [onPress]);
 
-  const { style, TouchableComponent = Pressable } = props;
+  const {style, TouchableComponent = Pressable} = props;
   return (
     <TouchableComponent
       {...props}
       style={[styles.container, style]}
       onPressIn={bounceInEffect}
       onPressOut={bounceOutEffect}
-      onPress={onPress}
-    >
+      onPress={onPress}>
       {renderCheckIcon()}
       {renderCheckboxText()}
     </TouchableComponent>
