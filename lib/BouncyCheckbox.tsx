@@ -11,6 +11,7 @@ import {
   ImageSourcePropType,
   TouchableWithoutFeedbackProps,
   ImageStyle,
+  TextProps,
 } from "react-native";
 import styles, { _textStyle } from "./BouncyCheckbox.style";
 
@@ -21,7 +22,7 @@ type BaseTouchableProps = Pick<
 
 export interface IBouncyCheckboxProps extends BaseTouchableProps {
   size?: number;
-  text?: string;
+  text?: TextProps["children"];
   fillColor?: string;
   isChecked?: boolean;
   unfillColor?: string;
