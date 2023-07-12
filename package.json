@@ -41,7 +41,7 @@
     "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "npm-post-install": "0.0.2",
-    "prettier": "^2.1.2",
+    "prettier": "^3.0.0",
     "prettier-format": "^3.0.3",
     "react-native-typescript-transformer": "^1.2.13",
     "typescript": "^5.0.2",
