@@ -110,13 +110,13 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
         <View
           style={[styles.innerIconContainer(size, fillColor), innerIconStyle]}
         >
-          {iconComponent ||
+          {iconComponent ?
             (checkStatus && (
               <ImageComponent
                 source={checkIconImageSource}
                 style={[styles.iconImageStyle, iconImageStyle]}
               />
-            ))}
+            )) : null}
         </View>
       </Animated.View>
     );
