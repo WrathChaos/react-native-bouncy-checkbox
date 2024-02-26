@@ -134,19 +134,20 @@ class BouncyCheckbox extends React.Component<IBouncyCheckboxProps, IState> {
     } = this.props;
     const { checked } = this.state;
     const checkDisableTextType = typeof disableText === "undefined";
+    const marginLeftValue = text ? 16 : 0; 
     return (
       (!disableText || checkDisableTextType) &&
       (textComponent || (
-        <View style={[styles.textContainer, textContainerStyle]}>
-          <Text
-            style={[
-              _textStyle(disableBuiltInState ? isChecked! : checked),
-              textStyle,
-            ]}
-          >
-            {text}
-          </Text>
-        </View>
+        <View style={[styles.textContainer, { marginLeft: marginLeftValue }, textContainerStyle]}>
+        <Text
+          style={[
+            _textStyle(disableBuiltInState ? isChecked! : checked),
+            textStyle,
+          ]}
+        >
+          {text}
+        </Text>
+      </View>
       ))
     );
   };
