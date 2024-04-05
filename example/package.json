@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "react": "18.1.0",
-    "react-native": "0.72.6",
+    "react-native": "0.70.10",
     "react-native-apple-header": "^1.0.1",
     "react-native-bottom-search-bar": "^1.1.1"
   },
