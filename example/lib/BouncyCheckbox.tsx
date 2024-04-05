@@ -27,7 +27,7 @@ const AnimationValues = {
 
 type BasePressableProps = Pick<
   PressableProps,
-  Exclude<keyof PressableProps, 'onPress'>
+  Exclude<keyof PressableProps, 'onPress' | 'onLongPress'>
 >;
 
 interface BouncyCheckboxProps extends BasePressableProps {
@@ -59,6 +59,7 @@ interface BouncyCheckboxProps extends BasePressableProps {
   textContainerStyle?: StyleProp<ViewStyle>;
   checkIconImageSource?: ImageSourcePropType;
   onPress?: (checked: boolean) => void;
+  onLongPress?: (checked: boolean) => void;
 }
 
 const BouncyCheckbox: React.FC<BouncyCheckboxProps> = ({
@@ -74,6 +75,7 @@ const BouncyCheckbox: React.FC<BouncyCheckboxProps> = ({
   textContainerStyle,
   size = 25,
   onPress,
+  onLongPress,
   fillColor = '#ffc484',
   ImageComponent = Image,
   unFillColor = 'transparent',
@@ -100,6 +102,16 @@ const BouncyCheckbox: React.FC<BouncyCheckboxProps> = ({
       });
     } else {
       onPress && onPress(checked);
+    }
+  };
+
+  const handleLongPress = () => {
+    if (!disableBuiltInState) {
+      setChecked(!checked, newCheckedValue => {
+        onLongPress && onLongPress(newCheckedValue);
+      });
+    } else {
+      onLongPress && onLongPress(checked);
     }
   };
 
@@ -155,6 +167,7 @@ const BouncyCheckbox: React.FC<BouncyCheckboxProps> = ({
         animateBounce(bounceEffectOut, bounceVelocityOut, bouncinessOut);
       }}
       onPress={handlePress}
+      onLongPress={handleLongPress}
       {...rest}>
       {renderCheckIcon()}
       {renderCheckboxText()}
