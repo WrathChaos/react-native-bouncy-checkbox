@@ -326,6 +326,11 @@ innerIconStyle={{
 - [x] ~~Get rid of `disableBuiltInState` prop~~
 - [ ] Write an article about the lib on Medium
 
+## Credits
+
+Photo by <a href="https://unsplash.com/@fakurian?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Milad Fakurian</a> on <a href="https://unsplash.com/photos/blue-orange-and-yellow-wallpaper-E8Ufcyxz514?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
+
 ## Author
 
 FreakyCoder, kurayogun@gmail.com
