@@ -9,6 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import AppleHeader from 'react-native-apple-header';
+import BottomSearchBar from 'react-native-bottom-search-bar';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import BouncyCheckbox, {BouncyCheckboxHandle} from './build/dist';
 
@@ -92,7 +93,7 @@ const App: React.FC = () => {
   );
 
   const renderCheckboxOnly = () => (
-    <View style={styles.checkboxesContainer}>
+    <View>
       <Text style={styles.title}>Checkbox Only</Text>
       <View style={styles.checkboxOnlyContainer}>
         <BouncyCheckbox
@@ -148,7 +149,7 @@ const App: React.FC = () => {
   );
 
   const renderSyntheticCheckboxControl = () => (
-    <View style={styles.checkboxesContainer}>
+    <View style={styles.checkboxSynthetic}>
       <Text style={styles.titleSynthetic}>Synthetic Checkbox</Text>
       <Text style={styles.checkboxSyntheticSubtitle}>
         Control Checkbox with Another Button
@@ -193,6 +194,7 @@ const App: React.FC = () => {
         {renderCheckboxes()}
         {renderCheckboxOnly()}
         {renderSyntheticCheckboxControl()}
+        <BottomSearchBar />
       </SafeAreaView>
     </View>
   );
@@ -236,6 +238,9 @@ const styles = StyleSheet.create({
     width: '80%',
     color: 'gray',
     fontWeight: '300',
+  },
+  checkboxSynthetic: {
+    marginTop: 16,
   },
   checkboxSyntheticContainer: {
     marginTop: 16,

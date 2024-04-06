@@ -58,5 +58,8 @@
     "copy:package": "cpx '../package.json' '../build/dist/'",
     "husky:lint": "npx husky add .husky/pre-commit 'npm run lint'",
     "husky:prettier": "npx husky set .husky/pre-commit 'npm run prettier'"
+  },
+  "dependencies": {
+    "@freakycoder/react-native-bounceable": "^1.0.3"
   }
 }
