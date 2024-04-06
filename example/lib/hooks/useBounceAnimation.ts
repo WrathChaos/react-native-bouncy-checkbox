@@ -2,7 +2,7 @@ import {Animated} from 'react-native';
 import {useState} from 'react';
 
 const useBounceAnimation = () => {
-  const [bounceValue, setBounceValue] = useState(new Animated.Value(1));
+  const [bounceValue] = useState(new Animated.Value(1));
 
   const bounceAnimation = (
     value: number,

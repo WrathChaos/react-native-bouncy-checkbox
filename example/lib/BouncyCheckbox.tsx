@@ -5,72 +5,15 @@ import React, {
   useEffect,
   useImperativeHandle,
 } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Animated,
-  StyleProp,
-  ViewStyle,
-  Pressable,
-  PressableProps,
-  TextStyle,
-  ImageStyle,
-  ImageSourcePropType,
-} from 'react-native';
+import {View, Text, Image, Animated, Pressable} from 'react-native';
 import useBounceAnimation from './hooks/useBounceAnimation';
-import useStateWIthCallback from './helpers/useStateWIthCallback';
+import useStateWithCallback from './helpers/useStateWithCallback';
 import styles from './BouncyCheckbox.style';
-
-const AnimationValues = {
-  BounceIn: 0.9,
-  BounceOut: 1,
-  VelocityIn: 0.1,
-  VelocityOut: 0.4,
-  BouncinessIn: 20,
-  BouncinessOut: 20,
-};
-
-type BasePressableProps = Pick<
-  PressableProps,
-  Exclude<keyof PressableProps, 'onPress' | 'onLongPress'>
->;
-
-export interface BouncyCheckboxProps extends BasePressableProps {
-  size?: number;
-  text?: string;
-  testID?: string;
-  fillColor?: string;
-  isChecked?: boolean;
-  unFillColor?: string;
-  disableText?: boolean;
-  bounceEffect?: number;
-  bounceFriction?: number;
-  useNativeDriver?: boolean;
-  bounceEffectIn?: number;
-  bounceEffectOut?: number;
-  bounceVelocityIn?: number;
-  bounceVelocityOut?: number;
-  bouncinessIn?: number;
-  bouncinessOut?: number;
-  ImageComponent?: any;
-  TouchableComponent?: any;
-  iconComponent?: React.ReactNode;
-  textComponent?: React.ReactNode;
-  iconStyle?: StyleProp<ViewStyle>;
-  innerIconStyle?: StyleProp<ViewStyle>;
-  style?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
-  iconImageStyle?: StyleProp<ImageStyle>;
-  textContainerStyle?: StyleProp<ViewStyle>;
-  checkIconImageSource?: ImageSourcePropType;
-  onPress?: (checked: boolean) => void;
-  onLongPress?: (checked: boolean) => void;
-}
-
-export interface BouncyCheckboxHandle {
-  onCheckboxPress: () => void;
-}
+import {
+  AnimationValues,
+  BouncyCheckboxHandle,
+  BouncyCheckboxProps,
+} from './BouncyCheckbox.type';
 
 const BouncyCheckbox: React.ForwardRefRenderFunction<
   BouncyCheckboxHandle,
@@ -81,7 +24,6 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     iconStyle,
     iconComponent,
     iconImageStyle,
-    isChecked,
     innerIconStyle,
     text,
     textComponent,
@@ -95,6 +37,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     ImageComponent = Image,
     unFillColor = 'transparent',
     disableText = false,
+    isChecked = undefined,
     checkIconImageSource = require('./check.png'),
     bounceEffectIn = AnimationValues.BounceIn,
     bounceEffectOut = AnimationValues.BounceOut,
@@ -106,7 +49,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     ...rest
   } = props;
 
-  const [checked, setChecked] = useStateWIthCallback(isChecked || false);
+  const [checked, setChecked] = useStateWithCallback(isChecked || false);
 
   const {bounceAnimation, syntheticBounceAnimation, bounceValue} =
     useBounceAnimation();
@@ -136,16 +79,19 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     syntheticBounceAnimation,
   ]);
 
-  useImperativeHandle(ref, () => ({onCheckboxPress}), [onCheckboxPress]);
-
-  const handleLongPress = () => {
+  const onCheckboxLongPress = useCallback(() => {
     if (!onLongPress) {
       return;
     }
     setChecked(!checked, newCheckedValue => {
       onLongPress && onLongPress(newCheckedValue);
     });
-  };
+  }, [checked, onLongPress, setChecked]);
+
+  useImperativeHandle(ref, () => ({onCheckboxPress, onCheckboxLongPress}), [
+    onCheckboxPress,
+    onCheckboxLongPress,
+  ]);
 
   const renderCheckIcon = () => {
     const scaleAnimation = {transform: [{scale: bounceValue}]};
@@ -193,7 +139,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
         bounceAnimation(bounceEffectOut, bounceVelocityOut, bouncinessOut);
       }}
       onPress={onCheckboxPress}
-      onLongPress={handleLongPress}
+      onLongPress={onCheckboxLongPress}
       {...rest}>
       {renderCheckIcon()}
       {renderCheckboxText()}

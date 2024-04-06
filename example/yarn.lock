@@ -1193,6 +1193,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@freakycoder/react-native-bounceable@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@freakycoder/react-native-bounceable/-/react-native-bounceable-1.0.3.tgz"
+  integrity sha512-+iMq2tnqxCwFjitbPUz9nZ+VfJ8OU9waIlDJAAsoq1229QEwCmERCNy5zVtDsz75q3i4FLXX/n7fimdMzmP21A==
+
 "@freakycoder/react-native-helpers@>= 2.1.0":
   version "2.3.0"
   resolved "https://registry.npmjs.org/@freakycoder/react-native-helpers/-/react-native-helpers-2.3.0.tgz"
