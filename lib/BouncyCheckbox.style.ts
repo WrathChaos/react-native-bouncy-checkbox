@@ -1,9 +1,9 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create<any>({
   container: {
-    alignItems: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    flexDirection: "row",
   },
   iconImageStyle: {
     width: 10,
@@ -22,8 +22,8 @@ export default StyleSheet.create<any>({
     height: size,
     borderRadius: size / 2,
     backgroundColor: checked ? fillColor : unFillColor,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   }),
   innerIconContainer: (size: number, fillColor: string) => ({
     width: size,
@@ -31,12 +31,12 @@ export default StyleSheet.create<any>({
     borderWidth: 1,
     borderColor: fillColor,
     borderRadius: size / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   }),
   textStyle: (checked: boolean) => ({
     fontSize: 16,
-    color: '#757575',
-    textDecorationLine: checked ? 'line-through' : 'none',
+    color: "#757575",
+    textDecorationLine: checked ? "line-through" : "none",
   }),
 });

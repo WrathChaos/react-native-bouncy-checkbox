@@ -1,8 +1,10 @@
 {
   "name": "react-native-bouncy-checkbox",
-  "version": "3.0.7",
+  "version": "4.0.0",
   "description": "Fully customizable animated bouncy checkbox for React Native",
   "keywords": [
+    "toggle",
+    "switch",
     "bouncy",
     "checkbox",
     "animated",
@@ -22,39 +24,39 @@
   ],
   "homepage": "https://www.freakycoder.com",
   "bugs": "https://github.com/WrathChaos/react-native-bouncy-checkbox/issues",
-  "main": "./build/dist/BouncyCheckbox.js",
+  "main": "./build/dist/index.js",
   "repository": "git@github.com:WrathChaos/react-native-bouncy-checkbox.git",
   "author": "Kuray (FreakyCoder) <kurayogun@gmail.com>",
   "license": "MIT",
-  "peerDependencies": {
-    "react": ">= 16.x.x",
-    "react-native": ">= 0.55.x"
-  },
   "devDependencies": {
-    "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^18.4.3",
-    "@react-native-community/eslint-config": "^3.1.0",
-    "@types/react": "^18.0.15",
-    "@types/react-native": "^0.73.0",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-native": "^0.63.25",
     "cpx": "^1.5.0",
-    "eslint": "^8.21.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-promise": "^6.1.1",
-    "husky": "^9.0.1",
-    "lint-staged": "^15.0.1",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^10.4.2",
     "npm-post-install": "0.0.2",
-    "prettier": "^3.0.0",
-    "prettier-format": "^4.0.0",
+    "prettier": "^2.1.2",
+    "prettier-format": "^3.0.3",
     "react-native-typescript-transformer": "^1.2.13",
-    "typescript": "^5.0.2"
+    "semantic-release": "^19.0.5",
+    "typescript": "^4.0.3"
   },
   "scripts": {
     "build": "cd lib && tsc && npm run copy:assets && npm run copy:package",
     "prepare": "husky install",
-    "husky:setup": "npx husky-init && npm run husky:commitlint",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prettier": "cd lib && npx prettier --write . && git add .",
+    "husky:setup": "npx husky-init && npm run husky:commitlint && npm run husky:prettier && npm run husky:lint",
     "husky:commitlint": "npx husky add .husky/commit-msg 'npx --no-install commitlint --edit'",
     "semantic-release": "semantic-release",
     "copy:assets": "cpx 'lib/local-assets/**' './build/dist/local-assets'",
-    "copy:package": "cpx '../package.json' '../build/dist/'"
+    "copy:package": "cpx '../package.json' '../build/dist/'",
+    "husky:lint": "npx husky add .husky/pre-commit 'npm run lint'",
+    "husky:prettier": "npx husky set .husky/pre-commit 'npm run prettier'"
   }
 }
