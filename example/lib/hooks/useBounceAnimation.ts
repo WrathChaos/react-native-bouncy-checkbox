@@ -4,7 +4,7 @@ import {useState} from 'react';
 const useBounceAnimation = () => {
   const [bounceValue, setBounceValue] = useState(new Animated.Value(1));
 
-  const animateBounce = (
+  const bounceAnimation = (
     value: number,
     velocity: number,
     bounciness: number,
@@ -17,7 +17,32 @@ const useBounceAnimation = () => {
     }).start();
   };
 
-  return {bounceValue, animateBounce};
+  const syntheticBounceAnimation = (
+    bounceEffectIn: number,
+    bounceEffectOut: number,
+    bounceVelocityOut: number,
+    bouncinessOut: number,
+  ) => {
+    Animated.sequence([
+      Animated.timing(bounceValue, {
+        toValue: bounceEffectIn,
+        duration: 50,
+        useNativeDriver: true,
+      }),
+      Animated.spring(bounceValue, {
+        toValue: bounceEffectOut,
+        velocity: bounceVelocityOut,
+        bounciness: bouncinessOut,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
+  return {
+    bounceValue,
+    bounceAnimation,
+    syntheticBounceAnimation,
+  };
 };
 
 export default useBounceAnimation;
