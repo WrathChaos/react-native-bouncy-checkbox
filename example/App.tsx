@@ -121,7 +121,6 @@ const App: React.FC = () => {
           onPress={() => {}}
         />
         <BouncyCheckbox
-          ref={bouncyCheckboxRef}
           disableText
           fillColor="#9342f5"
           size={50}
@@ -138,11 +137,7 @@ const App: React.FC = () => {
           size={50}
           iconImageStyle={styles.iconImageStyle}
           iconStyle={{borderColor: 'green'}}
-          onPress={() => {
-            if (bouncyCheckboxRef.current) {
-              bouncyCheckboxRef.current.onCheckboxPress();
-            }
-          }}
+          onPress={() => {}}
         />
       </View>
     </View>
