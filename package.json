@@ -30,7 +30,7 @@
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^19.2.2",
-    "@commitlint/config-conventional": "^15.0.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/react": "^18.2.79",
     "@types/react-native": "^0.73.0",
     "cpx": "^1.5.0",
