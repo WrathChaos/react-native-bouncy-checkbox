@@ -311,6 +311,51 @@ innerIconStyle={{
 }}
 ```
 
+<b>How to use multiple checkbox and control all of them with one checkbox?</b>
+
+- You can use `isChecked` prop to control all of them one by one and with simple handling function to make them all checked or not
+
+```tsx
+  const data = [
+    {
+      id: 0,
+      isChecked: false,
+    },
+    {
+      id: 1,
+      isChecked: false,
+    },
+    {
+      id: 2,
+      isChecked: false,
+    },
+  ]
+
+  const [checkBoxes, setCheckBoxes] = useState(data);
+
+
+  const handleCheckboxPress = (checked: boolean, id: number) => {
+    if (id === 0) {
+      setCheckBoxes(
+        checkBoxes.map(item => ({
+          ...item,
+          isChecked: checked,
+        })),
+      );
+      return;
+    }
+
+    setCheckBoxes(
+      checkBoxes.map(item =>
+        item.id === id ? {...item, isChecked: checked} : item,
+      ),
+    );
+  };
+```
+
+Please check out the example for this:
+https://github.com/WrathChaos/react-native-bouncy-checkbox-check-all-with-one-checkbox
+
 ### Future Plans
 
 - [x] ~~LICENSE~~
