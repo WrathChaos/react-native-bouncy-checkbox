@@ -91,7 +91,6 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 | style                |   style   |    default    | set/override the container style                                                                                                               |
 | textStyle            |   style   |    default    | set/override the text style                                                                                                                    |
 | iconStyle            |   style   |    default    | set/override the outer icon container style                                                                                                    |
-| innerIconStyle       |   style   |    default    | set/override the inner icon container style                                                                                                    |
 | fillColor            |   color   |    #f09f48    | change the checkbox's filled color                                                                                                             |
 | unfillColor          |   color   |  transparent  | change the checkbox's un-filled color when it's not checked                                                                                    |
 | iconComponent        | component |     Icon      | set your own icon component                                                                                                                    |
