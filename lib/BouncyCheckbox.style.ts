@@ -11,6 +11,7 @@ export default StyleSheet.create<any>({
   },
   textContainer: {
     marginLeft: 16,
+    flex: 1
   },
   iconContainer: (
     size: number,
