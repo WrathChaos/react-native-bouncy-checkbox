@@ -6520,6 +6520,13 @@ react-native-bottom-search-bar@^1.1.1:
   resolved "https://registry.npmjs.org/react-native-bottom-search-bar/-/react-native-bottom-search-bar-1.1.1.tgz"
   integrity sha512-579mO97mWksVOKxN8C194Y6JlxzZNOBszgVc3cDidOC2d0PzLfCzKHoLqK8ruCYHjh3sP4bQfmg0ae4SKfCwBA==
 
+react-native-bouncy-checkbox@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/react-native-bouncy-checkbox/-/react-native-bouncy-checkbox-4.0.1.tgz"
+  integrity sha512-dlywsd3PWF47tkZKWFtnArtGM66Hkk1iUvlQhxSbnI56eo8BaQ4VnGFsrGxA3Jc/B7KDuzS9RCtaEflJJT5gYA==
+  dependencies:
+    "@freakycoder/react-native-bounceable" "^1.0.3"
+
 react-native-codegen@^0.70.6:
   version "0.70.7"
   resolved "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.70.7.tgz"
