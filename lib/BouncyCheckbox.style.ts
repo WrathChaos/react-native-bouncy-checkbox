@@ -10,8 +10,8 @@ export default StyleSheet.create<any>({
     height: 10,
   },
   textContainer: {
+    flex: 1,
     marginLeft: 16,
-    flex: 1
   },
   iconContainer: (
     size: number,
