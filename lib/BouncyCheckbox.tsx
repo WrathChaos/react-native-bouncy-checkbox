@@ -59,17 +59,14 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
   }, [isChecked, setChecked]);
 
   const onCheckboxPress = useCallback(() => {
-    const handlePress = (value: boolean) => {
-      onPress && onPress(value);
-      syntheticBounceAnimation(
-        bounceEffectIn,
-        bounceEffectOut,
-        bounceVelocityOut,
-        bouncinessOut,
-      );
-    }
-    if (isChecked !== undefined) handlePress(isChecked)
-    else setChecked(!checked, handlePress);
+    if (isChecked === undefined) setChecked(!checked, onPress);
+    else if (onPress) onPress(isChecked);
+    syntheticBounceAnimation(
+      bounceEffectIn,
+      bounceEffectOut,
+      bounceVelocityOut,
+      bouncinessOut,
+    );
   }, [
     isChecked,
     bounceEffectIn,
