@@ -59,16 +59,16 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
   }, [isChecked, setChecked]);
 
   const onCheckboxPress = useCallback(() => {
-    setChecked(!checked, (newCheckedValue) => {
-      syntheticBounceAnimation(
-        bounceEffectIn,
-        bounceEffectOut,
-        bounceVelocityOut,
-        bouncinessOut,
-      );
-      onPress && onPress(newCheckedValue);
-    });
+    if (isChecked === undefined) setChecked(!checked, onPress);
+    else if (onPress) onPress(isChecked);
+    syntheticBounceAnimation(
+      bounceEffectIn,
+      bounceEffectOut,
+      bounceVelocityOut,
+      bouncinessOut,
+    );
   }, [
+    isChecked,
     bounceEffectIn,
     bounceEffectOut,
     bounceVelocityOut,
@@ -80,13 +80,10 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
   ]);
 
   const onCheckboxLongPress = useCallback(() => {
-    if (!onLongPress) {
-      return;
-    }
-    setChecked(!checked, (newCheckedValue) => {
-      onLongPress && onLongPress(newCheckedValue);
-    });
-  }, [checked, onLongPress, setChecked]);
+    if (!onLongPress) return;
+    if (isChecked !== undefined) onLongPress(isChecked);
+    else setChecked(!checked, onLongPress);
+  }, [isChecked, checked, onLongPress, setChecked]);
 
   useImperativeHandle(ref, () => ({ onCheckboxPress, onCheckboxLongPress }), [
     onCheckboxPress,
