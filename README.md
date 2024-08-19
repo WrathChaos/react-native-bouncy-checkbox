@@ -91,7 +91,7 @@ const [localChecked, setLocalChecked] = React.useState(false);
    disableText
    fillColor="green"
    size={50}
-   useBuiltInState
+   useBuiltInState={false}
    iconImageStyle={styles.iconImageStyle}
    iconStyle={{borderColor: 'green'}}
    onPress={(checked: boolean) => {

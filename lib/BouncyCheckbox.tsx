@@ -60,7 +60,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
   }, [isChecked, setChecked]);
 
   const onCheckboxPress = useCallback(() => {
-    if (useBuiltInState) {
+    if (!useBuiltInState) {
       syntheticBounceAnimation(
         bounceEffectIn,
         bounceEffectOut,
@@ -98,7 +98,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
       return;
     }
 
-    if (useBuiltInState) {
+    if (!useBuiltInState) {
       onLongPress && onLongPress(isChecked ?? false);
       return;
     }
