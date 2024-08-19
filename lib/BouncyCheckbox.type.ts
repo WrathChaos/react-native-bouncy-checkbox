@@ -50,6 +50,7 @@ export interface BouncyCheckboxProps extends BasePressableProps {
   iconImageStyle?: StyleProp<ImageStyle>;
   textContainerStyle?: StyleProp<ViewStyle>;
   checkIconImageSource?: ImageSourcePropType;
+  useBuiltInState?: boolean;
   onPress?: (checked: boolean) => void;
   onLongPress?: (checked: boolean) => void;
 }

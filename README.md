@@ -35,7 +35,7 @@ Add the dependency:
 npm i react-native-bouncy-checkbox
 ```
 
-## 🥳  <i> Version 4.0.0 is here</i> 🚀 
+## 🥳  <i> Version 4.1.0 is here</i> 🚀 
 
 - **Complete re-written with Modern Functional Component**
 - Fully Refactored with React Hooks
@@ -45,6 +45,7 @@ npm i react-native-bouncy-checkbox
 - `testID` support
 - Finally, get rid of `disableBuiltInState` prop 
 - Cool customizable animation options
+- Control your own check state with `useBuiltInState` to disable
 - Typescript
 - Community Supported Stable Version
 
@@ -77,16 +78,42 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 />
 ```
 
+## Disable Built-In State
+
+To fully control checkbox state outside with your own state, just set `useBuiltInState` to `false` and send your state value to `isChecked` prop
+
+```tsx
+
+const [localChecked, setLocalChecked] = React.useState(false);
+
+ <BouncyCheckbox
+   isChecked={localChecked}
+   disableText
+   fillColor="green"
+   size={50}
+   useBuiltInState
+   iconImageStyle={styles.iconImageStyle}
+   iconStyle={{borderColor: 'green'}}
+   onPress={(checked: boolean) => {
+         // These two should be same value
+         console.log('::Checked::', checked);
+         console.log('::LocalChecked::', localChecked);
+         setLocalChecked(!localChecked);
+   }}
+/>
+```
+
 ### Configuration - Props
 
 | Property             |   Type    |    Default    | Description                                                                                                                                    |
 |----------------------| :-------: |:-------------:|------------------------------------------------------------------------------------------------------------------------------------------------|
-| **isChecked**        |  **boolean**  | **undefined** | **if you want to control check state yourself, you can use `isChecked` prop now!**                                                                 |
+| **isChecked**        |  **boolean**  | **undefined** | **if you want to control check state yourself, you can use `isChecked` prop now!**                                                             |
 | onPress              | function  |     null      | set your own onPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false     |
 | onLongPress          | function  |     null      | set your own onLongPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false |
 | text                 |  string   |   undefined   | set the checkbox's text                                                                                                                        |
 | textComponent        | component |   undefined   | set the checkbox's text by a React Component                                                                                                   |
 | disableText          |  boolean  |     false     | if you want to use checkbox without text, you can enable it                                                                                    |
+| useBuiltInState          |  boolean  |     false     | to fully control the checkbox itself outside with your own state, just set to `false` and send your state value to `isChecked` prop            |
 | size                 |  number   |      25       | size of `width` and `height` of the checkbox                                                                                                   |
 | style                |   style   |    default    | set/override the container style                                                                                                               |
 | textStyle            |   style   |    default    | set/override the text style                                                                                                                    |

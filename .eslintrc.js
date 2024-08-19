@@ -1,12 +1,6 @@
 module.exports = {
   root: true,
-  extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "@react-native-community",
-    "prettier",
-  ],
+  extends: "@react-native",
   ignorePatterns: [
     "**/*/*.js",
     "*.js",
@@ -25,13 +19,11 @@ module.exports = {
     "react-hooks",
     "@typescript-eslint",
     "promise",
-    "jest",
     "unused-imports",
   ],
   env: {
     browser: true,
     es2021: true,
-    "jest/globals": true,
     "react-native/react-native": true,
   },
   settings: {
