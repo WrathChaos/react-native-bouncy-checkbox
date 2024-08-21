@@ -46,7 +46,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     bouncinessIn = AnimationValues.BouncinessIn,
     bouncinessOut = AnimationValues.BouncinessOut,
     TouchableComponent = Pressable,
-    useBuiltInState = false,
+    useBuiltInState = true,
     ...rest
   } = props;
 
