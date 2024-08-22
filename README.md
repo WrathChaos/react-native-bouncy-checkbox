@@ -35,7 +35,7 @@ Add the dependency:
 npm i react-native-bouncy-checkbox
 ```
 
-## 🥳  <i> Version 4.1.1 is here</i> 🚀 
+## 🥳  <i> Version 4.1.2 is here</i> 🚀 
 
 - **Complete re-written with Modern Functional Component**
 - Fully Refactored with React Hooks
