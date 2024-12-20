@@ -32,27 +32,27 @@
     "@babel/core": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
     "@react-native/babel-preset": "0.76.5",
     "@react-native/eslint-config": "0.76.5",
     "@react-native/metro-config": "0.76.3",
     "@react-native/typescript-config": "0.76.5",
     "@types/react": "^19.0.1",
-    "eslint": "^8.19.0",
-    "prettier": "3.4.2",
-    "typescript": "5.7.2",
-    "@commitlint/cli": "^19.2.2",
-    "@commitlint/config-conventional": "^19.2.2",
     "@types/react-native": "^0.73.0",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
     "cpx": "^1.5.0",
+    "eslint": "^8.19.0",
+    "eslint-plugin-react": "^7.35.0",
     "husky": "^9.1.1",
     "lint-staged": "^15.2.2",
     "npm-post-install": "0.0.2",
+    "prettier": "3.4.2",
     "prettier-format": "^4.0.0",
-    "eslint-plugin-react": "^7.35.0",
-    "@typescript-eslint/eslint-plugin": "^8.1.0",
-    "@typescript-eslint/parser": "^8.1.0",
     "react-native-typescript-transformer": "^1.2.13",
-    "semantic-release": "^24.0.0"
+    "semantic-release": "^24.0.0",
+    "typescript": "5.7.2"
   },
   "scripts": {
     "build": "cd lib && tsc && npm run copy:assets && npm run copy:package",
@@ -69,6 +69,9 @@
     "husky:prettier": "npx husky set .husky/pre-commit 'npm run prettier'"
   },
   "dependencies": {
-    "@freakycoder/react-native-bounceable": "^1.0.3"
+    "@freakycoder/react-native-bounceable": "^1.0.3",
+    "react-native-apple-header": "^1.0.1",
+    "react-native-bottom-search-bar": "^1.1.1",
+    "react-native-bouncy-checkbox": "^4.1.2"
   }
 }
