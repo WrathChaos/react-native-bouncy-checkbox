@@ -34,7 +34,7 @@
     "@babel/runtime": "^7.20.0",
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
-    "@react-native/babel-preset": "0.79.0",
+    "@react-native/babel-preset": "0.79.1",
     "@react-native/eslint-config": "0.76.6",
     "@react-native/metro-config": "0.78.1",
     "@react-native/typescript-config": "0.79.0",
