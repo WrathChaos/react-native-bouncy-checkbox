@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, {useRef} from 'react';
 import {
   View,
   Text,
@@ -7,16 +7,16 @@ import {
   Pressable,
   Alert,
   StyleSheet,
-} from "react-native";
-import AppleHeader from "react-native-apple-header";
-import BottomSearchBar from "react-native-bottom-search-bar";
-import RNBounceable from "@freakycoder/react-native-bounceable";
+} from 'react-native';
+import AppleHeader from 'react-native-apple-header';
+import BottomSearchBar from 'react-native-bottom-search-bar';
+import RNBounceable from '@freakycoder/react-native-bounceable';
 import BouncyCheckbox, {
   BouncyCheckboxHandle,
-} from "react-native-bouncy-checkbox";
+} from 'react-native-bouncy-checkbox';
 
 const profilePicUri = {
-  uri: "https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?q=80&w=1358&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  uri: 'https://images.unsplash.com/photo-1519865885898-a54a6f2c7eea?q=80&w=1358&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 };
 
 const App: React.FC = () => {
@@ -30,7 +30,7 @@ const App: React.FC = () => {
         style={styles.checkbox}
         fillColor="red"
         TouchableComponent={Pressable}
-        iconStyle={{ borderColor: "red" }}
+        iconStyle={{borderColor: 'red'}}
         disableText={false}
         unFillColor="#FFFFFF"
         text="Custom Checkbox with Pressable Component"
@@ -42,7 +42,7 @@ const App: React.FC = () => {
         disabled
         style={styles.checkbox}
         isChecked={false}
-        iconStyle={{ borderColor: "blue", borderRadius: 10 }}
+        iconStyle={{borderColor: 'blue', borderRadius: 10}}
         unFillColor="white"
         text="Custom Disabled Checkbox Example"
         onPress={(isChecked: boolean) => {
@@ -85,8 +85,8 @@ const App: React.FC = () => {
         style={styles.checkbox}
         text="Try new gym routine"
         textStyle={{
-          color: "red",
-          textDecorationLine: "none",
+          color: 'red',
+          textDecorationLine: 'none',
         }}
         onPress={(isChecked: boolean) => {
           console.log(isChecked);
@@ -111,7 +111,7 @@ const App: React.FC = () => {
           fillColor="#f54b42"
           size={50}
           iconImageStyle={styles.iconImageStyle}
-          iconStyle={{ borderColor: "#f54b42" }}
+          iconStyle={{borderColor: '#f54b42'}}
           onPress={() => {}}
         />
         <BouncyCheckbox
@@ -120,7 +120,7 @@ const App: React.FC = () => {
           fillColor="#4287f5"
           size={50}
           iconImageStyle={styles.iconImageStyle}
-          iconStyle={{ borderColor: "#4287f5" }}
+          iconStyle={{borderColor: '#4287f5'}}
           onPress={() => {}}
         />
         <BouncyCheckbox
@@ -128,8 +128,8 @@ const App: React.FC = () => {
           fillColor="#9342f5"
           size={50}
           iconImageStyle={styles.iconImageStyle}
-          iconStyle={{ borderColor: "#9342f5" }}
-          onPress={(isChecked) => {
+          iconStyle={{borderColor: '#9342f5'}}
+          onPress={isChecked => {
             Alert.alert(`Checked:: ${isChecked}`);
           }}
         />
@@ -140,11 +140,11 @@ const App: React.FC = () => {
           size={50}
           useBuiltInState={false}
           iconImageStyle={styles.iconImageStyle}
-          iconStyle={{ borderColor: "green" }}
+          iconStyle={{borderColor: 'green'}}
           onPress={(checked: boolean) => {
             // These two should be same value
-            console.log("::Checked::", checked);
-            console.log("::LocalChecked::", localChecked);
+            console.log('::Checked::', checked);
+            console.log('::LocalChecked::', localChecked);
             setLocalChecked(!localChecked);
           }}
         />
@@ -165,8 +165,8 @@ const App: React.FC = () => {
           fillColor="#9342f5"
           size={50}
           iconImageStyle={styles.iconImageStyle}
-          iconStyle={{ borderColor: "#9342f5" }}
-          onPress={(isChecked) => {
+          iconStyle={{borderColor: '#9342f5'}}
+          onPress={isChecked => {
             Alert.alert(`Checked:: ${isChecked}`);
           }}
         />
@@ -176,9 +176,8 @@ const App: React.FC = () => {
             if (bouncyCheckboxRef.current) {
               bouncyCheckboxRef.current.onCheckboxPress();
             }
-          }}
-        >
-          <Text style={{ color: "#fff", fontWeight: "600" }}>
+          }}>
+          <Text style={{color: '#fff', fontWeight: '600'}}>
             Change Checkbox
           </Text>
         </RNBounceable>
@@ -191,8 +190,8 @@ const App: React.FC = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.flex}>
         <AppleHeader
-          dateTitle={"Welcome"}
-          largeTitle={"John Doe"}
+          dateTitle={'Welcome'}
+          largeTitle={'John Doe'}
           onPress={() => {}}
           imageSource={profilePicUri}
         />
@@ -218,13 +217,13 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 24,
     fontSize: 24,
-    fontWeight: "700",
+    fontWeight: '700',
   },
   checkboxOnlyContainer: {
     marginTop: 16,
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   iconImageStyle: {
     width: 18,
@@ -233,34 +232,34 @@ const styles = StyleSheet.create({
   titleSynthetic: {
     fontSize: 24,
     marginLeft: 24,
-    width: "80%",
-    fontWeight: "700",
+    width: '80%',
+    fontWeight: '700',
   },
   checkboxSyntheticSubtitle: {
     marginTop: 8,
     marginLeft: 24,
     fontSize: 16,
-    width: "80%",
-    color: "gray",
-    fontWeight: "300",
+    width: '80%',
+    color: 'gray',
+    fontWeight: '300',
   },
   checkboxSynthetic: {
     marginTop: 16,
   },
   checkboxSyntheticContainer: {
     marginTop: 16,
-    width: "100%",
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
+    width: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   syntheticButton: {
     height: 35,
     borderRadius: 16,
-    width: "50%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#531011",
+    width: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#531011',
   },
 });
 
