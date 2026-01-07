@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import AppleHeader from "react-native-apple-header";
 import BottomSearchBar from "react-native-bottom-search-bar";
-import RNBounceable from "./build/dist";
+import RNBounceable from "@freakycoder/react-native-bounceable";
 import BouncyCheckbox, {
   BouncyCheckboxHandle,
 } from "react-native-bouncy-checkbox";
@@ -104,7 +104,7 @@ const App: React.FC = () => {
           isChecked
           iconImageStyle={styles.iconImageStyle}
           disableText
-          onPress={() => { }}
+          onPress={() => {}}
         />
         <BouncyCheckbox
           disableText
@@ -112,7 +112,7 @@ const App: React.FC = () => {
           size={50}
           iconImageStyle={styles.iconImageStyle}
           iconStyle={{ borderColor: "#f54b42" }}
-          onPress={() => { }}
+          onPress={() => {}}
         />
         <BouncyCheckbox
           isChecked
@@ -121,7 +121,7 @@ const App: React.FC = () => {
           size={50}
           iconImageStyle={styles.iconImageStyle}
           iconStyle={{ borderColor: "#4287f5" }}
-          onPress={() => { }}
+          onPress={() => {}}
         />
         <BouncyCheckbox
           disableText
@@ -193,7 +193,7 @@ const App: React.FC = () => {
         <AppleHeader
           dateTitle={"Welcome"}
           largeTitle={"John Doe"}
-          onPress={() => { }}
+          onPress={() => {}}
           imageSource={profilePicUri}
         />
         {renderCheckboxes()}
