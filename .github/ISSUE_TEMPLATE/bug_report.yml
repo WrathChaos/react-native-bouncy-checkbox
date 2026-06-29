@@ -1,0 +1,63 @@
+name: Bug report
+description: Report a reproducible problem with react-native-bouncy-checkbox
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to file a bug report! Please fill out the sections below.
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: A minimal code snippet or repo that reproduces the issue.
+      placeholder: |
+        ```tsx
+        <BouncyCheckbox onPress={(checked) => console.log(checked)} />
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: lib-version
+    attributes:
+      label: react-native-bouncy-checkbox version
+      placeholder: "4.1.4"
+    validations:
+      required: true
+  - type: input
+    id: rn-version
+    attributes:
+      label: React Native version
+      placeholder: "0.79.5"
+    validations:
+      required: true
+  - type: dropdown
+    id: arch
+    attributes:
+      label: Architecture
+      options:
+        - New Architecture (Fabric)
+        - Old Architecture (Paper)
+        - Not sure
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform(s)
+      multiple: true
+      options:
+        - iOS
+        - Android
+        - Web (react-native-web)
+        - Expo

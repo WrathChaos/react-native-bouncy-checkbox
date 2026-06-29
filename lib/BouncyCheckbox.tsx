@@ -1,14 +1,18 @@
 import React, {
   forwardRef,
-  RefAttributes,
   useCallback,
   useEffect,
   useImperativeHandle,
+  useMemo,
 } from "react";
 import { View, Text, Image, Animated, Pressable } from "react-native";
 import useBounceAnimation from "./hooks/useBounceAnimation";
 import useStateWithCallback from "./helpers/useStateWithCallback";
-import styles from "./BouncyCheckbox.style";
+import styles, {
+  iconContainerStyle,
+  innerIconContainerStyle,
+  textStyle as dynamicTextStyle,
+} from "./BouncyCheckbox.style";
 import {
   AnimationValues,
   BouncyCheckboxHandle,
@@ -17,7 +21,7 @@ import {
 
 const BouncyCheckbox: React.ForwardRefRenderFunction<
   BouncyCheckboxHandle,
-  BouncyCheckboxProps & RefAttributes<BouncyCheckboxHandle>
+  BouncyCheckboxProps
 > = (props, ref) => {
   const {
     style,
@@ -38,6 +42,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     unFillColor = "transparent",
     disableText = false,
     isChecked = undefined,
+    defaultChecked = false,
     checkIconImageSource = require("./local-assets/check.png"),
     bounceEffectIn = AnimationValues.BounceIn,
     bounceEffectOut = AnimationValues.BounceOut,
@@ -50,13 +55,17 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     ...rest
   } = props;
 
-  const [checked, setChecked] = useStateWithCallback(isChecked || false);
+  const [checked, setChecked] = useStateWithCallback<boolean>(
+    isChecked ?? defaultChecked,
+  );
 
   const { bounceAnimation, syntheticBounceAnimation, bounceValue } =
     useBounceAnimation();
 
   useEffect(() => {
-    setChecked(isChecked || false);
+    if (isChecked !== undefined) {
+      setChecked(isChecked);
+    }
   }, [isChecked, setChecked]);
 
   const onCheckboxPress = useCallback(() => {
@@ -78,7 +87,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
         bounceVelocityOut,
         bouncinessOut,
       );
-      onPress && onPress(newCheckedValue);
+      onPress?.(newCheckedValue);
     });
   }, [
     useBuiltInState,
@@ -99,33 +108,32 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     }
 
     if (!useBuiltInState) {
-      onLongPress && onLongPress(isChecked ?? false);
+      onLongPress(isChecked ?? false);
       return;
     }
 
     setChecked(!checked, (newCheckedValue) => {
-      onLongPress && onLongPress(newCheckedValue);
+      onLongPress(newCheckedValue);
     });
-  }, [checked, onLongPress, setChecked, useBuiltInState]);
+  }, [checked, onLongPress, setChecked, useBuiltInState, isChecked]);
 
-  useImperativeHandle(ref, () => ({ onCheckboxPress, onCheckboxLongPress }), [
-    onCheckboxPress,
-    onCheckboxLongPress,
-  ]);
+  useImperativeHandle(
+    ref,
+    () => ({ onCheckboxPress, onCheckboxLongPress }),
+    [onCheckboxPress, onCheckboxLongPress],
+  );
 
-  const renderCheckIcon = () => {
+  const renderCheckIcon = useMemo(() => {
     const scaleAnimation = { transform: [{ scale: bounceValue }] };
     return (
       <Animated.View
         style={[
           scaleAnimation,
-          styles.iconContainer(size, checked, fillColor, unFillColor),
+          iconContainerStyle(size, checked, fillColor, unFillColor),
           iconStyle,
         ]}
       >
-        <View
-          style={[styles.innerIconContainer(size, fillColor), innerIconStyle]}
-        >
+        <View style={[innerIconContainerStyle(size, fillColor), innerIconStyle]}>
           {iconComponent ||
             (checked && (
               <ImageComponent
@@ -136,24 +144,39 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
         </View>
       </Animated.View>
     );
-  };
+  }, [
+    bounceValue,
+    size,
+    checked,
+    fillColor,
+    unFillColor,
+    iconStyle,
+    innerIconStyle,
+    iconComponent,
+    ImageComponent,
+    checkIconImageSource,
+    iconImageStyle,
+  ]);
 
-  const renderCheckboxText = () => {
-    const checkDisableTextType = typeof disableText === "undefined";
+  const renderCheckboxText = useMemo(() => {
+    if (disableText) {
+      return null;
+    }
     return (
-      (!disableText || checkDisableTextType) &&
-      (textComponent || (
+      textComponent || (
         <View style={[styles.textContainer, textContainerStyle]}>
-          <Text style={[styles.textStyle(checked), textStyle]}>{text}</Text>
+          <Text style={[dynamicTextStyle(checked), textStyle]}>{text}</Text>
         </View>
-      ))
+      )
     );
-  };
+  }, [disableText, textComponent, textContainerStyle, checked, textStyle, text]);
 
   return (
     <TouchableComponent
       testID={testID}
       style={[styles.container, style]}
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked }}
       onPressIn={() => {
         bounceAnimation(bounceEffectIn, bounceVelocityIn, bouncinessIn);
       }}
@@ -164,8 +187,8 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
       onLongPress={onCheckboxLongPress}
       {...rest}
     >
-      {renderCheckIcon()}
-      {renderCheckboxText()}
+      {renderCheckIcon}
+      {renderCheckboxText}
     </TouchableComponent>
   );
 };
