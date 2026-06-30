@@ -1,13 +1,15 @@
 import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 
+export const DEFAULT_ICON_IMAGE_SIZE = 10;
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     flexDirection: "row",
   },
   iconImageStyle: {
-    width: 10,
-    height: 10,
+    width: DEFAULT_ICON_IMAGE_SIZE,
+    height: DEFAULT_ICON_IMAGE_SIZE,
   },
   textContainer: {
     flex: 1,

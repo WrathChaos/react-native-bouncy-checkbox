@@ -5,10 +5,19 @@ import React, {
   useImperativeHandle,
   useMemo,
 } from "react";
-import { View, Text, Image, Animated, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Animated,
+  Pressable,
+  Platform,
+  StyleSheet,
+} from "react-native";
 import useBounceAnimation from "./hooks/useBounceAnimation";
 import useStateWithCallback from "./helpers/useStateWithCallback";
 import styles, {
+  DEFAULT_ICON_IMAGE_SIZE,
   iconContainerStyle,
   innerIconContainerStyle,
   textStyle as dynamicTextStyle,
@@ -123,6 +132,31 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     [onCheckboxPress, onCheckboxLongPress],
   );
 
+  // On react-native-web a required PNG can render at 0x0 (and with an
+  // inconsistent resize mode), leaving the default check icon invisible. We
+  // therefore guarantee explicit dimensions and a sane `resizeMode` on web
+  // only. Native keeps the exact same style array and passes no `resizeMode`,
+  // so its rendering is byte-for-byte unchanged.
+  const checkIconImageStyle = useMemo(() => {
+    const baseStyle = [styles.iconImageStyle, iconImageStyle];
+    if (Platform.OS !== "web") {
+      return baseStyle;
+    }
+    const flattened = StyleSheet.flatten(baseStyle) ?? {};
+    const hasWidth = flattened.width != null;
+    const hasHeight = flattened.height != null;
+    if (hasWidth && hasHeight) {
+      return baseStyle;
+    }
+    return [
+      ...baseStyle,
+      {
+        width: hasWidth ? flattened.width : DEFAULT_ICON_IMAGE_SIZE,
+        height: hasHeight ? flattened.height : DEFAULT_ICON_IMAGE_SIZE,
+      },
+    ];
+  }, [iconImageStyle]);
+
   const renderCheckIcon = useMemo(() => {
     const scaleAnimation = { transform: [{ scale: bounceValue }] };
     return (
@@ -138,7 +172,10 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
             (checked && (
               <ImageComponent
                 source={checkIconImageSource}
-                style={[styles.iconImageStyle, iconImageStyle]}
+                style={checkIconImageStyle}
+                {...(Platform.OS === "web"
+                  ? { resizeMode: "contain" as const }
+                  : null)}
               />
             ))}
         </View>
@@ -155,7 +192,7 @@ const BouncyCheckbox: React.ForwardRefRenderFunction<
     iconComponent,
     ImageComponent,
     checkIconImageSource,
-    iconImageStyle,
+    checkIconImageStyle,
   ]);
 
   const renderCheckboxText = useMemo(() => {

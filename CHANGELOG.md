@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The bundled **default check icon now renders on `react-native-web`** (some users also saw it blank on Android). On web the check `Image` is given explicit dimensions and `resizeMode: "contain"`, so the default tick is visible without the old workaround of passing a custom `checkIconImageSource`. The guard is web-only (`Platform.OS === "web"`), so iOS/Android rendering is byte-for-byte unchanged ([#103](https://github.com/kuraydev/react-native-bouncy-checkbox/issues/103)).
 - Removed an accidental self-dependency on `react-native-bouncy-checkbox` in `dependencies`.
 - Removed the unused runtime dependency `@freakycoder/react-native-bounceable` (the library never imported it); the package now ships with **zero runtime dependencies**.
 - Corrected README factual errors: real prop name `unFillColor`, `useBuiltInState` default `true`, `fillColor` default `#ffc484`, documented `iconImageStyle`, removed references to the long-removed `disableBuiltInState` prop, and fixed example imports to use the package name.

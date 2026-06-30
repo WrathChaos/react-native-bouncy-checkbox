@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import { Text } from "react-native";
+import { Image, Platform, StyleSheet, Text } from "react-native";
 import {
   render,
   screen,
@@ -140,5 +140,38 @@ describe("BouncyCheckbox", () => {
       />,
     );
     expect(screen.getByText("★")).toBeTruthy();
+  });
+
+  describe("react-native-web", () => {
+    const originalOS = Platform.OS;
+
+    afterEach(() => {
+      Platform.OS = originalOS;
+    });
+
+    it("renders the default check icon with explicit dimensions and a contain resizeMode on web", () => {
+      Platform.OS = "web";
+      render(<BouncyCheckbox testID="cb" defaultChecked />);
+
+      const [icon] = screen.UNSAFE_getAllByType(Image);
+      const flat = StyleSheet.flatten(icon.props.style);
+
+      expect(icon.props.source).toBeTruthy();
+      expect(flat.width).toBe(10);
+      expect(flat.height).toBe(10);
+      expect(icon.props.resizeMode).toBe("contain");
+    });
+
+    it("leaves native rendering byte-for-byte unchanged (no resizeMode prop)", () => {
+      Platform.OS = "ios";
+      render(<BouncyCheckbox testID="cb" defaultChecked />);
+
+      const [icon] = screen.UNSAFE_getAllByType(Image);
+      const flat = StyleSheet.flatten(icon.props.style);
+
+      expect(icon.props.resizeMode).toBeUndefined();
+      expect(flat.width).toBe(10);
+      expect(flat.height).toBe(10);
+    });
   });
 });

@@ -202,7 +202,12 @@ it is automatically compatible with:
 
 - ✅ The **New Architecture (Fabric / TurboModules)** — nothing to enable.
 - ✅ **Expo** (managed and bare) — no config plugin required.
-- ✅ **react-native-web**.
+- ✅ **react-native-web** — the bundled default check icon now renders out of the
+  box on web. On web the check `Image` is given explicit dimensions and a
+  `resizeMode: "contain"`, so you no longer need the old workaround of passing
+  `checkIconImageSource` (or an `iconImageStyle` with a fixed `width`/`height`)
+  just to make the default tick visible. Native (iOS/Android) rendering is
+  unchanged.
 
 ## FAQ
 
