@@ -30,7 +30,8 @@
   },
   "exclude": [
     "example",
-    "example-manual-state",
+    "exampleManual",
+    "build",
     "node_modules",
     "babel.config.js",
     "metro.config.js",

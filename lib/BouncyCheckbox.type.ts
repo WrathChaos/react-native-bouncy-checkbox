@@ -17,9 +17,9 @@ export const AnimationValues = {
   BouncinessOut: 20,
 };
 
-export type BasePressableProps = Pick<
+export type BasePressableProps = Omit<
   PressableProps,
-  Exclude<keyof PressableProps, "onPress" | "onLongPress">
+  "onPress" | "onLongPress"
 >;
 
 export interface BouncyCheckboxProps extends BasePressableProps {
@@ -28,6 +28,7 @@ export interface BouncyCheckboxProps extends BasePressableProps {
   testID?: string;
   fillColor?: string;
   isChecked?: boolean;
+  defaultChecked?: boolean;
   unFillColor?: string;
   disableText?: boolean;
   bounceEffect?: number;
@@ -39,8 +40,10 @@ export interface BouncyCheckboxProps extends BasePressableProps {
   bounceVelocityOut?: number;
   bouncinessIn?: number;
   bouncinessOut?: number;
-  ImageComponent?: any;
-  TouchableComponent?: any;
+  // Touchable/Image wrappers accept arbitrary third-party components
+  // (Pressable, TouchableOpacity, FastImage, ...), so props stay open.
+  ImageComponent?: React.ComponentType<any>;
+  TouchableComponent?: React.ComponentType<any>;
   iconComponent?: React.ReactNode;
   textComponent?: React.ReactNode;
   iconStyle?: StyleProp<ViewStyle>;

@@ -22,55 +22,106 @@
     "ui-lib",
     "rn"
   ],
-  "homepage": "https://www.freakycoder.com",
-  "bugs": "https://github.com/WrathChaos/react-native-bouncy-checkbox/issues",
-  "main": "./build/dist/index.js",
-  "repository": "git@github.com:WrathChaos/react-native-bouncy-checkbox.git",
+  "homepage": "https://github.com/kuraydev/react-native-bouncy-checkbox#readme",
+  "bugs": "https://github.com/kuraydev/react-native-bouncy-checkbox/issues",
+  "source": "./lib/index.ts",
+  "main": "./build/commonjs/index.js",
+  "module": "./build/module/index.js",
+  "react-native": "./lib/index.ts",
+  "types": "./build/typescript/commonjs/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./lib/index.ts",
+      "react-native": "./lib/index.ts",
+      "import": {
+        "types": "./build/typescript/module/index.d.ts",
+        "default": "./build/module/index.js"
+      },
+      "require": {
+        "types": "./build/typescript/commonjs/index.d.ts",
+        "default": "./build/commonjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "build",
+    "!**/__tests__",
+    "!**/*.test.ts",
+    "!**/*.test.tsx",
+    "!**/*.tsbuildinfo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuraydev/react-native-bouncy-checkbox.git"
+  },
   "author": "Kuray (FreakyCoder) <kurayogun@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "bob build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write \"lib/**/*.{ts,tsx}\"",
+    "test": "jest",
+    "prepare": "bob build",
+    "semantic-release": "semantic-release"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.63.0"
+  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
     "@react-native/babel-preset": "0.79.2",
-    "@react-native/eslint-config": "0.76.6",
-    "@react-native/metro-config": "0.79.2",
-    "@react-native/typescript-config": "0.79.0",
+    "@testing-library/react-native": "^13.0.0",
+    "@types/jest": "^29.5.12",
     "@types/react": "^19.0.1",
-    "@types/react-native": "^0.73.0",
+    "@types/react-test-renderer": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
-    "cpx": "^1.5.0",
+    "babel-jest": "^29.7.0",
     "eslint": "^9.18.0",
     "eslint-plugin-react": "^7.35.0",
     "husky": "^9.1.1",
+    "jest": "^29.7.0",
     "lint-staged": "^15.2.2",
-    "npm-post-install": "0.0.2",
     "prettier": "3.5.3",
-    "prettier-format": "^4.0.0",
-    "react-native-typescript-transformer": "^1.2.13",
+    "react": "19.0.0",
+    "react-native": "0.79.5",
+    "react-native-builder-bob": "^0.30.0",
+    "react-test-renderer": "19.0.0",
     "semantic-release": "^24.0.0",
     "typescript": "5.8.3"
   },
-  "scripts": {
-    "build": "cd lib && tsc && npm run copy:assets && npm run copy:package",
-    "prepare": "husky",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "eslint lib",
-    "prettier": "cd lib && npx prettier --write . && git add .",
-    "husky:setup": "npx husky-init && npm run husky:commitlint && npm run husky:prettier && npm run husky:lint",
-    "husky:commitlint": "npx husky add .husky/commit-msg 'npx --no-install commitlint --edit'",
-    "semantic-release": "semantic-release",
-    "copy:assets": "cpx 'lib/local-assets/**' './build/dist/local-assets'",
-    "copy:package": "cpx '../package.json' '../build/dist/'",
-    "husky:lint": "npx husky add .husky/pre-commit 'npm run lint'",
-    "husky:prettier": "npx husky set .husky/pre-commit 'npm run prettier'"
-  },
-  "dependencies": {
-    "@freakycoder/react-native-bounceable": "^1.0.3",
-    "react-native-bouncy-checkbox": "^4.1.2"
+  "react-native-builder-bob": {
+    "source": "lib",
+    "output": "build",
+    "targets": [
+      [
+        "commonjs",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json",
+          "esm": true
+        }
+      ]
+    ]
   },
   "expo": {
     "doctor": {

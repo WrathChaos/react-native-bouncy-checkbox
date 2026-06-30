@@ -1,12 +1,14 @@
 <img alt="React Native Bouncy Checkbox" src="assets/logo.png" width="1050"/>
 
-[![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/WrathChaos/react-native-bouncy-checkbox)
+[![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/kuraydev/react-native-bouncy-checkbox)
 
-[![Fully customizable animated bouncy checkbox for React Native](https://img.shields.io/badge/-Fully%20customizable%20animated%20bouncy%20checkbox%20for%20React%20Native-lightgrey?style=for-the-badge)](https://github.com/WrathChaos/react-native-bouncy-checkbox)
+[![Fully customizable animated bouncy checkbox for React Native](https://img.shields.io/badge/-Fully%20customizable%20animated%20bouncy%20checkbox%20for%20React%20Native-lightgrey?style=for-the-badge)](https://github.com/kuraydev/react-native-bouncy-checkbox)
 
+[![CI](https://img.shields.io/github/actions/workflow/status/kuraydev/react-native-bouncy-checkbox/ci.yml?branch=master&style=for-the-badge)](https://github.com/kuraydev/react-native-bouncy-checkbox/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/react-native-bouncy-checkbox.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-bouncy-checkbox)
 [![npm](https://img.shields.io/npm/dt/react-native-bouncy-checkbox.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-bouncy-checkbox)
-![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg?style=for-the-badge)
+![Platform - Android, iOS and Web](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Web-blue.svg?style=for-the-badge)
+![Written in TypeScript](https://img.shields.io/badge/TypeScript-typed-3178C6?style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
@@ -23,47 +25,37 @@
    </tr>
 </table>
 
+A fully customizable, animated **bouncy checkbox** for React Native. It is a pure
+JavaScript component (`Animated` spring + `Pressable`) with **zero runtime
+dependencies**, so it works out of the box on iOS, Android, the
+[New Architecture (Fabric)](#-new-architecture--expo--web), `react-native-web`,
+and Expo. Ships with TypeScript types.
+
 ## Installation
 
-Add the dependency:
-
-<b>Zero Dependency</b> 🥳 
-
-### React Native
-
-```shell
-npm i react-native-bouncy-checkbox
+```sh
+npm install react-native-bouncy-checkbox
+# or
+yarn add react-native-bouncy-checkbox
 ```
 
-## 🥳  <i> Version 4.1.2 is here</i> 🚀 
-
-- **Complete re-written with Modern Functional Component**
-- Fully Refactored with React Hooks
-- Imperative Handle Support
-- **Checkbox is controllable with `isChecked` prop**
-- `onLongPress` support
-- `testID` support
-- Finally, get rid of `disableBuiltInState` prop 
-- Cool customizable animation options
-- Control your own check state with `useBuiltInState` to disable
-- Typescript
-- Community Supported Stable Version
+No native linking, no pods, no extra dependencies. 🥳
 
 ## Import
 
-```js
+```tsx
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 ```
 
-# Usage
+## Usage
 
-## Basic Usage
+### Basic
 
-```js
-<BouncyCheckbox onPress={(isChecked: boolean) => {}} />
+```tsx
+<BouncyCheckbox onPress={(isChecked: boolean) => console.log(isChecked)} />
 ```
 
-## Advanced Custom Usage
+### Customized
 
 ```tsx
 <BouncyCheckbox
@@ -74,339 +66,184 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
   iconStyle={{ borderColor: "red" }}
   innerIconStyle={{ borderWidth: 2 }}
   textStyle={{ fontFamily: "JosefinSans-Regular" }}
-  onPress={(isChecked: boolean) => {console.log(isChecked)}}
+  onPress={(isChecked: boolean) => console.log(isChecked)}
 />
 ```
 
-## Disable Built-In State
+### Uncontrolled with an initial value
 
-To fully control checkbox state outside with your own state, just set `useBuiltInState` to `false` and send your state value to `isChecked` prop
+Use `defaultChecked` to start checked while still letting the component manage
+its own state:
 
 ```tsx
-
-const [localChecked, setLocalChecked] = React.useState(false);
-
- <BouncyCheckbox
-   isChecked={localChecked}
-   disableText
-   fillColor="green"
-   size={50}
-   useBuiltInState={false}
-   iconImageStyle={styles.iconImageStyle}
-   iconStyle={{borderColor: 'green'}}
-   onPress={(checked: boolean) => {
-         // These two should be same value
-         console.log('::Checked::', checked);
-         console.log('::LocalChecked::', localChecked);
-         setLocalChecked(!localChecked);
-   }}
-/>
+<BouncyCheckbox defaultChecked text="Subscribe" onPress={console.log} />
 ```
 
-### Configuration - Props
+### Fully controlled state
 
-| Property             |   Type    |    Default    | Description                                                                                                                                    |
-|----------------------| :-------: |:-------------:|------------------------------------------------------------------------------------------------------------------------------------------------|
-| **isChecked**        |  **boolean**  | **undefined** | **if you want to control check state yourself, you can use `isChecked` prop now!**                                                             |
-| onPress              | function  |     null      | set your own onPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false     |
-| onLongPress          | function  |     null      | set your own onLongPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false |
-| text                 |  string   |   undefined   | set the checkbox's text                                                                                                                        |
-| textComponent        | component |   undefined   | set the checkbox's text by a React Component                                                                                                   |
-| disableText          |  boolean  |     false     | if you want to use checkbox without text, you can enable it                                                                                    |
-| useBuiltInState          |  boolean  |     false     | to fully control the checkbox itself outside with your own state, just set to `false` and send your state value to `isChecked` prop            |
-| size                 |  number   |      25       | size of `width` and `height` of the checkbox                                                                                                   |
-| style                |   style   |    default    | set/override the container style                                                                                                               |
-| textStyle            |   style   |    default    | set/override the text style                                                                                                                    |
-| iconStyle            |   style   |    default    | set/override the outer icon container style                                                                                                    |
-| innerIconStyle       |   style   |    default    | set/override the inner icon container style                                                                                                    |
-| fillColor            |   color   |    #f09f48    | change the checkbox's filled color                                                                                                             |
-| unfillColor          |   color   |  transparent  | change the checkbox's un-filled color when it's not checked                                                                                    |
-| iconComponent        | component |     Icon      | set your own icon component                                                                                                                    |
-| checkIconImageSource |   image   |    default    | set your own check icon image                                                                                                                  |
-| textContainerStyle   | ViewStyle |    default    | set/override the text container style                                                                                                          |
-| ImageComponent       | component |     Image     | set your own Image component instead of RN's default Image                                                                                     |
-| TouchableComponent   | Component |   Pressable   | set/override the main TouchableOpacity component with any Touchable Component like Pressable                                                   |
+To control the checked state from the outside, set `useBuiltInState={false}` and
+drive it with the `isChecked` prop:
 
-### Animation Configurations
+```tsx
+const [checked, setChecked] = React.useState(false);
 
-| Property          |  Type  | Default | Description                               |
-| ----------------- | :----: | :-----: | ----------------------------------------- |
-| bounceEffectIn    | number |   0.9   | change the bounce effect when press in    |
-| bounceEffectOut   | number |    1    | change the bounce effect when press out   |
-| bounceVelocityIn  | number |   0.1   | change the bounce velocity when press in  |
-| bounceVelocityOut | number |   0.4   | change the bounce velocity when press out |
-| bouncinessIn      | number |   20    | change the bounciness when press in       |
-| bouncinessOut     | number |   20    | change the bounciness when press out      |
+<BouncyCheckbox
+  isChecked={checked}
+  useBuiltInState={false}
+  fillColor="green"
+  text="Controlled Checkbox"
+  onPress={() => setChecked((prev) => !prev)}
+/>;
+```
 
-## Synthetic Press Functionality with Manual Controlling State
+> In controlled mode the `onPress` callback receives the **current** `isChecked`
+> value (before your update), so flip your own state inside it.
+
+## Props
+
+> ⚠️ Note the casing: the un-checked background prop is **`unFillColor`** (capital
+> `F`).
+
+| Prop                   | Type                  | Default            | Description                                                                              |
+| ---------------------- | --------------------- | ------------------ | ---------------------------------------------------------------------------------------- |
+| `onPress`              | `(checked) => void`   | `undefined`        | Called after the bounce; receives the next `checked` value (built-in mode).              |
+| `onLongPress`          | `(checked) => void`   | `undefined`        | Same as `onPress`, for long presses.                                                     |
+| `isChecked`            | `boolean`             | `undefined`        | Controlled checked value. Pair with `useBuiltInState={false}`.                           |
+| `defaultChecked`       | `boolean`             | `false`            | Initial checked value for an **uncontrolled** checkbox.                                  |
+| `useBuiltInState`      | `boolean`             | `true`             | When `false`, the component does not manage its own state — you drive it via `isChecked`. |
+| `text`                 | `string`              | `undefined`        | Label text shown next to the checkbox.                                                   |
+| `textComponent`        | `ReactNode`           | `undefined`        | Render a custom label instead of `text`.                                                 |
+| `disableText`          | `boolean`             | `false`            | Hide the label entirely.                                                                 |
+| `size`                 | `number`              | `25`               | Width/height of the checkbox.                                                            |
+| `fillColor`            | `string`              | `#ffc484`          | Background color when checked.                                                           |
+| `unFillColor`          | `string`              | `transparent`      | Background color when unchecked.                                                         |
+| `iconComponent`        | `ReactNode`           | `undefined`        | Replace the default check icon.                                                          |
+| `checkIconImageSource` | `ImageSourcePropType` | bundled check icon | Custom check icon image.                                                                 |
+| `ImageComponent`       | `ComponentType`       | `Image`            | Replace RN's `Image` (e.g. `FastImage`) for the check icon.                              |
+| `TouchableComponent`   | `ComponentType`       | `Pressable`        | Replace the outer touchable.                                                             |
+| `style`                | `ViewStyle`           | —                  | Container style.                                                                         |
+| `iconStyle`            | `ViewStyle`           | —                  | Outer icon container style.                                                              |
+| `innerIconStyle`       | `ViewStyle`           | —                  | Inner icon container style (border, radius…).                                            |
+| `iconImageStyle`       | `ImageStyle`          | `{ width: 10, height: 10 }` | Style for the check icon image.                                                |
+| `textStyle`            | `TextStyle`           | —                  | Label text style.                                                                       |
+| `textContainerStyle`   | `ViewStyle`           | —                  | Label container style.                                                                   |
+| `testID`               | `string`              | `undefined`        | Test identifier on the touchable.                                                        |
+
+All remaining `Pressable` props (e.g. `disabled`, `accessibilityLabel`, `hitSlop`)
+are forwarded to the underlying `TouchableComponent`.
+
+### Animation props
+
+| Prop                | Type     | Default | Description                            |
+| ------------------- | -------- | ------- | -------------------------------------- |
+| `bounceEffectIn`    | `number` | `0.9`   | Scale on press in.                     |
+| `bounceEffectOut`   | `number` | `1`     | Scale on press out.                    |
+| `bounceVelocityIn`  | `number` | `0.1`   | Spring velocity on press in.           |
+| `bounceVelocityOut` | `number` | `0.4`   | Spring velocity on press out.          |
+| `bouncinessIn`      | `number` | `20`    | Spring bounciness on press in.         |
+| `bouncinessOut`     | `number` | `20`    | Spring bounciness on press out.        |
+
+## Imperative API (ref)
+
+You can trigger a "synthetic" press from outside the component using a ref. This
+is handy when another button should toggle the checkbox.
+
+```tsx
+import React, { useRef } from "react";
+import { Pressable, Text, View } from "react-native";
+import BouncyCheckbox, {
+  BouncyCheckboxHandle,
+} from "react-native-bouncy-checkbox";
+
+const Example = () => {
+  const checkboxRef = useRef<BouncyCheckboxHandle>(null);
+
+  return (
+    <View>
+      <BouncyCheckbox
+        ref={checkboxRef}
+        text="Synthetic Checkbox"
+        onPress={(checked) => console.log("checked:", checked)}
+      />
+      <Pressable onPress={() => checkboxRef.current?.onCheckboxPress()}>
+        <Text>Toggle from outside</Text>
+      </Pressable>
+    </View>
+  );
+};
+```
+
+The ref handle exposes:
+
+```ts
+interface BouncyCheckboxHandle {
+  onCheckboxPress: () => void;
+  onCheckboxLongPress: () => void;
+}
+```
 
 <div>
     <img alt="React Native Bouncy Checkbox"
       src="assets/Screenshots/react-native-bouncy-checkbox-syntetic-onpress.gif" height="650" />
 </div>
 
-Please check the `example` runnable project to how to make it work on a real project.
+## Accessibility
 
-- </b></i> The `onPress` callback **WILL RECEIVE** the next `isChecked` when using `ref` is used.
-- <b><i>You MUST set the `isChecked` prop to use your own check state manually.
+The checkbox renders with `accessibilityRole="checkbox"` and
+`accessibilityState={{ checked }}` by default, so screen readers and
+`react-native-web` announce it correctly. You can override either via the usual
+accessibility props.
 
-Here is the basic implementation:
+## ⚡ New Architecture / Expo / Web
 
-```tsx
-import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import BouncyCheckbox from "./lib/BouncyCheckbox";
-import RNBounceable from "@freakycoder/react-native-bounceable";
+This library is **pure JavaScript** — it uses only `View`, `Text`, `Image`,
+`Animated`, and `Pressable`. There are no native modules or Fabric components, so
+it is automatically compatible with:
 
-const App = () => {
-  let bouncyCheckboxRef: BouncyCheckbox | null = null;
-  const [checkboxState, setCheckboxState] = React.useState(false);
-
-  return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <View style={styles.checkboxesContainer}>
-        <Text style={styles.titleSynthetic}>Synthetic Checkbox</Text>
-        <Text style={styles.checkboxSyntheticSubtitle}>
-          Control Checkbox with Another Button
-        </Text>
-        <View style={styles.checkboxSyntheticContainer}>
-          <BouncyCheckbox
-                  ref={bouncyCheckboxRef}
-                  disableText
-                  fillColor="#9342f5"
-                  size={50}
-                  iconImageStyle={styles.iconImageStyle}
-                  iconStyle={{borderColor: '#9342f5'}}
-                  onPress={isChecked => {
-                    Alert.alert(`Checked:: ${isChecked}`);
-                  }}
-          />
-          <RNBounceable
-                  style={styles.syntheticButton}
-                  onPress={() => {
-                    if (bouncyCheckboxRef.current) {
-                      bouncyCheckboxRef.current.onCheckboxPress();
-                    }
-                  }}>
-            <Text style={{color: '#fff', fontWeight: '600'}}>
-              Change Checkbox
-            </Text>
-          </RNBounceable>
-        </View>
-      </View>
-    </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({});
-
-export default App;
-```
-
-
-Another example with `isChecked` prop:
-
-```tsx
-import React, {useRef} from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import RNBounceable from '@freakycoder/react-native-bounceable';
-import BouncyCheckbox, {BouncyCheckboxHandle} from './build/dist';
-
-const App = () => {
-  const bouncyCheckboxRef = useRef<BouncyCheckboxHandle>(null);
-
-  const [checkboxState, setCheckboxState] = React.useState(false);
-
-  return (
-    <ImageBackground
-      style={styles.container}
-      source={require('./assets/bg.jpg')}>
-      <View
-        style={[
-          styles.stateContainer,
-          {
-            backgroundColor: checkboxState ? '#34eb83' : '#eb4034',
-          },
-        ]}>
-        <Text
-          style={
-            styles.stateTextStyle
-          }>{`Check Status: ${checkboxState.toString()}`}</Text>
-      </View>
-      <BouncyCheckbox
-        size={50}
-        textStyle={styles.textStyle}
-        style={{marginTop: 16}}
-        iconImageStyle={styles.iconImageStyle}
-        fillColor={'#00C0EE'}
-        unFillColor={'transparent'}
-        ref={bouncyCheckboxRef}
-        isChecked={checkboxState}
-        text="Synthetic Checkbox"
-        onPress={() => setCheckboxState(!checkboxState)}
-      />
-      <RNBounceable
-        style={styles.syntheticButton}
-        onPress={() => {
-          bouncyCheckboxRef.current?.onCheckboxPress();
-        }}>
-        <Text style={{color: '#fff'}}>Synthetic Checkbox Press</Text>
-      </RNBounceable>
-    </ImageBackground>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  stateContainer: {
-    height: 45,
-    width: 175,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 12,
-    marginBottom: 12,
-  },
-  stateTextStyle: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  syntheticButton: {
-    height: 50,
-    marginTop: 64,
-    borderRadius: 12,
-    width: '60%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#00C0EE',
-  },
-  iconImageStyle: {
-    width: 20,
-    height: 20,
-  },
-  textStyle: {
-    color: '#010101',
-    fontWeight: '600',
-  },
-});
-
-export default App;
-````
-
-## [React Native Bouncy Checkbox Group](https://github.com/WrathChaos/react-native-bouncy-checkbox-group)
-
-<img alt="React Native Bouncy Checkbox"
-        src="https://github.com/WrathChaos/react-native-bouncy-checkbox-group/blob/master/assets/Screenshots/react-native-bouncy-checkbox-group.png.gif" height="550" />
-
-
-We have also this library's checkbox group library as well 🍻 Please take a look 😍
+- ✅ The **New Architecture (Fabric / TurboModules)** — nothing to enable.
+- ✅ **Expo** (managed and bare) — no config plugin required.
+- ✅ **react-native-web** — the bundled default check icon now renders out of the
+  box on web. On web the check `Image` is given explicit dimensions and a
+  `resizeMode: "contain"`, so you no longer need the old workaround of passing
+  `checkIconImageSource` (or an `iconImageStyle` with a fixed `width`/`height`)
+  just to make the default tick visible. Native (iOS/Android) rendering is
+  unchanged.
 
 ## FAQ
 
-<b>How to disable strikethrough?</b>
-
-- Simply use the `textStyle` prop and set the `textDecorationLine` to `none`
+**How do I disable the strikethrough on the label?**
 
 ```tsx
-textStyle={{
-  textDecorationLine: "none",
-}}
+textStyle={{ textDecorationLine: "none" }}
 ```
 
-<b>How to make square checkbox?</b>
-
-- Simply use the `iconStyle` prop and set the `borderRadius` to `0`
+**How do I make a square checkbox?**
 
 ```tsx
-innerIconStyle={{
-  borderRadius: 0, // to make it a little round increase the value accordingly
-}}
+innerIconStyle={{ borderRadius: 0 }}
 ```
 
-<b>How to use multiple checkbox and control all of them with one checkbox?</b>
+## Related
 
-- You can use `isChecked` prop to control all of them one by one and with simple handling function to make them all checked or not
+- [React Native Bouncy Checkbox Group](https://github.com/kuraydev/react-native-bouncy-checkbox-group) — group/list variant.
 
-```tsx
-  const data = [
-    {
-      id: 0,
-      isChecked: false,
-    },
-    {
-      id: 1,
-      isChecked: false,
-    },
-    {
-      id: 2,
-      isChecked: false,
-    },
-  ]
+## Contributing
 
-  const [checkBoxes, setCheckBoxes] = useState(data);
-
-
-  const handleCheckboxPress = (checked: boolean, id: number) => {
-    if (id === 0) {
-      setCheckBoxes(
-        checkBoxes.map(item => ({
-          ...item,
-          isChecked: checked,
-        })),
-      );
-      return;
-    }
-
-    setCheckBoxes(
-      checkBoxes.map(item =>
-        item.id === id ? {...item, isChecked: checked} : item,
-      ),
-    );
-  };
-```
-
-Please check out the example for this:
-https://github.com/WrathChaos/react-native-bouncy-checkbox-check-all-with-one-checkbox
-
-### Future Plans
-
-- [x] ~~LICENSE~~
-- [x] ~~Typescript Challange!~~
-- [x] ~~Version 2.0.0 is alive 🥳~~
-- [x] ~~Synthetic Press Functionality~~
-- [x] ~~Disable built-in check state~~
-- [x] ~~React Native Bouncy Checkbox Group Library Extension~~
-- [x] ~~New Animation and More Customizable Animation~~
-- [x] ~~Version 3.0.0 is alive 🚀~~
-- [x] ~~Better Documentation~~
-- [x] ~~Version 4.0.0 is alive 🚀~~
-- [x] ~~Get rid of `disableBuiltInState` prop~~
-- [ ] Write an article about the lib on Medium
+Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) and
+note the backwards-compatibility rules before opening a PR. See
+[CHANGELOG.md](./CHANGELOG.md) for the release history.
 
 ## Credits
 
-Photo by <a href="https://unsplash.com/@fakurian?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Milad Fakurian</a> on <a href="https://unsplash.com/photos/blue-orange-and-yellow-wallpaper-E8Ufcyxz514?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-
+Demo background photo by
+<a href="https://unsplash.com/@fakurian">Milad Fakurian</a> on
+<a href="https://unsplash.com/photos/blue-orange-and-yellow-wallpaper-E8Ufcyxz514">Unsplash</a>.
 
 ## Author
 
-FreakyCoder, kurayogun@gmail.com
+Kuray (FreakyCoder), kurayogun@gmail.com
 
 ## License
 
-React Native Bouncy Checkbox is available under the MIT license. See the LICENSE file for more info.
+React Native Bouncy Checkbox is available under the MIT license. See the
+[LICENSE](./LICENSE) file for more info.
