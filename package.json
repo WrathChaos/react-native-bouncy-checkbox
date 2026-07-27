@@ -25,6 +25,13 @@
   "homepage": "https://www.freakycoder.com",
   "bugs": "https://github.com/WrathChaos/react-native-bouncy-checkbox/issues",
   "main": "./build/dist/index.js",
+  "files": [
+    "build",
+    "!build/**/*.tsbuildinfo",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": "git@github.com:WrathChaos/react-native-bouncy-checkbox.git",
   "author": "Kuray (FreakyCoder) <kurayogun@gmail.com>",
   "license": "MIT",
