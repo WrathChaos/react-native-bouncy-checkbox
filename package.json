@@ -1,6 +1,6 @@
 {
   "name": "react-native-bouncy-checkbox",
-  "version": "4.1.4",
+  "version": "4.2.0",
   "description": "Fully customizable animated bouncy checkbox for React Native",
   "keywords": [
     "toggle",
@@ -75,13 +75,21 @@
     "husky:lint": "npx husky add .husky/pre-commit 'npm run lint'",
     "husky:prettier": "npx husky set .husky/pre-commit 'npm run prettier'"
   },
-  "dependencies": {
-    "@freakycoder/react-native-bounceable": "^1.0.3",
-    "react-native-bouncy-checkbox": "^4.1.2"
-  },
   "expo": {
     "doctor": {
       "newArchitecture": "compatible"
     }
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-native": ">=0.64.0"
+  },
+  "types": "./build/dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/dist/index.d.ts",
+      "default": "./build/dist/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }
